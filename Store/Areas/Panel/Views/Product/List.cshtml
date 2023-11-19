@@ -1,0 +1,149 @@
+﻿@using Store.Models.DTOs.Product
+@model Store.Models.Results.IDataResult<List<ProductDTO>>
+
+@{
+    ViewBag.Title = "List";
+
+}
+<div class="row clearfix">
+    <div class="col-lg-3">
+        <div class="widget style2 bg-green hover-zoom-effect">
+            <div class="col-xs-4 widget-icon">
+                <i class="material-icons">product</i>
+            </div>
+            <div class="col-xs-8 widget-body text-right">
+                <span> Ürün Sayısı </span>
+                <h2 class="num count-to" data-from="0" data-to="250" data-speed="1000" data-fresh-interval="20">250</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Basic Examples -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>
+                    Ürün Listesi
+                </h4>
+                <small>Ürünler listelenir, düzenlenir. Silenen ve pasif ürünler listelenmez.</small>
+            </div>
+            <div class="body">
+                <table class="table table-bordered table-striped table-hover basic-example dataTable">
+                    <thead>
+                        <tr>
+                            <th>İşlem</th>
+                            <th>Ürün</th>
+                            <th>Id</th>
+                            <th>Açıklama</th>
+                            <th>Silindi Mi?</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>İşlem</th>
+                            <th>Ürün</th>
+                            <th>Id</th>
+                            <th>Açıklama</th>
+                            <th>Silindi Mi?</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model.Data.OrderByDescending(a=>a.Id))
+                        {
+                            <tr>
+                                <th width="100px">
+                                    <button class="btn btn-xs btn-warning">Düzenle</button>
+                                    <button class="btn btn-xs btn-danger">Sil</button>
+                                </th>
+                                <th><a href="javascript:void(0)">@item.Name</a></th>
+                                <td>@item.Id</td>
+                                <td>@item.Description</td>
+                                @if (item.IsDeleted)
+                                {
+                                    <td>Evet</td>
+                                }
+                                else
+                                {
+                                    <td>Hayır</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Basic Examples -->
+@* <div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- Table Swipe -->
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    Ürün Listesi
+                </h2>
+            </div>
+            <div class="body">
+                <table class="tablesaw table-hover table-bordered" data-tablesaw-mode="swipe" data-tablesaw-minimap>
+                    <thead>
+                        <tr>
+                            <th data-tablesaw-priority="persist">Ürün</th>
+                            <th>Id</th>
+                            <th>Açıklama</th>
+                            <th>Silindi Mi?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Data)
+                        {
+                            <tr>
+                                <th><a href="javascript:void(0)">@item.Name</a></th>
+                                <td>@item.Id</td>
+                                <td>@item.Description</td>
+                                @if (item.IsDeleted)
+                                {
+                                    <td>Evet</td>
+                                }
+                                else
+                                {
+                                    <td>Hayır</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- #END# Table Swipe -->
+    </div>
+</div> *@
+
+@section css {
+    <!--THIS PAGE LEVEL CSS-->
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+}
+@section scripts {
+    <!--THIS PAGE LEVEL JS-->
+    <script src="~/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="~/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.keyTable.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/responsive.bootstrap.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.scroller.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.fixedHeader.min.js"></script>
+    <script src="~/js/pages/tables/jquery-datatable.js"></script>
+}
+

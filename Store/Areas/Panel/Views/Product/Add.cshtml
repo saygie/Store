@@ -1,0 +1,79 @@
+﻿@model Store.Models.DTOs.Product.ProductDTO
+@{
+    ViewBag.Title = "Add";
+
+}
+<!-- Basic Validation -->
+<div class="row clearfix">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="body">
+                <div class="card-inner">
+                    <h4 class="card-inner-header">Ürün Ekle</h4>
+                    <small>Ürün ekleme formu.</small>
+                    <div class="demo">
+                        <form class="form-horizontal" id="form_validation" method="POST" action="~/Panel/Product/Add">
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Ürün Adı</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Name" placeholder="Ürün adı giriniz..." required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label for="skill_1">Kategori</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <select class="form-control" id="skill_1" name="skill">
+                                            <option value="">Lütfen Seçiniz...</option>
+                                            <option value="html">Ahşap Ayaklı Abajür</option>
+                                            <option value="css">Metal Ayaklı Abajür</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Açıklama</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <textarea name="Description" cols="30" rows="4" class="form-control no-resize" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox_1" name="IsDeleted">
+                                        <label for="checkbox_1">Aktif Mi? (Seçili olursa anasayfada yayınlanır.)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary waves-effect m-l-100" type="submit">Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Basic Validation -->
+@section css {
+    <!--THIS PAGE LEVEL CSS-->
+    <link href="~/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+}
+@section scripts {
+    <!--THIS PAGE LEVEL JS-->
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-steps/jquery.steps.js"></script>
+    <script src="~/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/assets/js/pages/forms/form-validation.js"></script>
+}
