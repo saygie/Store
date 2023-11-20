@@ -1,4 +1,9 @@
-﻿@model Store.Models.DTOs.Product.ProductDTO
+﻿@using Store.Models.DTOs
+@using Store.Models.Results
+@{
+    IDataResult<List<CategoryDTO>> Categories = ViewBag.Categories;
+}
+@model ProductDTO
 @{
     ViewBag.Title = "Add";
 
@@ -25,14 +30,36 @@
                             </div>
                             <div class="row m-t-10">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Ürün Seo Url</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="SeoUrl" placeholder="Ürün Seo Url giriniz..." required value="@Guid.NewGuid()" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Ürün Kodu</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Code" placeholder="Ürün adı giriniz..." required value="@Guid.NewGuid()"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
                                     <label for="skill_1">Kategori</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <select class="form-control" id="skill_1" name="skill">
-                                            <option value="">Lütfen Seçiniz...</option>
-                                            <option value="html">Ahşap Ayaklı Abajür</option>
-                                            <option value="css">Metal Ayaklı Abajür</option>
+                                        <select class="form-control" id="skill_1" name="CategoryId" required>
+                                            <option value="" selected>Kategori Seçiniz...</option>
+                                            @foreach (var item in Categories.Data.Where(a => a.ParentCategoryId != 0))
+                                            {
+                                                <option value="@item.Id">- @item.Name</option>
+                                            }
                                         </select>
                                     </div>
                                 </div>
@@ -47,13 +74,33 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Stok</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Stock" placeholder="Stok giriniz..." required value="0" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Fiyat</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Price" placeholder="Fiyat giriniz..." required value="0" />
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="checkbox" id="checkbox_1" name="IsDeleted">
-                                        <label for="checkbox_1">Aktif Mi? (Seçili olursa anasayfada yayınlanır.)</label>
+                                        <input type="checkbox" id="checkbox_1" name="IsActive">
+                                        <label for="checkbox_1">Aktif Mi? (Seçili olursa yayınlanır.)</label>
                                     </div>
                                 </div>
                             </div>

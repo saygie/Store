@@ -6,22 +6,20 @@ using Store.Models.Services;
 namespace Store.Areas.Panel.Controllers
 {
     [Area("Panel")]
-    public class ProductController : Controller
+    public class CategoryController : Controller
     {
-        private readonly ILogger<ProductController> logger;
-        private readonly IProductService productService;
+        private readonly ILogger<CategoryController> logger;
         private readonly ICategoryService categoryService;
 
-        public ProductController(IProductService productService, ILogger<ProductController> logger, ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService, ILogger<CategoryController> logger)
         {
             this.logger = logger;
-            this.productService = productService;
             this.categoryService = categoryService;
         }
         public async Task<IActionResult> List()
         {
-            var result = await productService.List();
-            ViewBag.ProductCount = await productService.Count();
+            var result = await categoryService.List();
+            ViewBag.CategoryCount = await categoryService.Count();
             if (result.Success)
             {
                 return View(result);
@@ -34,19 +32,18 @@ namespace Store.Areas.Panel.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Add(ProductDTO product)
+        public async Task<IActionResult> Add(CategoryDTO Category)
         {
-            var result = await productService.Add(product);
+            var result = await categoryService.Add(Category);
             if (result.Success)
             {
-                return Redirect("/Panel/Product/List");
+                return Redirect("/Panel/Category/List");
             }
             return View("Error");
         }
         public async Task<IActionResult> Update(int id)
         {
-            ViewBag.Categories = await categoryService.List();
-            var result = await productService.GetById(id);
+            var result = await categoryService.GetById(id);
             if (result.Success)
             {
                 return View(result);
@@ -54,21 +51,21 @@ namespace Store.Areas.Panel.Controllers
             return View("Error");
         }
         [HttpPost]
-        public async Task<IActionResult> Update(ProductDTO product)
+        public async Task<IActionResult> Update(CategoryDTO Category)
         {
-            var result = await productService.Update(product);
+            var result = await categoryService.Update(Category);
             if (result.Success)
             {
-                return Redirect("/Panel/Product/List");
+                return Redirect("/Panel/Category/List");
             }
             return View("Error");
         }
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await productService.Delete(new ProductDTO() { Id = id });
+            var result = await categoryService.Delete(new CategoryDTO() { Id = id });
             if (result.Success)
             {
-                return Redirect("/Panel/Product/List");
+                return Redirect("/Panel/Category/List");
             }
             return View("Error");
         }

@@ -1,4 +1,8 @@
-﻿@using Store.Models.DTOs.Product
+﻿@using Store.Models.DTOs
+@using Store.Models.Results
+@{
+    IDataResult<List<CategoryDTO>> Categories = ViewBag.Categories;
+}
 @model Store.Models.Results.IDataResult<ProductDTO>
 @{
     ViewBag.Title = "Add";
@@ -20,7 +24,27 @@
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="Name" placeholder="Ürün adı giriniz..." value="@Model.Data.Name" required />
+                                        <input type="text" class="form-control" name="Name" placeholder="Ürün adı giriniz..." required value="@Model.Data.Name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Ürün Seo Url</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="SeoUrl" placeholder="Ürün Seo Url giriniz..." required value="@Model.Data.SeoUrl" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Ürün Kodu</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Code" placeholder="Ürün adı giriniz..." required value="@Model.Data.Code" />
                                     </div>
                                 </div>
                             </div>
@@ -30,10 +54,19 @@
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <select class="form-control" id="skill_1" name="skill">
-                                            <option value="">Lütfen Seçiniz...</option>
-                                            <option value="html">Ahşap Ayaklı Abajür</option>
-                                            <option value="css">Metal Ayaklı Abajür</option>
+                                        <select class="form-control" id="skill_1" name="CategoryId" required>
+                                            @foreach (var item in Categories.Data.Where(a => a.ParentCategoryId != 0))
+                                            {
+                                                if (item.ParentCategoryId == Model.Data.CategoryId)
+                                                {
+                                                    <option value="@item.Id" selected>- @item.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">- @item.Name</option>
+                                                }
+
+                                            }
                                         </select>
                                     </div>
                                 </div>
@@ -48,17 +81,38 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Stok</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Stock" placeholder="Stok giriniz..." required value="@Model.Data.Stock" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Fiyat</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Price" placeholder="Fiyat giriniz..." required value="@Model.Data.Price" />
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="checkbox" id="checkbox_1" name="IsDeleted">
-                                        <label for="checkbox_1">Aktif Mi? (Seçili olursa anasayfada yayınlanır.)</label>
+
+                                        <input type="checkbox" id="checkbox_1" name="IsActive" checked="@Model.Data.IsActive" value="true">
+                                        <label for="checkbox_1">Aktif Mi? (Seçili olursa yayınlanır.)</label>
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="Id" value="@Model.Data.Id"/>
+                            <input type="hidden" name="Id" value="@Model.Data.Id" />
                             <button class="btn btn-primary waves-effect m-l-100" type="submit">Güncelle</button>
                         </form>
                     </div>

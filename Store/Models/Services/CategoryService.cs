@@ -8,20 +8,20 @@ using IResult = Store.Models.Results.IResult;
 
 namespace Store.Models.Services;
 
-public class ProductService : Service<Product, DataDbContext>, IProductService
+public class CategoryService : Service<Category, DataDbContext>, ICategoryService
 {
     private readonly IMapper mapper;
 
-    public ProductService(IMapper mapper)
+    public CategoryService(IMapper mapper)
     {
         this.mapper = mapper;
     }
 
-    public async Task<IResult> Add(ProductDTO dto)
+    public async Task<IResult> Add(CategoryDTO dto)
     {
         try
         {
-            var data = mapper.Map<Product>(dto);
+            var data = mapper.Map<Category>(dto);
             await Add(data);
             return new Result(true);
         }
@@ -30,11 +30,11 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
             return new Result(false);
         }
     }
-    public async Task<IResult> Update(ProductDTO dto)
+    public async Task<IResult> Update(CategoryDTO dto)
     {
         try
         {
-            var data = mapper.Map<Product>(dto);
+            var data = mapper.Map<Category>(dto);
             await Update(data);
             return new Result(true);
         }
@@ -43,7 +43,7 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
             return new Result(false);
         }
     }
-    public async Task<IResult> Delete(ProductDTO dto)
+    public async Task<IResult> Delete(CategoryDTO dto)
     {
         try
         {
@@ -61,29 +61,29 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
         }
     }
 
-    public async Task<IDataResult<ProductDTO?>> GetById(int Id)
+    public async Task<IDataResult<CategoryDTO?>> GetById(int Id)
     {
         try
         {
             var data = await Get(a => a.Id == Id && a.IsDeleted == false);
-            return new DataResult<ProductDTO?>(mapper.Map<ProductDTO>(data), true);
+            return new DataResult<CategoryDTO?>(mapper.Map<CategoryDTO>(data), true);
         }
         catch (Exception)
         {
-            return new DataResult<ProductDTO?>(null, false);
+            return new DataResult<CategoryDTO?>(null, false);
         }
     }
 
-    public async Task<IDataResult<List<ProductDTO>>> List()
+    public async Task<IDataResult<List<CategoryDTO>>> List()
     {
         try
         {
-            var data = await List(a => a.IsDeleted == false, null, "Category");
-            return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+            var data = await List(a => a.IsDeleted == false);
+            return new DataResult<List<CategoryDTO>>(mapper.Map<List<CategoryDTO>>(data), true);
         }
         catch (Exception ex)
         {
-            return new DataResult<List<ProductDTO>>(new List<ProductDTO>(), false, ex.Message);
+            return new DataResult<List<CategoryDTO>>(new List<CategoryDTO>(), false, ex.Message);
         }
     }
 

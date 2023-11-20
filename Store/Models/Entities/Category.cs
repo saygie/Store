@@ -18,8 +18,8 @@ public class Category : IEntity
     [StringLength(128, MinimumLength = 3)]
     public string SeoUrl { get; set; } = string.Empty;
 
-    //[Required]
-    //public int ParentCategoryId { get; set; } = 0;
+    [Required]
+    public int ParentCategoryId { get; set; } = 0;
 
     [Required]
     public bool IsActive { get; set; } = false;

@@ -1,4 +1,4 @@
-﻿using Store.Models.DTOs.Product;
+﻿using Store.Models.DTOs;
 using Store.Models.Entities;
 using Store.Models.Results;
 using Store.Models.Services.Common;

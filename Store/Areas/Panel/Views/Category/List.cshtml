@@ -1,5 +1,5 @@
 ﻿@using Store.Models.DTOs
-@model Store.Models.Results.IDataResult<List<ProductDTO>>
+@model Store.Models.Results.IDataResult<List<CategoryDTO>>
 
 @{
     ViewBag.Title = "List";
@@ -9,11 +9,11 @@
     <div class="col-lg-3">
         <div class="widget style2 bg-green hover-zoom-effect">
             <div class="col-xs-4 widget-icon">
-                <i class="material-icons">product</i>
+                <i class="material-icons">Category</i>
             </div>
             <div class="col-xs-8 widget-body text-right">
-                <span> Ürün Sayısı </span>
-                <h2 class="num count-to" data-from="0" data-to="@ViewBag.ProductCount.Data" data-speed="1000" data-fresh-interval="20">@ViewBag.ProductCount.Data</h2>
+                <span>Kategori Sayısı </span>
+                <h2 class="num count-to" data-from="0" data-to="@ViewBag.CategoryCount.Data" data-speed="1000" data-fresh-interval="20">@ViewBag.CategoryCount.Data</h2>
             </div>
         </div>
     </div>
@@ -25,38 +25,26 @@
         <div class="card">
             <div class="card-header">
                 <h4>
-                    Ürün Listesi
+                    Kategori Listesi
                 </h4>
-                <small>Ürünler listelenir, düzenlenir. Silenen ve pasif ürünler listelenmez.</small>
+                <small>Kategoriler listelenir, düzenlenir. Silenen ve pasif Kategoriler listelenmez.</small>
             </div>
             <div class="body">
                 <table class="table table-bordered table-striped table-hover basic-example dataTable">
                     <thead>
                         <tr>
                             <th>İşlem</th>
-                            <th>Ürün</th>
-                            <th>Id</th>
-                            <th>Kod</th>
                             <th>Kategori</th>
-                            <th>Stok</th>
-                            <th>Fiyat</th>
-                            <th>Seo Url</th>
-                            <th>Açıklama</th>
-                            <th>Durum</th>
+                            <th>Id</th>
+                            <th>Silindi Mi?</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>İşlem</th>
-                            <th>Ürün</th>
-                            <th>Id</th>
-                            <th>Kod</th>
                             <th>Kategori</th>
-                            <th>Stok</th>
-                            <th>Fiyat</th>
-                            <th>Seo Url</th>
-                            <th>Açıklama</th>
-                            <th>Durum</th>
+                            <th>Id</th>
+                            <th>Silindi Mi?</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -64,24 +52,18 @@
                         {
                             <tr>
                                 <th width="100px">
-                                    <a class="btn btn-xs btn-warning" href="~/Panel/Product/Update?id=@item.Id">Düzenle</a>
-                                    <a class="btn btn-xs btn-danger" href="~/Panel/Product/Delete?id=@item.Id">Sil</a>
+                                    <a class="btn btn-xs btn-warning" href="~/Panel/Category/Update?id=@item.Id">Düzenle</a>
+                                    <a class="btn btn-xs btn-danger" href="~/Panel/Category/Delete?id=@item.Id">Sil</a>
                                 </th>
                                 <th><a href="javascript:void(0)">@item.Name</a></th>
                                 <td>@item.Id</td>
-                                <td>@item.Code</td>
-                                <td>@item.Category?.Name</td>
-                                <td>@item.Stock</td>
-                                <td>@item.Price</td>
-                                <td>@item.SeoUrl</td>
-                                <td>@item.Description</td>
-                                @if (item.IsActive)
+                                @if (item.IsDeleted)
                                 {
-                                    <td style="color:green">Aktif</td>
+                                    <td>Evet</td>
                                 }
                                 else
                                 {
-                                    <td style="color:red">Pasif</td>
+                                    <td>Hayır</td>
                                 }
                             </tr>
                         }
@@ -98,14 +80,14 @@
         <div class="card">
             <div class="card-header">
                 <h2>
-                    Ürün Listesi
+                    Kategori Listesi
                 </h2>
             </div>
             <div class="body">
                 <table class="tablesaw table-hover table-bordered" data-tablesaw-mode="swipe" data-tablesaw-minimap>
                     <thead>
                         <tr>
-                            <th data-tablesaw-priority="persist">Ürün</th>
+                            <th data-tablesaw-priority="persist">Kategori</th>
                             <th>Id</th>
                             <th>Açıklama</th>
                             <th>Silindi Mi?</th>

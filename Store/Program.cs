@@ -18,6 +18,8 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 
 builder.Services.AddAutoMapper(typeof(AutoMappingProfile));
 
