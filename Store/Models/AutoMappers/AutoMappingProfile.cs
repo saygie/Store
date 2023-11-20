@@ -11,5 +11,6 @@ public class AutoMappingProfile : Profile
     {
         CreateMap<Product, ProductDTO>().ReverseMap();
         CreateMap<Category, CategoryDTO>().ReverseMap();
+        CreateMap<ProductPhoto, ProductPhotoDTO>().ReverseMap();
     }
 }

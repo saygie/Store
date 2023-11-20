@@ -6,9 +6,8 @@
 @model ProductDTO
 @{
     ViewBag.Title = "Add";
-
 }
-<!-- Basic Validation -->
+
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
@@ -99,7 +98,7 @@
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="checkbox" id="checkbox_1" name="IsActive">
+                                        <input type="checkbox" id="checkbox_1" name="IsActive" value="true">
                                         <label for="checkbox_1">Aktif Mi? (Seçili olursa yayınlanır.)</label>
                                     </div>
                                 </div>
@@ -112,7 +111,6 @@
         </div>
     </div>
 </div>
-<!-- #END# Basic Validation -->
 @section css {
     <!--THIS PAGE LEVEL CSS-->
     <link href="~/plugins/sweetalert/sweetalert.css" rel="stylesheet" />

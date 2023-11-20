@@ -12,5 +12,7 @@ public class ProductDTO
     public double Price { get; set; } = 0;
     public bool IsActive { get; set; } = false;
     public bool IsDeleted { get; set; } = false;
+
     public CategoryDTO? Category { get; set; }
+    public ICollection<ProductPhotoDTO>? ProductPhotos { get; set; }
 }

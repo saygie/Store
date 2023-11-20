@@ -4,6 +4,7 @@ using Store.Models.DTOs;
 using Store.Models.Entities;
 using Store.Models.Results;
 using Store.Models.Services.Common;
+using System.IO;
 using IResult = Store.Models.Results.IResult;
 
 namespace Store.Models.Services;
@@ -65,7 +66,7 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
     {
         try
         {
-            var data = await Get(a => a.Id == Id && a.IsDeleted == false);
+            var data = await Get(a => a.Id == Id && a.IsDeleted == false, "ProductPhotos");
             return new DataResult<ProductDTO?>(mapper.Map<ProductDTO>(data), true);
         }
         catch (Exception)
@@ -78,7 +79,7 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
     {
         try
         {
-            var data = await List(a => a.IsDeleted == false, null, "Category");
+            var data = await List(a => a.IsDeleted == false, null, "Category,ProductPhotos");
             return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
         }
         catch (Exception ex)

@@ -43,6 +43,7 @@ namespace Store.Areas.Panel.Controllers
         }
         public async Task<IActionResult> Update(int id)
         {
+            ViewBag.Categories = await categoryService.List();
             var result = await categoryService.GetById(id);
             if (result.Success)
             {

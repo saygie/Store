@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol;
 using Store.Models.DTOs;
 using Store.Models.Entities;
 using Store.Models.Services;
@@ -11,12 +12,14 @@ namespace Store.Areas.Panel.Controllers
         private readonly ILogger<ProductController> logger;
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
+        private readonly IProductPhotoService productPhotoService;
 
-        public ProductController(IProductService productService, ILogger<ProductController> logger, ICategoryService categoryService)
+        public ProductController(IProductService productService, ILogger<ProductController> logger, ICategoryService categoryService, IProductPhotoService productPhotoService)
         {
             this.logger = logger;
             this.productService = productService;
             this.categoryService = categoryService;
+            this.productPhotoService = productPhotoService;
         }
         public async Task<IActionResult> List()
         {
@@ -69,6 +72,52 @@ namespace Store.Areas.Panel.Controllers
             if (result.Success)
             {
                 return Redirect("/Panel/Product/List");
+            }
+            return View("Error");
+        }
+
+
+        public async Task<IActionResult> PhotoUpload(int id)
+        {
+            var result = await productService.GetById(id);
+            if (result.Success)
+            {
+                return View(result);
+            }
+            return View("Error");
+        }
+        [HttpPost]
+        public async Task<IActionResult> PhotoUpload(List<IFormFile> files, int ProductId)
+        {
+            if (files != null && files.Count > 0)
+            {
+                foreach (var file in files)
+                {
+                    if (file.Length > 0)
+                    {
+                        using (var stream = new MemoryStream())
+                        {
+                            await file.CopyToAsync(stream);
+                            stream.Seek(0, SeekOrigin.Begin);
+                            var extension = Path.GetExtension(file.FileName);
+                            var result = await productPhotoService.Upload(stream, Guid.NewGuid().ToString() + extension, ProductId);
+
+                            if (result.Success)
+                            {
+                                return View(await productService.GetById(ProductId));
+                            }
+                        }
+                    }
+                }
+            }
+            return View("Error");
+        }
+        public async Task<IActionResult> PhotoDelete(int id,int productId)
+        {
+            var result = await productPhotoService.Delete(new ProductPhotoDTO() { Id = id });
+            if (result.Success)
+            {
+                return View("PhotoUpload", await productService.GetById(productId));
             }
             return View("Error");
         }

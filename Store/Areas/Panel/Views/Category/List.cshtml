@@ -9,7 +9,7 @@
     <div class="col-lg-3">
         <div class="widget style2 bg-green hover-zoom-effect">
             <div class="col-xs-4 widget-icon">
-                <i class="material-icons">Category</i>
+                <i class="material-icons">format_list_bulleted</i>
             </div>
             <div class="col-xs-8 widget-body text-right">
                 <span>Kategori Sayısı </span>
@@ -27,7 +27,7 @@
                 <h4>
                     Kategori Listesi
                 </h4>
-                <small>Kategoriler listelenir, düzenlenir. Silenen ve pasif Kategoriler listelenmez.</small>
+                <small>Kategoriler listelenir, düzenlenir. Silenen Kategoriler listelenmez.</small>
             </div>
             <div class="body">
                 <table class="table table-bordered table-striped table-hover basic-example dataTable">
@@ -35,16 +35,20 @@
                         <tr>
                             <th>İşlem</th>
                             <th>Kategori</th>
+                            <th>Bağlı Kategori</th>
                             <th>Id</th>
-                            <th>Silindi Mi?</th>
+                            <th>Seo Url</th>
+                            <th>Aktif Mi?</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>İşlem</th>
                             <th>Kategori</th>
+                            <th>Bağlı Kategori</th>
                             <th>Id</th>
-                            <th>Silindi Mi?</th>
+                            <th>Seo Url</th>
+                            <th>Aktif Mi?</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -56,14 +60,16 @@
                                     <a class="btn btn-xs btn-danger" href="~/Panel/Category/Delete?id=@item.Id">Sil</a>
                                 </th>
                                 <th><a href="javascript:void(0)">@item.Name</a></th>
+                                <td>@item.ParentCategoryId</td>
                                 <td>@item.Id</td>
-                                @if (item.IsDeleted)
+                                <td>@item.SeoUrl</td>
+                                @if (item.IsActive)
                                 {
-                                    <td>Evet</td>
+                                    <td style="color:green">Aktif</td>
                                 }
                                 else
                                 {
-                                    <td>Hayır</td>
+                                    <td style="color:red">Pasif</td>
                                 }
                             </tr>
                         }

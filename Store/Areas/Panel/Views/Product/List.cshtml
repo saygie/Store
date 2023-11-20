@@ -9,7 +9,7 @@
     <div class="col-lg-3">
         <div class="widget style2 bg-green hover-zoom-effect">
             <div class="col-xs-4 widget-icon">
-                <i class="material-icons">product</i>
+                <i class="material-icons">format_list_bulleted</i>
             </div>
             <div class="col-xs-8 widget-body text-right">
                 <span> Ürün Sayısı </span>
@@ -64,6 +64,7 @@
                         {
                             <tr>
                                 <th width="100px">
+                                    <a class="btn btn-xs btn-primary" href="~/Panel/Product/PhotoUpload?id=@item.Id">Fotoğraf [@item.ProductPhotos.Where(a=>!a.IsDeleted).Count()]</a>
                                     <a class="btn btn-xs btn-warning" href="~/Panel/Product/Update?id=@item.Id">Düzenle</a>
                                     <a class="btn btn-xs btn-danger" href="~/Panel/Product/Delete?id=@item.Id">Sil</a>
                                 </th>
