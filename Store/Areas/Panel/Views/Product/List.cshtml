@@ -13,7 +13,7 @@
             </div>
             <div class="col-xs-8 widget-body text-right">
                 <span> Ürün Sayısı </span>
-                <h2 class="num count-to" data-from="0" data-to="250" data-speed="1000" data-fresh-interval="20">250</h2>
+                <h2 class="num count-to" data-from="0" data-to="@ViewBag.ProductCount.Data" data-speed="1000" data-fresh-interval="20">@ViewBag.ProductCount.Data</h2>
             </div>
         </div>
     </div>
@@ -54,8 +54,8 @@
                         {
                             <tr>
                                 <th width="100px">
-                                    <button class="btn btn-xs btn-warning">Düzenle</button>
-                                    <button class="btn btn-xs btn-danger">Sil</button>
+                                    <a class="btn btn-xs btn-warning" href="~/Panel/Product/Update?id=@item.Id">Düzenle</a>
+                                    <a class="btn btn-xs btn-danger" href="~/Panel/Product/Delete?id=@item.Id">Sil</a>
                                 </th>
                                 <th><a href="javascript:void(0)">@item.Name</a></th>
                                 <td>@item.Id</td>

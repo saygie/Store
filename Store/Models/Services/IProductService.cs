@@ -13,4 +13,5 @@ public interface IProductService : IService<Product>
     Task<IResult> Add(ProductDTO dto);
     Task<IResult> Update(ProductDTO dto);
     Task<IResult> Delete(ProductDTO dto);
+    Task<IDataResult<int>> Count();
 }

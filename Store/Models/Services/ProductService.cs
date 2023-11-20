@@ -47,7 +47,11 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
     {
         try
         {
-            var data = mapper.Map<Product>(dto);
+            var data = await Get(a => a.Id == dto.Id);
+            if(data is null)
+                return new Result(false);
+
+            data.IsDeleted = true;
             await Delete(data);
             return new Result(true);
         }
@@ -80,6 +84,19 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
         catch (Exception ex)
         {
             return new DataResult<List<ProductDTO>>(new List<ProductDTO>(), false, ex.Message);
+        }
+    }
+
+    public async Task<IDataResult<int>> Count()
+    {
+        try
+        {
+            var data = await Count(a => a.IsDeleted == false);
+            return new DataResult<int>(data, true);
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<int>(0, false, ex.Message);
         }
     }
 }

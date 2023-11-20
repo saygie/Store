@@ -11,4 +11,5 @@ public interface IService<T> where T : class, IEntity, new()
     Task Add(T entity);
     Task Update(T entity);
     Task Delete(T entity);
+    Task<int> Count(Expression<Func<T, bool>>? filter = null);
 }

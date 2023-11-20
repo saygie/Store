@@ -63,5 +63,15 @@ public class Service<TEntity, TContext> : IService<TEntity>
             await context.SaveChangesAsync();
         }
     }
+
+    public async Task<int> Count(Expression<Func<TEntity, bool>>? filter = null)
+    {
+        IQueryable<TEntity> query = new TContext().Set<TEntity>();
+
+        if (filter != null)
+            query = query.Where(filter);
+
+        return await query.CountAsync();
+    }
 }
 
