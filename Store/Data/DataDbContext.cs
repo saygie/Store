@@ -13,9 +13,25 @@ namespace Store.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //relations
+            modelBuilder.Entity<ProductPhoto>()
+                .HasOne(a => a.Product)
+                .WithMany(b => b.ProductPhotos)
+                .HasForeignKey(a => a.ProductId);
+
+            modelBuilder.Entity<Product>()
+               .HasOne(a => a.Category)
+               .WithMany(b => b.Products)
+               .HasForeignKey(a => a.CategoryId);
         }
 
-        public DbSet<Product> Product { get; set; }
+        public virtual DbSet<Category> Category => Set<Category>();
+        public virtual DbSet<City> City => Set<City>();
+        public virtual DbSet<County> County => Set<County>();
+        public virtual DbSet<Neighborhood> Neighborhood => Set<Neighborhood>();
+        public virtual DbSet<Order> Order => Set<Order>();
+        public virtual DbSet<OrderDetail> OrderDetail => Set<OrderDetail>();
+        public virtual DbSet<Product> Product => Set<Product>();
+        public virtual DbSet<ProductPhoto> ProductPhoto => Set<ProductPhoto>();
+
     }
 }
