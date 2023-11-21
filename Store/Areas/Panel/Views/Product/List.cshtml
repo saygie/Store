@@ -92,50 +92,6 @@
         </div>
     </div>
 </div>
-<!-- #END# Basic Examples -->
-@* <div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <!-- Table Swipe -->
-        <div class="card">
-            <div class="card-header">
-                <h2>
-                    Ürün Listesi
-                </h2>
-            </div>
-            <div class="body">
-                <table class="tablesaw table-hover table-bordered" data-tablesaw-mode="swipe" data-tablesaw-minimap>
-                    <thead>
-                        <tr>
-                            <th data-tablesaw-priority="persist">Ürün</th>
-                            <th>Id</th>
-                            <th>Açıklama</th>
-                            <th>Silindi Mi?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Data)
-                        {
-                            <tr>
-                                <th><a href="javascript:void(0)">@item.Name</a></th>
-                                <td>@item.Id</td>
-                                <td>@item.Description</td>
-                                @if (item.IsDeleted)
-                                {
-                                    <td>Evet</td>
-                                }
-                                else
-                                {
-                                    <td>Hayır</td>
-                                }
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- #END# Table Swipe -->
-    </div>
-</div> *@
 
 @section css {
     <!--THIS PAGE LEVEL CSS-->
