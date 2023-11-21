@@ -397,3 +397,12 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .vscode/
+.vs/
+.vs/Store/v17/.suo
+.vs/ProjectEvaluation/store.metadata.v7.bin
+.vs/ProjectEvaluation/store.projects.v7.bin
+.vs/Store/DesignTimeBuild/.dtbcache.v2
+.vs/Store/v17/fileList.bin
+Store/obj/Debug/net8.0/Store.assets.cache
+.vs/Store/v17/.suo
+.vs/Store/v17/.suo
