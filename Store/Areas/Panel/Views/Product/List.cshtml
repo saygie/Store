@@ -63,7 +63,7 @@
                         @foreach (var item in Model.Data.OrderByDescending(a=>a.Id))
                         {
                             <tr>
-                                <th width="100px">
+                                <th width="200px">
                                     <a class="btn btn-xs btn-primary" href="~/Panel/Product/PhotoUpload?id=@item.Id">Fotoğraf [@item.ProductPhotos.Where(a=>!a.IsDeleted).Count()]</a>
                                     <a class="btn btn-xs btn-warning" href="~/Panel/Product/Update?id=@item.Id">Düzenle</a>
                                     <a class="btn btn-xs btn-danger" href="~/Panel/Product/Delete?id=@item.Id">Sil</a>
