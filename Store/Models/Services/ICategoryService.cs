@@ -14,4 +14,5 @@ public interface ICategoryService : IService<Category>
     Task<IResult> Update(CategoryDTO dto);
     Task<IResult> Delete(CategoryDTO dto);
     Task<IDataResult<int>> Count();
+    Task<IDataResult<List<CategoryDTO>>> ListWithProducts();
 }

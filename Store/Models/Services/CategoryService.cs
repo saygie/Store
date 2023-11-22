@@ -99,4 +99,17 @@ public class CategoryService : Service<Category, DataDbContext>, ICategoryServic
             return new DataResult<int>(0, false, ex.Message);
         }
     }
+
+    public async Task<IDataResult<List<CategoryDTO>>> ListWithProducts()
+    {
+        try
+        {
+            var data = await List(a => a.IsDeleted == false && a.IsActive, null, "Products,Products.ProductPhotos");
+            return new DataResult<List<CategoryDTO>>(mapper.Map<List<CategoryDTO>>(data), true);
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<List<CategoryDTO>>(new List<CategoryDTO>(), false, ex.Message);
+        }
+    }
 }

@@ -1,9 +1,1750 @@
-﻿@{
+﻿@using Store.Models.DTOs
+@using Store.Models.Results
+@{
+    IDataResult<List<CategoryDTO>> categoriesWithProducts = ViewBag.CategoriesWithProducts as IDataResult<List<CategoryDTO>>;
+}
+@{
     ViewData["Title"] = "Anasayfa";
 }
 <!-- Slider Section -->
 <partial name="~/Views/Home/_SliderPartial.cshtml" />
 <!-- End Slider Section -->
-<!-- Categories Carousel -->
+@* <!-- Categories Carousel -->
 <partial name="~/Views/Home/_CategoryCarouselPartial.cshtml" />
-<!-- End Categories Carousel -->
+<!-- End Categories Carousel --> *@
+
+<div class="container">
+
+    <!-- Deals of The Day -->
+    <div class="mb-6">
+        <div class=" d-flex justify-content-between border-bottom border-color-1 flex-lg-nowrap flex-wrap border-sm-top-0 border-sm-bottom-0">
+            <h3 class="section-title mb-2 mb-md-0 pb-2 font-size-22">Deals of The Day</h3>
+            <a class="d-block text-gray-16" href="../shop/shop.html">Go to Daily Deals Section <i class="ec ec-arrow-right-categproes"></i></a>
+        </div>
+        <div class="js-slick-carousel u-slick overflow-hidden u-slick-overflow-visble pt-3 px-1"
+             data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4"
+             data-slides-show="7"
+             data-slides-scroll="1"
+             data-responsive='[{
+        "breakpoint": 1500,
+        "settings": {
+        "slidesToShow": 6
+        }
+        }, {
+        "breakpoint": 1200,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 992,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 768,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }, {
+        "breakpoint": 554,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }]'>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212x200/1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1 position-relative">
+                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-green rounded text-white text-lh-21 px-2 mt-n4">
+                                        -72%
+                                    </div>
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212x200/2.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1 position-relative">
+                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-green rounded text-white text-lh-21 px-2 mt-n4">
+                                        -72%
+                                    </div>
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212x200/3.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1 position-relative">
+                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-green rounded text-white text-lh-21 px-2 mt-n4">
+                                        -72%
+                                    </div>
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212x200/4.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1 position-relative">
+                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-green rounded text-white text-lh-21 px-2 mt-n4">
+                                        -72%
+                                    </div>
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212x200/5.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1 position-relative">
+                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-green rounded text-white text-lh-21 px-2 mt-n4">
+                                        -72%
+                                    </div>
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212x200/6.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1 position-relative">
+                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-green rounded text-white text-lh-21 px-2 mt-n4">
+                                        -72%
+                                    </div>
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212x200/7.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1 position-relative">
+                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-green rounded text-white text-lh-21 px-2 mt-n4">
+                                        -72%
+                                    </div>
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1 position-relative">
+                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-green rounded text-white text-lh-21 px-2 mt-n4">
+                                        -72%
+                                    </div>
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1 position-relative">
+                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-green rounded text-white text-lh-21 px-2 mt-n4">
+                                        -72%
+                                    </div>
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Deals of The Day -->
+    @if (categoriesWithProducts != null)
+    {
+        foreach (var category in categoriesWithProducts.Data.Where(a => a.ParentCategoryId != 0 && a.Products.Count >= 7))
+        {
+                <div class="mb-6">
+                    <div class="d-md-flex justify-content-between border-bottom border-color-1 flex-lg-nowrap flex-wrap border-sm-top-0 border-sm-bottom-0">
+                        <h3 class="section-title mb-2 mb-md-0 pb-2 font-size-22">@category.Name</h3>
+                        <a class="d-block text-gray-16" href="../shop/shop.html">Go to Daily Deals Section <i class="ec ec-arrow-right-categproes"></i></a>
+                    </div>
+                    <div class="js-slick-carousel u-slick overflow-hidden u-slick-overflow-visble pt-3 pb-4 px-1"
+                         data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4"
+                         data-slides-show="7"
+                         data-slides-scroll="1"
+                         data-responsive='[{
+                         "breakpoint": 1500,
+                         "settings": {
+                         "slidesToShow": 6
+                         }
+                         }, {
+                         "breakpoint": 1200,
+                         "settings": {
+                         "slidesToShow": 3
+                         }
+                         }, {
+                         "breakpoint": 992,
+                         "settings": {
+                         "slidesToShow": 3
+                         }
+                         }, {
+                         "breakpoint": 768,
+                         "settings": {
+                         "slidesToShow": 2
+                         }
+                         }, {
+                         "breakpoint": 554,
+                         "settings": {
+                         "slidesToShow": 2
+                         }
+                         }]'>
+                        @foreach (var product in category.Products)
+                        {
+                            <div class="js-slide products-group">
+                                <div class="product-item">
+                                    <div class="product-item__outer h-100">
+                                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                                            <div class="product-item__body pb-xl-2">
+                                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">@category.Name</a></div>
+                                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">@product.Name</a></h5>
+                                                <div class="mb-2">
+                                                    @if (product.ProductPhotos.Where(a=>!a.IsDeleted && a.IsActive).FirstOrDefault() is not null)
+                                                    {
+                                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/uploads/@product.ProductPhotos.Where(a=>!a.IsDeleted && a.IsActive).FirstOrDefault().Url" alt="Image Description"></a>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                                    }
+                                                </div>
+                                                <div class="flex-center-between mb-1">
+                                                    <div class="prodcut-price">
+                                                        <div class="text-gray-100">₺@product.Price</div>
+                                                    </div>
+                                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item__footer">
+                                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Karşılaştır</a>
+                                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Favorilere Ekle</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+        }
+    }
+
+@*     <!-- Headphones -->
+    <div class="mb-6">
+        <div class="d-md-flex justify-content-between border-bottom border-color-1 flex-lg-nowrap flex-wrap border-sm-top-0 border-sm-bottom-0">
+            <h3 class="section-title mb-2 mb-md-0 pb-2 font-size-22">Headphones</h3>
+            <a class="d-block text-gray-16" href="../shop/shop.html">Go to Daily Deals Section <i class="ec ec-arrow-right-categproes"></i></a>
+        </div>
+        <div class="js-slick-carousel u-slick overflow-hidden u-slick-overflow-visble pt-3 pb-4 px-1"
+             data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4"
+             data-slides-show="7"
+             data-slides-scroll="1"
+             data-responsive='[{
+        "breakpoint": 1500,
+        "settings": {
+        "slidesToShow": 6
+        }
+        }, {
+        "breakpoint": 1200,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 992,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 768,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }, {
+        "breakpoint": 554,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }]'>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img2.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img3.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img4.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img5.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img6.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img7.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Headphones -->
+    <!-- Banner -->
+    <div class="row">
+        <div class="col-xl-5 mb-4 mb-xl-0">
+            <div class="bg-gray-1 bg-img-hero" style="background-image: url(~/assets/img/543X272/img1.jpg);">
+                <a href="../shop/shop.html" class="row align-items-center mx-0 min-height-272">
+                    <div class="col-md-8 mb-4 mb-md-0 pl-0">
+                    </div>
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <div class="font-size-18 font-weight-semi-bold text-dark">Smartphones & Tablets</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-7">
+            <div class="row flex-nowrap flex-md-wrap overflow-auto overflow-md-visble">
+                <div class="col-md-4 mb-5 flex-shrink-0 flex-md-shrink-1">
+                    <div class="bg-gray-1 overflow-hidden shadow-on-hover h-100 d-flex align-items-center">
+                        <a href="../shop/product-categories-7-column-full-width.html" class="min-height-120 d-block pr-2 pr-wd-6">
+                            <div class="media align-items-center min-height-120">
+                                <div class="pt-2">
+                                    <img class="img-fluid transform-rotate-15" src="~/assets/img/100X100/img5.png" alt="Image Description">
+                                </div>
+                                <div class="ml-3 media-body">
+                                    <h6 class="mb-0 text-gray-90 font-size-14">Smartphones & Tablets</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5 flex-shrink-0 flex-md-shrink-1">
+                    <div class="bg-gray-1 overflow-hidden shadow-on-hover h-100 d-flex align-items-center">
+                        <a href="../shop/product-categories-7-column-full-width.html" class="min-height-120 d-block pr-2 pr-wd-6">
+                            <div class="media align-items-center min-height-120">
+                                <div class="pt-2">
+                                    <img class="img-fluid transform-rotate-15" src="~/assets/img/100X100/img6.png" alt="Image Description">
+                                </div>
+                                <div class="ml-3 media-body">
+                                    <h6 class="mb-0 text-gray-90 font-size-14">Desktop PCs & Laptops</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5 flex-shrink-0 flex-md-shrink-1">
+                    <div class="bg-gray-1 overflow-hidden shadow-on-hover h-100 d-flex align-items-center">
+                        <a href="../shop/product-categories-7-column-full-width.html" class="min-height-120 d-block pr-2 pr-wd-6">
+                            <div class="media align-items-center min-height-120">
+                                <div class="pt-2">
+                                    <img class="img-fluid transform-rotate-15" src="~/assets/img/100X100/img7.png" alt="Image Description">
+                                </div>
+                                <div class="ml-3 media-body">
+                                    <h6 class="mb-0 text-gray-90 font-size-14">Video Games & Consoles</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5 flex-shrink-0 flex-md-shrink-1">
+                    <div class="bg-gray-1 overflow-hidden shadow-on-hover h-100 d-flex align-items-center">
+                        <a href="../shop/product-categories-7-column-full-width.html" class="min-height-120 d-block pr-2 pr-wd-6">
+                            <div class="media align-items-center min-height-120">
+                                <div class="pt-2">
+                                    <img class="img-fluid transform-rotate-15" src="~/assets/img/100X100/img8.png" alt="Image Description">
+                                </div>
+                                <div class="ml-3 media-body">
+                                    <h6 class="mb-0 text-gray-90 font-size-14">Gadgets & Accesories</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5 flex-shrink-0 flex-md-shrink-1">
+                    <div class="bg-gray-1 overflow-hidden shadow-on-hover h-100 d-flex align-items-center">
+                        <a href="../shop/product-categories-7-column-full-width.html" class="min-height-120 d-block pr-2 pr-wd-6">
+                            <div class="media align-items-center min-height-120">
+                                <div class="pt-2">
+                                    <img class="img-fluid transform-rotate-15" src="~/assets/img/100X100/img9.png" alt="Image Description">
+                                </div>
+                                <div class="ml-3 media-body">
+                                    <h6 class="mb-0 text-gray-90 font-size-14">Photo Cameras</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5 flex-shrink-0 flex-md-shrink-1">
+                    <div class="bg-gray-1 overflow-hidden shadow-on-hover h-100 d-flex align-items-center">
+                        <a href="../shop/product-categories-7-column-full-width.html" class="min-height-120 d-block pr-2 pr-wd-6">
+                            <div class="media align-items-center min-height-120">
+                                <div class="pt-2">
+                                    <img class="img-fluid transform-rotate-15" src="~/assets/img/100X100/img10.png" alt="Image Description">
+                                </div>
+                                <div class="ml-3 media-body">
+                                    <h6 class="mb-0 text-gray-90 font-size-14">Cameras & Photography</h6>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+    <!-- TV Entertainment -->
+    <div class="mb-6">
+        <div class=" d-flex justify-content-between border-bottom border-color-1 flex-lg-nowrap flex-wrap border-sm-top-0 border-sm-bottom-0">
+            <h3 class="section-title mb-2 mb-md-0 pb-2 font-size-22">TV Entertainment</h3>
+            <a class="d-block text-gray-16" href="../shop/shop.html">Go to Daily Deals Section <i class="ec ec-arrow-right-categproes"></i></a>
+        </div>
+        <div class="js-slick-carousel u-slick overflow-hidden u-slick-overflow-visble pt-3 px-1"
+             data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4"
+             data-slides-show="7"
+             data-slides-scroll="1"
+             data-responsive='[{
+        "breakpoint": 1500,
+        "settings": {
+        "slidesToShow": 6
+        }
+        }, {
+        "breakpoint": 1200,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 992,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 768,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }, {
+        "breakpoint": 554,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }]'>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img2.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img3.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img4.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img5.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img6.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img7.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End TV Entertainment -->
+    <!-- Smartphones & Tablets -->
+    <div class="mb-6">
+        <div class=" d-flex justify-content-between border-bottom border-color-1 flex-lg-nowrap flex-wrap border-sm-top-0 border-sm-bottom-0">
+            <h3 class="section-title mb-2 mb-md-0 pb-2 font-size-22">Smartphones & Tablets</h3>
+            <a class="d-block text-gray-16" href="../shop/shop.html">Go to Daily Deals Section <i class="ec ec-arrow-right-categproes"></i></a>
+        </div>
+        <div class="js-slick-carousel u-slick overflow-hidden u-slick-overflow-visble pt-3 px-1"
+             data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4"
+             data-slides-show="7"
+             data-slides-scroll="1"
+             data-responsive='[{
+        "breakpoint": 1500,
+        "settings": {
+        "slidesToShow": 6
+        }
+        }, {
+        "breakpoint": 1200,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 992,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 768,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }, {
+        "breakpoint": 554,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }]'>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img2.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img3.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img4.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img5.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img6.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img7.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Smartphones & Tablets -->
+    <!-- Banner -->
+    <div class="mb-6">
+        <div class="row">
+            <div class="col-md-6 mb-4 mb-xl-0">
+                <a href="../shop/shop.html" class="d-block">
+                    <img class="img-fluid" src="~/assets/img/690X150/img1.jpg" alt="Image Description">
+                </a>
+            </div>
+            <div class="col-md-6 mb-4 mb-xl-0">
+                <a href="../shop/shop.html" class="d-block">
+                    <img class="img-fluid" src="~/assets/img/690X150/img2.jpg" alt="Image Description">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+    <!-- Cameras -->
+    <div class="mb-6">
+        <div class="d-md-flex justify-content-between border-bottom border-color-1 flex-lg-nowrap flex-wrap border-sm-top-0 border-sm-bottom-0">
+            <h3 class="section-title mb-2 mb-md-0 pb-2 font-size-22">Cameras</h3>
+            <a class="d-block text-gray-16" href="../shop/shop.html">Go to Daily Deals Section <i class="ec ec-arrow-right-categproes"></i></a>
+        </div>
+        <div class="js-slick-carousel u-slick overflow-hidden u-slick-overflow-visble pt-3  px-1"
+             data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4"
+             data-slides-show="7"
+             data-slides-scroll="1"
+             data-responsive='[{
+        "breakpoint": 1500,
+        "settings": {
+        "slidesToShow": 6
+        }
+        }, {
+        "breakpoint": 1200,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 992,
+        "settings": {
+        "slidesToShow": 3
+        }
+        }, {
+        "breakpoint": 768,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }, {
+        "breakpoint": 554,
+        "settings": {
+        "slidesToShow": 2
+        }
+        }]'>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img2.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img3.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img4.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img5.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img6.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img7.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-slide products-group">
+                <div class="product-item">
+                    <div class="product-item__outer h-100">
+                        <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                            <div class="product-item__body pb-xl-2">
+                                <div class="mb-2"><a href="../shop/product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                <h5 class="mb-1 product-item__title"><a href="../shop/single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                <div class="mb-2">
+                                    <a href="../shop/single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="~/assets/img/212X200/img1.jpg" alt="Image Description"></a>
+                                </div>
+                                <div class="flex-center-between mb-1">
+                                    <div class="prodcut-price">
+                                        <div class="text-gray-100">$685,00</div>
+                                    </div>
+                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                        <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-item__footer">
+                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                    <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Cameras --> *@
+</div>
