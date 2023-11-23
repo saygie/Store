@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Store.Models.Services;
 
 namespace Store.Controllers
@@ -15,15 +13,23 @@ namespace Store.Controllers
             this.logger = logger;
             this.productService = productService;
         }
-        [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int Id)
         {
-            var result = await productService.List();
+            var result = await productService.GetById(Id);
             if (result.Success)
             {
                 return View(result);
             }
             return View("Error");           
+        }
+        public async Task<IActionResult> Show(int Id)
+        {
+            var result = await productService.GetById(Id);
+            if (result.Success)
+            {
+                return View(result);
+            }
+            return View("Error");
         }
     }
 }

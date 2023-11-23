@@ -22,6 +22,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,12 @@
     <Folder Include="wwwroot\lib\jquery-validation\dist\" />
     <Folder Include="wwwroot\lib\jquery\" />
     <Folder Include="wwwroot\lib\jquery\dist\" />
+    <Folder Include="wwwroot\uploads\products\" />
+    <Folder Include="wwwroot\uploads\products\150x140\" />
+    <Folder Include="wwwroot\uploads\products\212x200\" />
+    <Folder Include="wwwroot\uploads\products\320x300\" />
+    <Folder Include="wwwroot\uploads\products\720x660\" />
+    <Folder Include="wwwroot\uploads\products\75x75\" />
   </ItemGroup>
 
   <ItemGroup>

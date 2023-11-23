@@ -2,63 +2,10 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-@* <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
-</ul> *@
+    <li class="col d-none d-xl-block"><a href="../shop/wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
 
-@if (SignInManager.IsSignedIn(User))
-{@*
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
- *@
-@*     <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
-        <!-- Account Sidebar Toggle Button -->
-        <a href="~/identity/account/login" role="button" class="u-header-topbar__nav-link">
-            <i class="ec ec-user mr-1"></i>
-            <span class="text-gray-50">Merhaba, </span> @User.Identity?.Name!
-        </a>
-        <!-- End Account Sidebar Toggle Button -->
-    </li> *@
-    <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
-        <!-- Account Sidebar Toggle Button -->
-        <a href="~/identity/account/login" role="button" class="u-header-topbar__nav-link">
-            <i class="ec ec-user mr-1"></i>
-            <span class="text-gray-50">Merhaba, </span> @User.Identity?.Name!
-        </a>
-        <!-- End Account Sidebar Toggle Button -->
-        <select class="js-select selectpicker dropdown-select custom-search-categories-select"
-                data-style="btn height-40 text-gray-60 font-weight-normal border-top border-bottom border-left-0 rounded-0 border-primary border-width-2 pl-0 pr-5 py-2">
-            <option value="one" selected><span class="text-gray-50">Merhaba, </span> @User.Identity?.Name!</option>
-            <option value="two">Two</option>
-            <option value="three">Three</option>
-            <option value="four">Four</option>
-        </select>
-    </li>
     <li class="list-inline-item mr-0 u-header-topbar__nav-item">
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button type="submit" class="btn px-3 btn-dark py-1 rounded-lg ">Çıkış</button>
@@ -68,27 +15,14 @@ else
 }
 else
 {
-    <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
-        <a href="~/identity/account/login" role="button" class="btn px-3 btn-dark py-1 rounded-lg">
-            Giriş Yap
-        </a>
+    <li class="nav-item u-header__nav-item  pr-xl-0 px-2 px-sm-3 d-none d-xl-block">
+        <a href="~/identity/account/login" role="button" class="btn px-3 btn-dark py-1 rounded-lg">Giriş Yap</a>
+
+    </li>
+    <li class="nav-item u-header__nav-item  pr-xl-0 px-2 px-sm-3 d-none d-xl-block">
         <a href="~/identity/account/register" role="button" class="btn px-3 btn-primary-dark-w py-1 rounded-lg ">
             Üye Ol
         </a>
     </li>
+
 }
-@* <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
-    <!-- Account Sidebar Toggle Button -->
-    <a href="~/identity/account/login" role="button" class="u-header-topbar__nav-link">
-        <i class="ec ec-user mr-1"></i>
-        Giriş Yap
-    </a>
-    <!-- End Account Sidebar Toggle Button -->
-    <span class="text-gray-50">veya</span>
-    <!-- Account Sidebar Toggle Button -->
-    <a href="~/identity/account/register" role="button" class="u-header-topbar__nav-link">
-        Yeni Üyelik Oluştur
-    </a>
-    <!-- End Account Sidebar Toggle Button -->
-</li>
- *@

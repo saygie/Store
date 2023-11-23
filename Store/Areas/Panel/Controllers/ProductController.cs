@@ -87,7 +87,7 @@ namespace Store.Areas.Panel.Controllers
             return View("Error");
         }
         [HttpPost]
-        public async Task<IActionResult> PhotoUpload(List<IFormFile> files, int ProductId)
+        public async Task<IActionResult> PhotoUpload(List<IFormFile> files, int productId)
         {
             if (files != null && files.Count > 0)
             {
@@ -100,11 +100,15 @@ namespace Store.Areas.Panel.Controllers
                             await file.CopyToAsync(stream);
                             stream.Seek(0, SeekOrigin.Begin);
                             var extension = Path.GetExtension(file.FileName);
-                            var result = await productPhotoService.Upload(stream, Guid.NewGuid().ToString() + extension, ProductId);
+                            List<string> sizes = new List<string>()
+                            {
+                                "720x660","320x300","212x200","150x140","75x75"
+                            };
+                            var result = productPhotoService.Upload2(productId, stream, extension, "products", sizes);
 
                             if (result.Success)
                             {
-                                return View(await productService.GetById(ProductId));
+                                return View(await productService.GetById(productId));
                             }
                         }
                     }
@@ -112,7 +116,7 @@ namespace Store.Areas.Panel.Controllers
             }
             return View("Error");
         }
-        public async Task<IActionResult> PhotoDelete(int id,int productId)
+        public async Task<IActionResult> PhotoDelete(int id, int productId)
         {
             var result = await productPhotoService.Delete(new ProductPhotoDTO() { Id = id });
             if (result.Success)

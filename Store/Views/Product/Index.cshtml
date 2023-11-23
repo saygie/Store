@@ -1,15 +1,9 @@
 ﻿@using Store.Models.DTOs
-@model Store.Models.Results.IDataResult<List<ProductDTO>>
+@model Store.Models.Results.IDataResult<ProductDTO>
 
 @{
     ViewBag.Title = "Details";
 
 }
-
-
-
-@foreach (var item in Model.Data)
-{
-    <p>@item.Name</p>
-}
+<p>@Model.Data.Name</p>
 
