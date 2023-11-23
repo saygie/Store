@@ -4,14 +4,41 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="col d-none d-xl-block"><a href="../shop/wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
 
-    <li class="list-inline-item mr-0 u-header-topbar__nav-item">
+    <li class="col d-none d-xl-block">
+        <button type="button" class="btn px-0 btn-white py-1 rounded-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hesabım<span class="caret p-0 m-0"></span>
+        </button>
+        <ul class="dropdown-menu bullet p-3">
+            <li class="pb-1">
+                <div class="d-md-flex justify-content-between border-bottom border-color-1 flex-lg-nowrap flex-wrap border-sm-bottom-0">
+                    <a href="#" class="text-black mb-2 mb-md-0 pb-2 font-size-14 font-bold-on-hover">Siparişlerim</a>
+                </div>
+            </li>
+            <li class="pb-1">
+                <div class="d-md-flex justify-content-between border-bottom border-color-0 flex-lg-nowrap flex-wrap border-sm-bottom-0">
+                    <a href="#" class="text-black mb-2 mb-md-0 pb-2 font-size-14 font-bold-on-hover"><span class="d-none d-xl-block">Beğendiklerim</span></a>
+                </div>
+            </li>
+            <li class="text-gray text-center"><span class="font-size-12">@User.Identity?.Name</span></li>
+            <li class="text-gray text-center">
+                <form class="" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" role="button" class="text-center border-0 btn-white mt-2 mb-md-0 pb-2 font-size-14">Çıkış</button>
+                </form>
+                <!-- End Account Sidebar Toggle Button -->
+            </li>
+        </ul>
+
+    </li>
+    <li class="col d-none d-xl-block">
+        <a href="../shop/wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a>
+    </li>
+@*     <li class="list-inline-item mr-0 u-header-topbar__nav-item">
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button type="submit" class="btn px-3 btn-dark py-1 rounded-lg ">Çıkış</button>
         </form>
         <!-- End Account Sidebar Toggle Button -->
-    </li>
+    </li> *@
 }
 else
 {
