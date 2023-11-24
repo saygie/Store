@@ -3,11 +3,11 @@ using Store.Models.Services;
 
 namespace Store.ViewComponents;
 
-public class VerticalSecondaryMenuViewComponent : ViewComponent
+public class HeaderViewComponent : ViewComponent
 {
-    private readonly ILogger<VerticalSecondaryMenuViewComponent> logger;
+    private readonly ILogger<HeaderViewComponent> logger;
     private readonly ICategoryService categoryService;
-    public VerticalSecondaryMenuViewComponent(ICategoryService categoryService, ILogger<VerticalSecondaryMenuViewComponent> logger)
+    public HeaderViewComponent(ICategoryService categoryService, ILogger<HeaderViewComponent> logger)
     {
         this.categoryService = categoryService;
         this.logger = logger;
