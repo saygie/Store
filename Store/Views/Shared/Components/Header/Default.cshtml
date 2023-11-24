@@ -1,5 +1,5 @@
 ﻿@using Store.Models.DTOs
-@model Store.Models.Results.IDataResult<List<CategoryDTO>>
+@model Store.Models.Results.IDataResult<List<ParentCategoryDTO>>
 
 <div class="u-header__section">
     <!-- Logo-Search-header-icons -->
@@ -152,18 +152,18 @@
                                                     <a class="u-header-collapse__nav-link font-weight-bold" href="#">En Yeniler</a>
                                                 </li>
                                                 <!-- End Top 100 Offers -->
-                                                @foreach (var mainCategory in Model.Data.Where(a => a.ParentCategoryId == 0))
+                                                @foreach (var parentCategory in Model.Data.Where(a => a.IsActive))
                                                 {
                                                     <li class="u-has-submenu u-header-collapse__submenu">
-                                                        <a class="u-header-collapse__nav-link u-header-collapse__nav-pointer" href="javascript:;" data-target="#headerSidebarCollapse-@mainCategory.Id" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="headerSidebarCollapse-@mainCategory.Id">
-                                                            @mainCategory.Name
+                                                        <a class="u-header-collapse__nav-link u-header-collapse__nav-pointer" href="javascript:;" data-target="#headerSidebarCollapse-@parentCategory.Id" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="headerSidebarCollapse-@parentCategory.Id">
+                                                            @parentCategory.Name
                                                         </a>
-                                                        <div id="headerSidebarCollapse-@mainCategory.Id" class="collapse" data-parent="#headerSidebarContent">
+                                                        <div id="headerSidebarCollapse-@parentCategory.Id" class="collapse" data-parent="#headerSidebarContent">
                                                             <ul class="u-header-collapse__nav-list">
                                                                 @* <li><span class="u-header-sidebar__sub-menu-title">Computers &amp; Accessories</span></li> *@
-                                                                @foreach (var subCategory in Model.Data.Where(a => a.ParentCategoryId == mainCategory.Id))
+                                                                @foreach (var category in parentCategory.Categories)
                                                                 {
-                                                                    <li class=""><a class="u-header-collapse__submenu-nav-link" href="#">@subCategory.Name</a></li>
+                                                                    <li class=""><a class="u-header-collapse__submenu-nav-link" href="#">@category.Name</a></li>
                                                                 }
 
                                                             </ul>
@@ -211,15 +211,15 @@
                     <form class="js-focus-state">
                         <label class="sr-only" for="searchproduct">Search</label>
                         <div class="input-group">
-                            <input type="email" class="form-control py-2 pl-5 font-size-15 border-right-0 height-40 border-width-2 rounded-left-pill border-primary" name="email" id="searchproduct-item" placeholder="Search for Products" aria-label="Search for Products" aria-describedby="searchProduct1" required>
+                            <input type="email" class="form-control py-2 pl-5 font-size-15 border-right-0 height-40 border-width-2 rounded-left-pill border-primary" name="email" id="searchproduct-item" placeholder="Koleksiyonlarda Ara..." aria-label="Koleksiyonlarda Ara..." aria-describedby="searchProduct1" required>
                             <div class="input-group-append">
                                 <!-- Select -->
                                 <select class="js-select selectpicker dropdown-select custom-search-categories-select"
                                         data-style="btn height-40 text-gray-60 font-weight-normal border-top border-bottom border-left-0 rounded-0 border-primary border-width-2 pl-0 pr-5 py-2">
                                     <option value="one" selected>Tüm Koleksiyonlar</option>
-                                    @foreach (var mainCategory in Model.Data.Where(a => a.ParentCategoryId == 0))
+                                    @foreach (var parentCategory in Model.Data.Where(a => a.IsActive))
                                     {
-                                        <option value="#">@mainCategory.Name</option>
+                                        <option value="#">@parentCategory.Name</option>
                                     }
                                 </select>
                                 <!-- End Select -->
@@ -386,30 +386,30 @@
                                                 </li>
                                                 <!-- End Nav Item MegaMenu-->
                                                 <!-- Nav Item MegaMenu -->
-                                                @foreach (var mainCategory in Model.Data.Where(a => a.ParentCategoryId == 0))
+                                                @foreach (var parentCategory in Model.Data.Where(a => a.IsActive))
                                                 {
                                                     <li class="nav-item hs-has-mega-menu u-header__nav-item"
                                                         data-event="hover"
                                                         data-position="left">
-                                                        <a id="basicMegaMenu-@mainCategory.Id" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false">@mainCategory.Name</a>
+                                                        <a id="basicMegaMenu-@parentCategory.Id" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false">@parentCategory.Name</a>
 
                                                         <!-- Nav Item - Mega Menu -->
-                                                        <div class="hs-mega-menu vmm-tfw u-header__sub-menu" aria-labelledby="basicMegaMenu-@mainCategory.Id">
+                                                        <div class="hs-mega-menu vmm-tfw u-header__sub-menu" aria-labelledby="basicMegaMenu-@parentCategory.Id">
                                                             @*                                                         <div class="vmm-bg">
                                                         <img style="opacity:0.1" class="img-fluid max-width-300 min-width-270" src="~/uploads/slider/8f8fbaa963f1e51d5ba74ac4bda36287.jpg" alt="Image Description">
                                                         </div> *@
                                                             <div class="row u-header__mega-menu-wrapper">
                                                                 <div class="col mb-3 mb-sm-0">
-                                                                    <span class="u-header__sub-menu-title">@mainCategory.Name</span>
+                                                                    <span class="u-header__sub-menu-title">@parentCategory.Name</span>
                                                                     <ul class="u-header__sub-menu-nav-group mb-3">
-                                                                        @foreach (var subCategory in Model.Data.Where(a => a.ParentCategoryId == mainCategory.Id))
+                                                                        @foreach (var category in parentCategory.Categories.Where(a=>a.IsActive))
                                                                         {
-                                                                            <li><a class="nav-link u-header__sub-menu-nav-link" href="#">@subCategory.Name</a></li>
+                                                                            <li><a class="nav-link u-header__sub-menu-nav-link" href="#">@category.Name</a></li>
                                                                         }
 
                                                                         <li>
                                                                             <a class="nav-link u-header__sub-menu-nav-link u-nav-divider border-top pt-2 flex-column align-items-start" href="#">
-                                                                                <div class="">Tüm @mainCategory.Name</div>
+                                                                                <div class="">Tüm @parentCategory.Name</div>
                                                                                 <div class="u-nav-subtext font-size-11 text-gray-30">koleksiyonları keşfet</div>
                                                                             </a>
                                                                         </li>
@@ -419,8 +419,8 @@
                                                                 <div class="col mb-3 mb-sm-0">
                                                                     <span class="u-header__sub-menu-title">Bir Göz Atın</span>
                                                                     <ul class="u-header__sub-menu-nav-group">
-                                                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Çok Satan @mainCategory.Name</a></li>
-                                                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="#">En Yeni @mainCategory.Name</a></li>
+                                                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="#">Çok Satan @parentCategory.Name</a></li>
+                                                                        <li><a class="nav-link u-header__sub-menu-nav-link" href="#">En Yeni @parentCategory.Name</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>

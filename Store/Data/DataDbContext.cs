@@ -22,9 +22,15 @@ namespace Store.Data
                .HasOne(a => a.Category)
                .WithMany(b => b.Products)
                .HasForeignKey(a => a.CategoryId);
+
+            modelBuilder.Entity<Category>()
+                .HasOne(a => a.ParentCategory)
+                .WithMany(b => b.Categories)
+                .HasForeignKey(a => a.ParentCategoryId);
         }
 
         public virtual DbSet<Category> Category => Set<Category>();
+        public virtual DbSet<ParentCategory> ParentCategory => Set<ParentCategory>();
         public virtual DbSet<City> City => Set<City>();
         public virtual DbSet<County> County => Set<County>();
         public virtual DbSet<Neighborhood> Neighborhood => Set<Neighborhood>();

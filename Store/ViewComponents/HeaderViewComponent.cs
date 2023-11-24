@@ -6,15 +6,15 @@ namespace Store.ViewComponents;
 public class HeaderViewComponent : ViewComponent
 {
     private readonly ILogger<HeaderViewComponent> logger;
-    private readonly ICategoryService categoryService;
-    public HeaderViewComponent(ICategoryService categoryService, ILogger<HeaderViewComponent> logger)
+    private readonly IParentCategoryService parentCategoryService;
+    public HeaderViewComponent(IParentCategoryService parentCategoryService, ILogger<HeaderViewComponent> logger)
     {
-        this.categoryService = categoryService;
+        this.parentCategoryService = parentCategoryService;
         this.logger = logger;
     }
     public async Task<IViewComponentResult> InvokeAsync()
     {
-        var categories = await categoryService.List();
+        var categories = await parentCategoryService.List();
         return View(categories);
     }
 }

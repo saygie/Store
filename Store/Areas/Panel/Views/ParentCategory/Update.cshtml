@@ -1,0 +1,59 @@
+﻿@using Store.Models.DTOs
+@using Store.Models.Results
+@model Store.Models.Results.IDataResult<ParentCategoryDTO>
+
+@{
+    ViewBag.Title = "Güncelle";
+
+}
+<!-- Basic Validation -->
+<div class="row clearfix">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="body">
+                <div class="card-inner">
+                    <h4 class="card-inner-header">Ana Kategori Güncelle [@Model.Data.Name]</h4>
+                    <small>Kategori güncelleme formu.</small>
+                    <div class="demo">
+                        <form class="form-horizontal" id="form_validation" method="POST" action="~/Panel/ParentCategory/Update">
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Ana Kategori Adı</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Name" placeholder="Ana Kategori adı giriniz..." value="@Model.Data.Name" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox_1" name="IsActive" value="true">
+                                        <label for="checkbox_1">Aktif Mi? (Seçili olursa anasayfada yayınlanır.)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="Id" value="@Model.Data.Id" />
+                            <button class="btn btn-primary waves-effect m-l-100" type="submit">Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Basic Validation -->
+@section css {
+    <!--THIS PAGE LEVEL CSS-->
+    <link href="~/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+}
+@section scripts {
+    <!--THIS PAGE LEVEL JS-->
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-steps/jquery.steps.js"></script>
+    <script src="~/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/assets/js/pages/forms/form-validation.js"></script>
+}

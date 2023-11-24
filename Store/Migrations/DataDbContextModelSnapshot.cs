@@ -43,12 +43,9 @@ namespace Store.Migrations
                     b.Property<int>("ParentCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SeoUrl")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Category");
                 });
@@ -178,6 +175,30 @@ namespace Store.Migrations
                     b.ToTable("OrderDetail");
                 });
 
+            modelBuilder.Entity("Store.Models.Entities.ParentCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ParentCategory");
+                });
+
             modelBuilder.Entity("Store.Models.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -257,6 +278,17 @@ namespace Store.Migrations
                     b.ToTable("ProductPhoto");
                 });
 
+            modelBuilder.Entity("Store.Models.Entities.Category", b =>
+                {
+                    b.HasOne("Store.Models.Entities.ParentCategory", "ParentCategory")
+                        .WithMany("Categories")
+                        .HasForeignKey("ParentCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ParentCategory");
+                });
+
             modelBuilder.Entity("Store.Models.Entities.County", b =>
                 {
                     b.HasOne("Store.Models.Entities.City", "City")
@@ -330,6 +362,11 @@ namespace Store.Migrations
             modelBuilder.Entity("Store.Models.Entities.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("Store.Models.Entities.ParentCategory", b =>
+                {
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("Store.Models.Entities.Product", b =>

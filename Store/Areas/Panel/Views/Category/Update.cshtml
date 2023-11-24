@@ -2,10 +2,10 @@
 @using Store.Models.Results
 @model Store.Models.Results.IDataResult<CategoryDTO>
 @{
-    IDataResult<List<CategoryDTO>> Categories = ViewBag.Categories;
+    IDataResult<List<ParentCategoryDTO>> ParentCategories = ViewBag.ParentCategories;
 }
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Güncelle";
 
 }
 <!-- Basic Validation -->
@@ -30,31 +30,21 @@
                             </div>
                             <div class="row m-t-10">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label>Seo Url</label>
-                                </div>
-                                <div class="col-md-11 col-xs-8 col-xs-8">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="SeoUrl" placeholder="Kategori Seo Url giriniz..." value="@Model.Data.SeoUrl" required />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row m-t-10">
-                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label for="skill_1">Bağlı Kategori</label>
+                                    <label for="skill_1">Ana Kategori</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
                                         <select class="form-control" id="skill_1" name="ParentCategoryId">
-                                            <option value="0">Ana Kategori Yap</option>
-                                            @foreach (var item in Categories.Data.Where(a => a.ParentCategoryId == 0))
+
+                                            @foreach (var parentCategory in ParentCategories.Data)
                                             {
-                                                if (item.Id == Model.Data.ParentCategoryId)
+                                                if (parentCategory.Id == Model.Data.ParentCategoryId)
                                                 {
-                                                    <option value="@item.Id" selected>- @item.Name</option>
+                                                    <option value="@parentCategory.Id" selected>- @parentCategory.Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Id">- @item.Name</option>
+                                                    <option value="@parentCategory.Id">- @parentCategory.Name</option>
                                                 }
                                             }
                                         </select>
@@ -66,7 +56,15 @@
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="checkbox" id="checkbox_1" name="IsActive" value="true">
+                                        @if (Model.Data.IsActive)
+                                        {
+                                            <input type="checkbox" id="checkbox_1" name="IsActive" value="true" checked>
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" id="checkbox_1" value="true" name="IsActive">
+                                        }
+
                                         <label for="checkbox_1">Aktif Mi? (Seçili olursa anasayfada yayınlanır.)</label>
                                     </div>
                                 </div>

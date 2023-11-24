@@ -78,7 +78,7 @@ public class CategoryService : Service<Category, DataDbContext>, ICategoryServic
     {
         try
         {
-            var data = await List(a => a.IsDeleted == false);
+            var data = await List(a => a.IsDeleted == false, null, "ParentCategory");
             return new DataResult<List<CategoryDTO>>(mapper.Map<List<CategoryDTO>>(data), true);
         }
         catch (Exception ex)

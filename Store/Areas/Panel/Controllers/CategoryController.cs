@@ -10,11 +10,13 @@ namespace Store.Areas.Panel.Controllers
     {
         private readonly ILogger<CategoryController> logger;
         private readonly ICategoryService categoryService;
+        private readonly IParentCategoryService parentCategoryService;
 
-        public CategoryController(ICategoryService categoryService, ILogger<CategoryController> logger)
+        public CategoryController(ICategoryService categoryService, IParentCategoryService parentCategoryService, ILogger<CategoryController> logger)
         {
             this.logger = logger;
             this.categoryService = categoryService;
+            this.parentCategoryService = parentCategoryService;
         }
         public async Task<IActionResult> List()
         {
@@ -28,7 +30,7 @@ namespace Store.Areas.Panel.Controllers
         }
         public async Task<IActionResult> Add()
         {
-            ViewBag.Categories = await categoryService.List();
+            ViewBag.ParentCategories = await parentCategoryService.List();
             return View();
         }
         [HttpPost]
@@ -43,7 +45,7 @@ namespace Store.Areas.Panel.Controllers
         }
         public async Task<IActionResult> Update(int id)
         {
-            ViewBag.Categories = await categoryService.List();
+            ViewBag.ParentCategories = await parentCategoryService.List();
             var result = await categoryService.GetById(id);
             if (result.Success)
             {

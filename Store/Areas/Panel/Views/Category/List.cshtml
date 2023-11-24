@@ -2,7 +2,7 @@
 @model Store.Models.Results.IDataResult<List<CategoryDTO>>
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Liste";
 
 }
 <div class="row clearfix">
@@ -35,9 +35,8 @@
                         <tr>
                             <th>İşlem</th>
                             <th>Kategori</th>
-                            <th>Bağlı Kategori</th>
+                            <th>Ana Kategori</th>
                             <th>Id</th>
-                            <th>Seo Url</th>
                             <th>Aktif Mi?</th>
                         </tr>
                     </thead>
@@ -45,9 +44,8 @@
                         <tr>
                             <th>İşlem</th>
                             <th>Kategori</th>
-                            <th>Bağlı Kategori</th>
+                            <th>Ana Kategori</th>
                             <th>Id</th>
-                            <th>Seo Url</th>
                             <th>Aktif Mi?</th>
                         </tr>
                     </tfoot>
@@ -60,9 +58,8 @@
                                     <a class="btn btn-xs btn-danger" href="~/Panel/Category/Delete?id=@item.Id">Sil</a>
                                 </th>
                                 <th><a href="javascript:void(0)">@item.Name</a></th>
-                                <td>@item.ParentCategoryId</td>
+                                <td>@item.ParentCategory?.Name</td>
                                 <td>@item.Id</td>
-                                <td>@item.SeoUrl</td>
                                 @if (item.IsActive)
                                 {
                                     <td style="color:green">Aktif</td>
@@ -80,50 +77,6 @@
     </div>
 </div>
 <!-- #END# Basic Examples -->
-@* <div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <!-- Table Swipe -->
-        <div class="card">
-            <div class="card-header">
-                <h2>
-                    Kategori Listesi
-                </h2>
-            </div>
-            <div class="body">
-                <table class="tablesaw table-hover table-bordered" data-tablesaw-mode="swipe" data-tablesaw-minimap>
-                    <thead>
-                        <tr>
-                            <th data-tablesaw-priority="persist">Kategori</th>
-                            <th>Id</th>
-                            <th>Açıklama</th>
-                            <th>Silindi Mi?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Data)
-                        {
-                            <tr>
-                                <th><a href="javascript:void(0)">@item.Name</a></th>
-                                <td>@item.Id</td>
-                                <td>@item.Description</td>
-                                @if (item.IsDeleted)
-                                {
-                                    <td>Evet</td>
-                                }
-                                else
-                                {
-                                    <td>Hayır</td>
-                                }
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- #END# Table Swipe -->
-    </div>
-</div> *@
-
 @section css {
     <!--THIS PAGE LEVEL CSS-->
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">

@@ -1,4 +1,6 @@
-﻿namespace Store.Models.DTOs;
+﻿using Store.Models.Entities;
+
+namespace Store.Models.DTOs;
 
 public class CategoryDTO
 {
@@ -8,11 +10,10 @@ public class CategoryDTO
 
     public string Name { get; set; } = string.Empty;
 
-    public string SeoUrl { get; set; } = string.Empty;
-
     public bool IsActive { get; set; } = false;
 
     public bool IsDeleted { get; set; } = false;
 
     public ICollection<ProductDTO>? Products { get; set; }
+    public ParentCategoryDTO? ParentCategory { get; set; }
 }
