@@ -1,0 +1,107 @@
+﻿@using Store.Models.DTOs
+@using Store.Models.Results
+
+@model SliderDTO
+@{
+    ViewBag.Title = "Ekle";
+}
+<!-- Basic Validation -->
+<div class="row clearfix">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="body">
+                <div class="card-inner">
+                    <h4 class="card-inner-header">Slider Ekle</h4>
+                    <small>Slider ekleme formu.</small>
+                    <div class="demo">
+                        <form class="form-horizontal" id="form_validation" method="POST" action="~/Panel/Slider/Add" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Başlık</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Title" placeholder="Başlık giriniz..." required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Kısa Açıklama</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Description" placeholder="Kısa açıklama giriniz..." required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Link</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Link" placeholder="Link giriniz..." required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Fotoğraf Seçin:</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="file" class="form-control" name="file" id="fileInput" multiple required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Fiyat (başlayan fiyatlarla)</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Price" placeholder="Fiyat (başlayan fiyatlarla) giriniz..." required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Sıra</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="Order" placeholder="Sıra giriniz..." required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="checkbox_1" name="IsActive" value="true">
+                                        <label for="checkbox_1">Aktif Mi? (Seçili olursa anasayfada yayınlanır.)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary waves-effect m-l-100" type="submit">Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Basic Validation -->
+@section css {
+    <!--THIS PAGE LEVEL CSS-->
+    <link href="~/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+}
+@section scripts {
+    <!--THIS PAGE LEVEL JS-->
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-steps/jquery.steps.js"></script>
+    <script src="~/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/assets/js/pages/forms/form-validation.js"></script>
+}

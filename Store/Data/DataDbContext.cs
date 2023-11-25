@@ -38,6 +38,8 @@ namespace Store.Data
         public virtual DbSet<OrderDetail> OrderDetail => Set<OrderDetail>();
         public virtual DbSet<Product> Product => Set<Product>();
         public virtual DbSet<ProductPhoto> ProductPhoto => Set<ProductPhoto>();
+        public virtual DbSet<Favorite> Favorite => Set<Favorite>();
+        public virtual DbSet<Slider> Slider => Set<Slider>();
 
     }
 }

@@ -26,6 +26,21 @@ namespace Store.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Favorite",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Favorite", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Order",
                 columns: table => new
                 {
@@ -52,6 +67,25 @@ namespace Store.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ParentCategory", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Slider",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", maxLength: 2147483647, nullable: false),
+                    Link = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
+                    PhotoUrl = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Slider", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -225,6 +259,9 @@ namespace Store.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Favorite");
+
+            migrationBuilder.DropTable(
                 name: "Neighborhood");
 
             migrationBuilder.DropTable(
@@ -232,6 +269,9 @@ namespace Store.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProductPhoto");
+
+            migrationBuilder.DropTable(
+                name: "Slider");
 
             migrationBuilder.DropTable(
                 name: "County");

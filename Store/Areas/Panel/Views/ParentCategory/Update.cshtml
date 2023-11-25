@@ -31,8 +31,14 @@
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="checkbox" id="checkbox_1" name="IsActive" value="true">
-                                        <label for="checkbox_1">Aktif Mi? (Seçili olursa anasayfada yayınlanır.)</label>
+                                        @if (Model.Data.IsActive)
+                                        {
+                                            <input type="checkbox" id="checkbox_1" name="IsActive" value="true" checked>
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" id="checkbox_1" value="true" name="IsActive">
+                                        }
                                     </div>
                                 </div>
                             </div>

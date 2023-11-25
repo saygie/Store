@@ -1,11 +1,9 @@
 ﻿@using Store.Models.DTOs
 @using Store.Models.Results
+@model Store.Models.Results.IDataResult<SliderDTO>
+
 @{
-    IDataResult<List<CategoryDTO>> Categories = ViewBag.Categories;
-}
-@model Store.Models.Results.IDataResult<ProductDTO>
-@{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Güncelle";
 
 }
 <!-- Basic Validation -->
@@ -14,90 +12,57 @@
         <div class="card">
             <div class="body">
                 <div class="card-inner">
-                    <h4 class="card-inner-header">Ürün Güncelle [@Model.Data.Name]</h4>
-                    <small>Ürün güncelleme formu.</small>
+                    <h4 class="card-inner-header">Slider Güncelle [@Model.Data.Title]</h4>
+                    <small>Slider güncelleme formu.</small>
                     <div class="demo">
-                        <form class="form-horizontal" id="form_validation" method="POST" action="~/Panel/Product/Update">
+                        <form class="form-horizontal" id="form_validation" method="POST" action="~/Panel/Slider/Update">
                             <div class="row">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label>Ürün Adı</label>
+                                    <label>Başlık</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="Name" placeholder="Ürün adı giriniz..." required value="@Model.Data.Name" />
+                                        <input type="text" class="form-control" name="Title" placeholder="Ana Slider adı giriniz..." value="@Model.Data.Title" required />
                                     </div>
                                 </div>
                             </div>
-                            <div class="row m-t-10">
-                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label>Ürün Seo Url</label>
-                                </div>
-                                <div class="col-md-11 col-xs-8 col-xs-8">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="SeoUrl" placeholder="Ürün Seo Url giriniz..." required value="@Model.Data.SeoUrl" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row m-t-10">
-                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label>Ürün Kodu</label>
-                                </div>
-                                <div class="col-md-11 col-xs-8 col-xs-8">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="Code" placeholder="Ürün adı giriniz..." required value="@Model.Data.Code" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row m-t-10">
-                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label for="skill_1">Kategori</label>
-                                </div>
-                                <div class="col-md-11 col-xs-8 col-xs-8">
-                                    <div class="form-group">
-                                        <select class="form-control" id="skill_1" name="CategoryId" required>
-                                            @foreach (var item in Categories.Data.Where(a => a.ParentCategoryId != 0))
-                                            {
-                                                if (item.ParentCategoryId == Model.Data.CategoryId)
-                                                {
-                                                    <option value="@item.Id" selected>- @item.Name</option>
-                                                }
-                                                else
-                                                {
-                                                    <option value="@item.Id">- @item.Name</option>
-                                                }
-
-                                            }
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row m-t-10">
+                            <div class="row">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
                                     <label>Açıklama</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <textarea name="Description" cols="30" rows="4" class="form-control no-resize" required>@Model.Data.Description</textarea>
+                                        <input type="text" class="form-control" name="Description" placeholder="Kısa açıklama giriniz..." value="@Model.Data.Description" required />
                                     </div>
                                 </div>
                             </div>
-                            <div class="row m-t-10">
+                            <div class="row">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label>Stok</label>
+                                    <label>Link</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="Stock" placeholder="Stok giriniz..." required value="@Model.Data.Stock" />
+                                        <input type="text" class="form-control" name="Link" placeholder="Link giriniz..." value="@Model.Data.Title" required />
                                     </div>
                                 </div>
                             </div>
-                            <div class="row m-t-10">
+                            <div class="row">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label>Fiyat</label>
+                                    <label>Fiyat (başlayan fiyatlarla)</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="Price" placeholder="Fiyat giriniz..." required value="@Model.Data.Price" />
+                                        <input type="text" class="form-control" name="Price" placeholder="Fiyat (başlayan fiyatlarla) giriniz..." value="@Model.Data.Price" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Sıra</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Order" placeholder="Sıra giriniz..." value="@Model.Data.Order" required />
                                     </div>
                                 </div>
                             </div>

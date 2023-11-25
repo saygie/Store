@@ -1,0 +1,118 @@
+﻿@using Store.Models.DTOs
+@model Store.Models.Results.IDataResult<List<SliderDTO>>
+
+@{
+    ViewBag.Title = "List";
+
+}
+<div class="row clearfix">
+    <div class="col-lg-3">
+        <div class="widget style2 bg-green hover-zoom-effect">
+            <div class="col-xs-4 widget-icon">
+                <i class="material-icons">format_list_bulleted</i>
+            </div>
+            <div class="col-xs-8 widget-body text-right">
+                <span>Slider Sayısı </span>
+                <h2 class="num count-to" data-from="0" data-to="@ViewBag.SliderCount.Data" data-speed="1000" data-fresh-interval="20">@ViewBag.SliderCount.Data</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Basic Examples -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>
+                    Slider Listesi
+                </h4>
+                <small>Sliderler listelenir, düzenlenir. Silenen Sliderler listelenmez.</small>
+            </div>
+            <div class="body">
+                <table class="table table-bordered table-striped table-hover basic-example dataTable">
+                    <thead>
+                        <tr>
+                            <th>İşlem</th>
+                            <th>Id</th>
+                            <th>Başlık</th>
+                            <th>Kısa Açıklama</th>
+                            <th>Link</th>
+                            <th>Photo</th>
+                            <th>Fiyat (başlayan fiyatlarla)</th>
+                            <th>Sıra</th>
+                            <th>Aktif Mi?</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>İşlem</th>
+                            <th>Id</th>
+                            <th>Başlık</th>
+                            <th>Kısa Açıklama</th>
+                            <th>Link</th>
+                            <th>Photo</th>
+                            <th>Fiyat (başlayan fiyatlarla)</th>
+                            <th>Sıra</th>
+                            <th>Aktif Mi?</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model.Data.OrderByDescending(a=>a.Id))
+                        {
+                            <tr>
+                                <th width="100px">
+                                    <a class="btn btn-xs btn-warning" href="~/Panel/Slider/Update?id=@item.Id">Düzenle</a>
+                                    <a class="btn btn-xs btn-danger" href="~/Panel/Slider/Delete?id=@item.Id">Sil</a>
+                                </th>
+                                <td>@item.Id</td>
+                                <th><a href="javascript:void(0)">@item.Title</a></th>
+                                <td>@item.Description</td>
+                                <td>@item.Link</td>
+                                <td>@item.PhotoUrl</td>
+                                 <td>@item.Price</td>
+                                <td>@item.Order</td>
+                                @if (item.IsActive)
+                                {
+                                    <td style="color:green">Aktif</td>
+                                }
+                                else
+                                {
+                                    <td style="color:red">Pasif</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Basic Examples -->
+
+@section css {
+    <!--THIS PAGE LEVEL CSS-->
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+}
+@section scripts {
+    <!--THIS PAGE LEVEL JS-->
+    <script src="~/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="~/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.keyTable.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/responsive.bootstrap.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.scroller.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.fixedHeader.min.js"></script>
+    <script src="~/js/pages/tables/jquery-datatable.js"></script>
+}
+

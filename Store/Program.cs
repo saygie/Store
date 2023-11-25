@@ -22,7 +22,8 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IParentCategoryService, ParentCategoryService>();
 builder.Services.AddScoped<IProductPhotoService, ProductPhotoService>();
-
+builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<IHelperService, HelperService>();
 
 builder.Services.AddAutoMapper(typeof(AutoMappingProfile));
 

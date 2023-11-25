@@ -9,17 +9,19 @@ namespace Store.Controllers
     {
         private readonly ILogger<HomeController> logger;
         private readonly ICategoryService categoryService;
+        private readonly ISliderService sliderService;
 
-        public HomeController(ILogger<HomeController> logger, ICategoryService categoryService)
+        public HomeController(ICategoryService categoryService, ISliderService sliderService, ILogger<HomeController> logger)
         {
             this.logger = logger;
             this.categoryService = categoryService;
+            this.sliderService = sliderService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var data = await categoryService.ListWithProducts();
-            ViewBag.CategoriesWithProducts = data;
+            ViewBag.CategoriesWithProducts = await categoryService.ListWithProducts();
+            ViewBag.Slider = await sliderService.List();
             return View();
         }
 

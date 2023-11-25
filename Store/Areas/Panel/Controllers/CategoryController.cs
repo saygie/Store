@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Store.Models.DTOs;
-using Store.Models.Entities;
 using Store.Models.Services;
 
 namespace Store.Areas.Panel.Controllers

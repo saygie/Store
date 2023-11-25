@@ -4,15 +4,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Store.Models.Entities;
 
-[Table("ParentCategory")]
-public class ParentCategory : IEntity
+[Table("Favorite")]
+public class Favorite : IEntity
 {
     [Key]
     public int Id { get; set; }
 
-    [Required(AllowEmptyStrings = false)]
-    [StringLength(128, MinimumLength = 3)]
-    public string Name { get; set; } = string.Empty;
+    [Required]
+    public int ProductId { get; set; } = 0;
 
     [Required]
     public bool IsActive { get; set; } = false;
@@ -20,5 +19,4 @@ public class ParentCategory : IEntity
     [Required]
     public bool IsDeleted { get; set; } = false;
 
-    public ICollection<Category>? Categories { get; set; }
 }

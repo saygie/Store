@@ -1,13 +1,15 @@
 ﻿@using Store.Models.DTOs
 @using Store.Models.Results
 @{
-    IDataResult<List<CategoryDTO>> categoriesWithProducts = ViewBag.CategoriesWithProducts as IDataResult<List<CategoryDTO>>;
+    IDataResult<List<CategoryDTO>>? categoriesWithProducts = ViewBag.CategoriesWithProducts as IDataResult<List<CategoryDTO>>;
+    IDataResult<List<SliderDTO>>? slider = ViewBag.Slider as IDataResult<List<SliderDTO>>;
+
 }
 @{
     ViewData["Title"] = "Anasayfa";
 }
 <!-- Slider Section -->
-<partial name="~/Views/Home/_SliderPartial.cshtml" />
+<partial name="~/Views/Home/_SliderPartial.cshtml" model="@slider" />
 <!-- End Slider Section -->
 @* <!-- Categories Carousel -->
 <partial name="~/Views/Home/_CategoryCarouselPartial.cshtml" />
