@@ -66,7 +66,7 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
     {
         try
         {
-            var data = await Get(a => a.Id == Id && a.IsDeleted == false, "Category,ProductPhotos");
+            var data = await Get(a => a.Id == Id && a.IsDeleted == false, "Category,ProductPhotos,Category.ParentCategory");
             return new DataResult<ProductDTO?>(mapper.Map<ProductDTO>(data), true);
         }
         catch (Exception)
