@@ -102,7 +102,7 @@ namespace Store.Areas.Panel.Controllers
                             var extension = Path.GetExtension(file.FileName);
                             List<string> sizes = new List<string>()
                             {
-                                "720x660","320x300","212x200","150x140","75x75"
+                                "720x660","380x350","320x300","212x200","150x140","75x75"
                             };
                             var result = productPhotoService.Upload2(productId, stream, extension, "products", sizes);
 

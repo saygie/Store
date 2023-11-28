@@ -78,7 +78,7 @@ public class ParentCategoryService : Service<ParentCategory, DataDbContext>, IPa
     {
         try
         {
-            var data = await List(a => a.IsDeleted == false, null, "Categories");
+            var data = await List(a => a.IsDeleted == false, null, "Categories,Categories.Products,Categories.Products.ProductPhotos");
             return new DataResult<List<ParentCategoryDTO>>(mapper.Map<List<ParentCategoryDTO>>(data), true);
         }
         catch (Exception ex)
