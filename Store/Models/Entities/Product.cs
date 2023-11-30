@@ -22,8 +22,8 @@ public class Product : IEntity
     public string Name { get; set; } = string.Empty;
 
     [Required(AllowEmptyStrings = false)]
-    [StringLength(512, MinimumLength = 3)]
-    public string SeoUrl { get; set; } = string.Empty;
+    [StringLength(128, MinimumLength = 3)]
+    public string Slug { get; set; } = string.Empty;
 
     [Required(AllowEmptyStrings = false)]
     [StringLength(int.MaxValue, MinimumLength = 3)]
@@ -33,7 +33,26 @@ public class Product : IEntity
     public int Stock { get; set; } = 0;
 
     [Required]
+    public double PriceWithoutDiscount { get; set; } = 0;
+
+    [Required]
     public double Price { get; set; } = 0;
+
+    [Required]
+    public int Discount { get; set; } = 0;
+
+    [Required]
+    public bool IsFeatured { get; set; } = false; // öne çıkan (özel) ürün
+    [Required]
+    public bool IsDiscounted { get; set; } = false; // indirimli
+    [Required]
+    public bool IsMostSelled { get; set; } = false; //çok satan
+    [Required]
+    public bool IsNew { get; set; } = false; //yeni ürün
+    [Required]
+    public bool IsSpecialOffer { get; set; } = false; // Özel Teklifli
+
+    public DateTime? SpecialOfferEndDate { get; set; } // Özel Süresi (saat)
 
     [Required]
     public bool IsActive { get; set; } = false;

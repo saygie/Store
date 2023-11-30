@@ -1,6 +1,9 @@
 ﻿
 using Store.Models.Entities;
 using Store.Models.Results;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace Store.Models.Services;
 
@@ -75,4 +78,42 @@ public class HelperService : IHelperService
             Mode = ResizeMode.Crop
         }));
     }
+
+    public string ConvertToSeoSentence(string sentence)
+    {
+        try
+        {
+            string normalizedSentence = sentence.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char c in normalizedSentence)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(c);
+                }
+            }
+
+            string withoutTurkishChars = sb.ToString().Normalize(NormalizationForm.FormC);
+            string lowercaseSentence = withoutTurkishChars.ToLower();
+            string seoFriendlySentence = Regex.Replace(lowercaseSentence, @"\s", "-");
+            string generatedUniqueCode = GenerateUniqueCode();
+
+            return seoFriendlySentence + "-" + generatedUniqueCode;
+
+        }
+        catch (Exception)
+        {
+            return string.Empty;
+        }
+    }
+
+    public string GenerateUniqueCode()
+    {
+        long timestamp = DateTime.Now.Ticks;
+        string uniqueCode = timestamp.ToString();
+        uniqueCode = uniqueCode.Substring(uniqueCode.Length - 8);
+        return uniqueCode;
+    }
+
 }

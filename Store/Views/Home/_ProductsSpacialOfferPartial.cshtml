@@ -134,8 +134,8 @@
                                         <div class="space-top-xl-2 space-top-wd-0 mt-xl-4 mt-wd-0">
                                             <h5 class="mb-3 mb-xl-2 mb-wd-1 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="~/product/show/@product.Id" class="text-blue font-weight-bold">@product.Name</a></h5>
                                             <div class="d-flex align-items-center justify-content-center mb-3">
-                                                <del class="font-size-18 mr-2 text-gray-2">@product.Price</del>
-                                                <ins class="font-size-xl-30 font-size-wd-25 text-red text-decoration-none">@product.Price</ins>
+                                                <del class="font-size-18 mr-2 text-gray-2">@product.Price.ToString("N0")<sup class="">₺</sup></del>
+                                                <ins class="font-size-xl-30 font-size-wd-25 text-red text-decoration-none">@product.Price.ToString("N0")<sup class="">₺</sup></ins>
                                             </div>
                                             <div class="mb-4 mb-xl-5 mb-wd-2 pb-wd-1 mx-2">
                                                 <div class="d-flex justify-content-between align-items-center mb-2">

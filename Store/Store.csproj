@@ -44,7 +44,6 @@
     <Folder Include="wwwroot\uploads\products\320x300\" />
     <Folder Include="wwwroot\uploads\products\720x660\" />
     <Folder Include="wwwroot\uploads\products\75x75\" />
-    <Folder Include="wwwroot\uploads\slider\416x420\" />
   </ItemGroup>
 
   <ItemGroup>

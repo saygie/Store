@@ -13,18 +13,9 @@ namespace Store.Controllers
             this.logger = logger;
             this.productService = productService;
         }
-        public async Task<IActionResult> Index(int Id)
+        public async Task<IActionResult> Index(string productSlug)
         {
-            var result = await productService.GetById(Id);
-            if (result.Success)
-            {
-                return View(result);
-            }
-            return View("Error");           
-        }
-        public async Task<IActionResult> Show(int Id)
-        {
-            var result = await productService.GetById(Id);
+            var result = await productService.GetBySlug(productSlug);
             if (result.Success)
             {
                 return View(result);

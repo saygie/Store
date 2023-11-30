@@ -100,4 +100,69 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
             return new DataResult<int>(0, false, ex.Message);
         }
     }
+
+    public async Task<IDataResult<List<ProductDTO>>> Filter(string parentCategorySlug, string? categorySlug)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(categorySlug))
+            {
+                var data = await List(a =>
+                !a.IsDeleted
+                && a.IsActive
+                && a.Category.ParentCategory.Slug == parentCategorySlug
+                , null, "Category.ParentCategory,Category,ProductPhotos");
+                return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+            }
+            else
+            {
+                var data = await List(a =>
+                !a.IsDeleted
+                && a.IsActive
+                && a.Category.ParentCategory.Slug == parentCategorySlug
+                && a.Category.Slug == categorySlug
+                , null, "Category,ProductPhotos");
+                return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<List<ProductDTO>>(new List<ProductDTO>(), false, ex.Message);
+        }
+    }
+
+    public async Task<IDataResult<ProductDTO?>> GetBySlug(string slug)
+    {
+        try
+        {
+            var data = await Get(a =>
+            a.Slug == slug
+            && a.IsActive
+            && !a.IsDeleted,
+            "Category,ProductPhotos,Category.ParentCategory");
+            return new DataResult<ProductDTO?>(mapper.Map<ProductDTO>(data), true);
+        }
+        catch (Exception)
+        {
+            return new DataResult<ProductDTO?>(null, false);
+        }
+    }
+
+    public async Task<IDataResult<List<ProductDTO>>> ListForHomePage()
+    {
+        try
+        {
+            var data = await List(a =>
+            !a.IsDeleted
+            && a.IsActive
+            && (a.IsSpecialOffer || a.IsDiscounted || a.IsFeatured || a.IsMostSelled || a.IsNew)
+            , null, "Category,Category.ParentCategory,ProductPhotos");
+            return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<List<ProductDTO>>(new List<ProductDTO>(), false, ex.Message);
+        }
+    }
 }

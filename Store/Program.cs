@@ -48,6 +48,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
@@ -55,6 +56,15 @@ app.MapControllerRoute(
 app.MapControllerRoute(
       name: "areas",
       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+       name: "productRoute",
+       pattern: "p/{productSlug}",
+       defaults: new { controller = "Product", action = "Index" });
+app.MapControllerRoute(
+       name: "parentCategoryRoute",
+       pattern: "c/{parentCategorySlug}/{categorySlug?}",
+       defaults: new { controller = "ParentCategory", action = "Index" });
 
 app.MapRazorPages();
 

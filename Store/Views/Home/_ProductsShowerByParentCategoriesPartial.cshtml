@@ -11,7 +11,7 @@
             <div class="mb-6">
                 <div class=" d-flex justify-content-between border-bottom border-color-1 flex-lg-nowrap flex-wrap border-sm-top-0 border-sm-bottom-0">
                     <h3 class="section-title mb-2 mb-md-0 pb-2 font-size-22">@parentCategory.Name</h3>
-                    <a class="d-block text-gray-16" href="../shop/shop.html">Go to Daily Deals Section <i class="ec ec-arrow-right-categproes"></i></a>
+                    <a class="d-block text-gray-16" href="~/c/@parentCategory.Slug">Tüm koleksiyonlara göz at <i class="ec ec-arrow-right-categproes"></i></a>
                 </div>
                 <div class="js-slick-carousel u-slick overflow-hidden u-slick-overflow-visble pt-3 px-1"
                      data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4"
@@ -54,12 +54,12 @@
                                         <div class="product-item__outer h-100">
                                             <div class="product-item__inner px-wd-4 p-2 p-md-3">
                                                 <div class="product-item__body pb-xl-2">
-                                                    <div class="mb-2"><a href="~/category/show/@category.Id" class="font-size-12 text-gray-5">@category.Name</a></div>
-                                                    <h5 class="mb-1 product-item__title"><a href="~/product/show/@product.Id" class="text-blue font-weight-bold">@product.Name</a></h5>
+                                                    <div class="mb-2"><a href="~/c/@parentCategory.Slug/@category.Slug" class="font-size-12 text-gray-5">@category.Name</a></div>
+                                                    <h5 class="mb-1 product-item__title"><a href="~/p/@product.Slug" class="text-blue font-weight-bold">@product.Name</a></h5>
                                                     <div class="mb-2">
                                                         @if (product.ProductPhotos.FirstOrDefault() is not null)
                                                         {
-                                                            <a href="~/product/show/@product.Id" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212X200/@product.ProductPhotos.FirstOrDefault().Url" alt="Image Description"></a>
+                                                            <a href="~/p/@product.Slug" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212X200/@product.ProductPhotos.FirstOrDefault().Url" alt="Image Description"></a>
 
                                                         }
                                                     </div>
@@ -68,7 +68,7 @@
                                                             -72%
                                                         </div>
                                                         <div class="prodcut-price">
-                                                            <div class="text-gray-100">$685,00</div>
+                                                            <div class="text-gray-100">@product.Price.ToString("N0")<sup class="">₺</sup></div>
                                                         </div>
                                                         <div class="d-none d-xl-block prodcut-add-cart">
                                                             <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>

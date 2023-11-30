@@ -8,13 +8,15 @@ namespace Store.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> logger;
+        private readonly IProductService productService;
         private readonly ICategoryService categoryService;
         private readonly IParentCategoryService parentCategoryService;
         private readonly ISliderService sliderService;
 
-        public HomeController(IParentCategoryService parentCategoryService,ICategoryService categoryService, ISliderService sliderService, ILogger<HomeController> logger)
+        public HomeController(IProductService productService,IParentCategoryService parentCategoryService,ICategoryService categoryService, ISliderService sliderService, ILogger<HomeController> logger)
         {
             this.logger = logger;
+            this.productService = productService;
             this.parentCategoryService = parentCategoryService;
             this.categoryService = categoryService;
             this.sliderService = sliderService;
@@ -22,7 +24,8 @@ namespace Store.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.CategoriesWithProducts = await categoryService.ListWithProducts();
+            ViewBag.HomePageProducts = await productService.ListForHomePage();
+            ViewBag.CategoriesWithProducts = await categoryService.ListWithParentCategoryAndProducts();
             ViewBag.parentCategoriesWithProducts = await parentCategoryService.List();
             ViewBag.Slider = await sliderService.List();
             return View();

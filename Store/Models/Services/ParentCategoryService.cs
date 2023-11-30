@@ -99,4 +99,33 @@ public class ParentCategoryService : Service<ParentCategory, DataDbContext>, IPa
             return new DataResult<int>(0, false, ex.Message);
         }
     }
+
+    public async Task<IDataResult<ParentCategoryDTO?>> GetBySlugWithCategoriesAndProducts(string parentCategorySlug, string? categorySlug)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(categorySlug))
+            {
+                var data = await Get(a => a.IsActive && !a.IsDeleted && a.Slug == parentCategorySlug,
+                "Categories,Categories.Products,Categories.Products.ProductPhotos");
+                return new DataResult<ParentCategoryDTO?>(mapper.Map<ParentCategoryDTO>(data), true);
+
+            }
+            else
+            {
+                var data = await Get(a => 
+                a.IsActive
+                && !a.IsDeleted 
+                && a.Slug == parentCategorySlug,
+                "Categories,Categories.Products,Categories.Products.ProductPhotos");
+                var data2 = data.Categories.Where(a => a.Slug == categorySlug);
+                return new DataResult<ParentCategoryDTO?>(mapper.Map<ParentCategoryDTO>(data), true);
+
+            }
+        }
+        catch (Exception)
+        {
+            return new DataResult<ParentCategoryDTO?>(null, false);
+        }
+    }
 }

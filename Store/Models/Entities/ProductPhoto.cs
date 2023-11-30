@@ -17,6 +17,8 @@ public class ProductPhoto : IEntity
     [StringLength(128, MinimumLength = 3)]
     public string Url { get; set; } = string.Empty;
     [Required]
+    public int Order { get; set; }
+    [Required]
     public bool IsActive { get; set; } = false;
 
     [Required]

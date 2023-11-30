@@ -1,0 +1,41 @@
+﻿@using Store.Models.DTOs
+@model ProductDTO?
+@if (Model is not null)
+{
+    <div class="js-slide products-group">
+        <div class="product-item">
+            <div class="product-item__outer h-100">
+                <div class="product-item__inner px-wd-4 p-2 p-md-3">
+                    <div class="product-item__body pb-xl-2">
+                        <div class="mb-2"><a href="~/c/@Model.Category.ParentCategory.Slug/@Model.Category.Slug" class="font-size-12 text-gray-5">@Model.Category?.Name</a></div>
+                        <h5 class="mb-1 product-item__title"><a href="~/p/@Model.Slug" class="text-blue font-weight-bold">@Model.Name</a></h5>
+                        <div class="mb-2">
+                            <a href="~/p/@Model.Slug" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212X200/@Model.ProductPhotos?.FirstOrDefault()?.Url" alt="@Model.Name"></a>
+                        </div>
+                        <div class="flex-center-between mb-1 position-relative">
+                            @if (Model.Discount > 0)
+                            {
+                                <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-red rounded text-white text-lh-21 px-2 mt-n4">
+                                    -@Model.Discount%
+                                </div>
+                            }
+                            <div class="prodcut-price">
+                                <del class="font-size-14 text-red">@Model.PriceWithoutDiscount.ToString("N0")<sup class="">₺</sup></del>
+                                <div class="text-gray-100">@Model.Price.ToString("N0")<sup class="">₺</sup></div>
+                            </div>
+                            <div class="prodcut-add-cart">
+                                <a href="../shop/single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-item__footer">
+                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                            <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                            <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

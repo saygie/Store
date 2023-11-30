@@ -9,10 +9,12 @@ namespace Store.Models.Services;
 public interface ICategoryService : IService<Category>
 {
     Task<IDataResult<List<CategoryDTO>>> List();
+    Task<IDataResult<List<CategoryDTO>>> ListWithParentCategoryAndProducts();
+    Task<IDataResult<List<CategoryDTO>>> ListWithParentCategory();
     Task<IDataResult<CategoryDTO?>> GetById(int Id);
     Task<IResult> Add(CategoryDTO dto);
     Task<IResult> Update(CategoryDTO dto);
     Task<IResult> Delete(CategoryDTO dto);
     Task<IDataResult<int>> Count();
-    Task<IDataResult<List<CategoryDTO>>> ListWithProducts();
+    Task<IDataResult<CategoryDTO?>> GetBySlugWithParentCategoryAndProducts(string categorySlug);
 }

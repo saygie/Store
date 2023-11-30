@@ -6,10 +6,18 @@ public class ProductDTO
     public string Code { get; set; } = string.Empty;
     public int CategoryId { get; set; }
     public string Name { get; set; } = string.Empty;
-    public string SeoUrl { get; set; } = string.Empty;
+    public string Slug { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public int Stock { get; set; } = 0;
+    public double PriceWithoutDiscount { get; set; } = 0;
     public double Price { get; set; } = 0;
+    public int Discount { get; set; } = 0;
+    public bool IsFeatured { get; set; } = false; // öne çıkan (özel) ürün
+    public bool IsDiscounted { get; set; } = false; // indirimli
+    public bool IsMostSelled { get; set; } = false; //çok satan
+    public bool IsNew { get; set; } = false; //yeni ürün
+    public bool IsSpecialOffer { get; set; } = false; // Özel Teklifli
+    public DateTime? SpecialOfferEndDate { get; set; } // Özel Süresi (saat)
     public bool IsActive { get; set; } = false;
     public bool IsDeleted { get; set; } = false;
 

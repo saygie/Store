@@ -9,6 +9,10 @@ public class CategoryDTO
     public int ParentCategoryId { get; set; } = 0;
 
     public string Name { get; set; } = string.Empty;
+    public string Slug { get; set; } = string.Empty;
+    public string PhotoUrl { get; set; } = string.Empty;
+    public int Order { get; set; }
+    public bool IsFeatured { get; set; } = false; // öne çıkan (özel) kategori
 
     public bool IsActive { get; set; } = false;
 

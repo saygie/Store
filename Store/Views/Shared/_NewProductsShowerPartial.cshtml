@@ -1,0 +1,53 @@
+﻿@using Store.Models.DTOs
+@model IEnumerable<ProductDTO>
+
+@if (Model.Count() > 0)
+{
+    <!-- End Products Slider -->
+    <div class="mb-6">
+        <div class=" d-flex justify-content-between border-bottom border-color-1 flex-lg-nowrap flex-wrap border-sm-top-0 border-sm-bottom-0">
+            <h3 class="section-title mb-2 mb-md-0 pb-2 font-size-22">En Yeniler</h3>
+            <a class="d-block text-gray-16" href="#">Go to Daily Deals Section <i class="ec ec-arrow-right-categproes"></i></a>
+        </div>
+        <div class="js-slick-carousel u-slick overflow-hidden u-slick-overflow-visble pt-3 px-1"
+             data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4"
+             data-slides-show="7"
+             data-slides-scroll="1"
+             data-responsive='[{
+                           "breakpoint": 1500,
+                           "settings": {
+                             "slidesToShow": 6
+                           }
+                         }, {
+                             "breakpoint": 1200,
+                             "settings": {
+                               "slidesToShow": 3
+                             }
+                         }, {
+                           "breakpoint": 992,
+                           "settings": {
+                             "slidesToShow": 3
+                           }
+                         }, {
+                           "breakpoint": 768,
+                           "settings": {
+                             "slidesToShow": 2
+                           }
+                         }, {
+                           "breakpoint": 554,
+                           "settings": {
+                             "slidesToShow": 2
+                           }
+                         }]'>
+            @foreach (var product in Model)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    <partial name="~/Views/Shared/_ProductShowerCardPartial.cshtml" model="product" />
+
+                }
+            }
+        </div>
+    </div>
+    <!-- End Products Slider -->
+}

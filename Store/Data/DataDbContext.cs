@@ -27,7 +27,12 @@ namespace Store.Data
                 .HasOne(a => a.ParentCategory)
                 .WithMany(b => b.Categories)
                 .HasForeignKey(a => a.ParentCategoryId);
+
+
+            Seed(modelBuilder);
+
         }
+
 
         public virtual DbSet<Category> Category => Set<Category>();
         public virtual DbSet<ParentCategory> ParentCategory => Set<ParentCategory>();
@@ -40,6 +45,192 @@ namespace Store.Data
         public virtual DbSet<ProductPhoto> ProductPhoto => Set<ProductPhoto>();
         public virtual DbSet<Favorite> Favorite => Set<Favorite>();
         public virtual DbSet<Slider> Slider => Set<Slider>();
+
+
+        private void Seed(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ParentCategory>().HasData(
+                new ParentCategory
+                {
+                    Id = 1,
+                    Name = "Abajurlar",
+                    Slug = "abajurlar",
+                    PhotoUrl = "1.jpg",
+                    Order = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new ParentCategory
+                {
+                    Id = 2,
+                    Name = "Lambaderler",
+                    Slug = "lambaderler",
+                    PhotoUrl = "2.jpg",
+                    Order = 2,
+                    IsActive = true,
+                    IsDeleted = false,
+                }
+            );
+            modelBuilder.Entity<Category>().HasData(
+                new Category
+                {
+                    Id = 1,
+                    ParentCategoryId = 1,
+                    Name = "Blue Blanc Serisi",
+                    Slug = "blue-blanc-serisi",
+                    PhotoUrl = "1.jpg",
+                    Order = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 2,
+                    ParentCategoryId = 1,
+                    Name = "Ahşap Serisi",
+                    Slug = "ahsap-serisi",
+                    PhotoUrl = "1.jpg",
+                    Order = 2,
+                    IsActive = true,
+                    IsDeleted = false,
+                }
+            );
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    Id = 1,
+                    Code = "8622f51e",
+                    CategoryId = 1,
+                    Name = "Product-1",
+                    Slug = "product-1",
+                    Description = "modern ve şık",
+                    Stock = 3,
+                    Price = 2700,
+                    PriceWithoutDiscount = 3000,
+                    Discount = 100 - (2700 * 100 / 3000),
+                    IsDiscounted = true,
+                    IsMostSelled = true,
+                    IsFeatured = true,
+                    IsNew = true,
+                    IsSpecialOffer = true,
+                    SpecialOfferEndDate = DateTime.Now.AddHours(22),
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Product
+                {
+                    Id = 2,
+                    Code = "9dae0207",
+                    CategoryId = 2,
+                    Name = "Product-2",
+                    Slug = "product-2",
+                    Description = "modern ve şık",
+                    Stock = 4,
+                    Price = 3300,
+                    PriceWithoutDiscount = 3600,
+                    Discount = 100 - (3300 * 100 / 3600),
+                    IsDiscounted = true,
+                    IsMostSelled = true,
+                    IsFeatured = true,
+                    IsNew = true,
+                    IsSpecialOffer = true,
+                    SpecialOfferEndDate = DateTime.Now.AddHours(22),
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Product
+                {
+                    Id = 3,
+                    Code = "27ae0101",
+                    CategoryId = 2,
+                    Name = "Product-3",
+                    Slug = "product-3",
+                    Description = "modern ve şık",
+                    Stock = 0,
+                    Price = 1750,
+                    PriceWithoutDiscount = 2250,
+                    Discount = 100 - (1750 * 100 / 2250),
+                    IsDiscounted = true,
+                    IsMostSelled = true,
+                    IsFeatured = true,
+                    IsNew = true,
+                    IsSpecialOffer = true,
+                    SpecialOfferEndDate = DateTime.Now.AddHours(22),
+                    IsActive = true,
+                    IsDeleted = false,
+                }
+             );
+
+            modelBuilder.Entity<ProductPhoto>().HasData(
+                new ProductPhoto
+                {
+                    Id = 1,
+                    ProductId = 1,
+                    Url = "6e9694b3-f6ea-46ce-8637-fb933352781e.jpg",
+                    Order = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new ProductPhoto
+                {
+                    Id = 2,
+                    ProductId = 2,
+                    Url = "cdf13471-2761-4fab-aa98-ba1bf26933a4.jpg",
+                    Order = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new ProductPhoto
+                {
+                    Id = 3,
+                    ProductId = 3,
+                    Url = "a985a819-7a2c-49d3-8fb0-07deea42c239.jpg",
+                    Order = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                }
+             );
+
+            modelBuilder.Entity<Slider>().HasData(
+                new Slider
+                {
+                    Id = 1,
+                    Title = "Yeni Soft Koleksiyon",
+                    Description = "modern ve şık",
+                    Link = "identity/account/login",
+                    PhotoUrl = "de4bd898-88b0-4cba-b8c1-c59d15f2d190.jpg",
+                    Price = 2750,
+                    IsActive = true,
+                    IsDeleted = false,
+                    Order = 1,
+                },
+                new Slider
+                {
+                    Id = 2,
+                    Title = "Sezon Sonu İndirimleri",
+                    Description = "sınırlı stoklarla",
+                    Link = "identity/account/login",
+                    PhotoUrl = "98a44b7e-91bd-4291-93a6-5482cb678cb2.jpg",
+                    Price = 1950,
+                    IsActive = true,
+                    IsDeleted = false,
+                    Order = 2,
+                },
+                new Slider
+                {
+                    Id = 3,
+                    Title = "Fırsat Ürünleri",
+                    Description = "porselen kalitesiyle",
+                    Link = "identity/account/login",
+                    PhotoUrl = "8f8fbaa963f1e51d5ba74ac4bda36287.jpg",
+                    Price = 3250,
+                    IsActive = true,
+                    IsDeleted = false,
+                    Order = 3,
+                }
+            );
+
+        }
 
     }
 }

@@ -14,4 +14,5 @@ public interface IParentCategoryService : IService<ParentCategory>
     Task<IResult> Update(ParentCategoryDTO dto);
     Task<IResult> Delete(ParentCategoryDTO dto);
     Task<IDataResult<int>> Count();
+    Task<IDataResult<ParentCategoryDTO?>> GetBySlugWithCategoriesAndProducts(string parentCategorySlug, string? categorySlug);
 }

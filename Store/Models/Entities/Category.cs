@@ -13,9 +13,18 @@ public class Category : IEntity
     [Required(AllowEmptyStrings = false)]
     [StringLength(128, MinimumLength = 3)]
     public string Name { get; set; } = string.Empty;
-
+    [Required(AllowEmptyStrings = false)]
+    [StringLength(128, MinimumLength = 3)]
+    public string Slug { get; set; } = string.Empty;
+    [Required(AllowEmptyStrings = false)]
+    [StringLength(128, MinimumLength = 3)]
+    public string PhotoUrl { get; set; } = string.Empty;
+    [Required]
+    public int Order { get; set; }
     [Required]
     public int ParentCategoryId { get; set; } = 0;
+    [Required]
+    public bool IsFeatured { get; set; } = false; // öne çıkan (özel) kategori
 
     [Required]
     public bool IsActive { get; set; } = false;

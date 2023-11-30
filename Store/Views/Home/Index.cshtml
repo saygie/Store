@@ -1,6 +1,9 @@
 ﻿@using Store.Models.DTOs
 @using Store.Models.Results
 @{
+    IDataResult<List<ProductDTO>>? homePageProducts = ViewBag.HomePageProducts as IDataResult<List<ProductDTO>>;
+
+
     IDataResult<List<CategoryDTO>>? categoriesWithProducts = ViewBag.CategoriesWithProducts as IDataResult<List<CategoryDTO>>;
     IDataResult<List<ParentCategoryDTO>>? parentCategoriesWithProducts = ViewBag.parentCategoriesWithProducts as IDataResult<List<ParentCategoryDTO>>;
 
@@ -21,6 +24,10 @@
 <div class="container">
 
     @Html.Partial("~/Views/Home/_CategoryBannerAPartial.cshtml", categoriesWithProducts)
+    <partial name="~/Views/Shared/_FeaturedProductsShowerPartial.cshtml" model="@homePageProducts?.Data.Where(a=>a.IsFeatured)" />
+
+    <partial name="~/Views/Shared/_NewProductsShowerPartial.cshtml" model="@homePageProducts?.Data.Where(a=>a.IsNew)" />
+
     @Html.Partial("~/Views/Home/_ProductsShowerPartial.cshtml", categoriesWithProducts)
     @Html.Partial("~/Views/Home/_ProductsSpacialOfferPartial.cshtml", categoriesWithProducts)
     @Html.Partial("~/Views/Home/_ProductsShowerByParentCategoriesPartial.cshtml", parentCategoriesWithProducts)
