@@ -29,21 +29,11 @@
                             </div>
                             <div class="row m-t-10">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label>Ürün Seo Url</label>
-                                </div>
-                                <div class="col-md-11 col-xs-8 col-xs-8">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="SeoUrl" placeholder="Ürün Seo Url giriniz..." required value="@Guid.NewGuid()" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row m-t-10">
-                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
                                     <label>Ürün Kodu</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="Code" placeholder="Ürün adı giriniz..." required value="@Guid.NewGuid()"/>
+                                        <input type="text" class="form-control" name="Code" placeholder="Ürün adı giriniz..." required value="@Guid.NewGuid().ToString().Split('-')[0]" />
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +47,7 @@
                                             <option value="" selected>Kategori Seçiniz...</option>
                                             @foreach (var item in Categories.Data.Where(a => a.ParentCategoryId != 0))
                                             {
-                                                <option value="@item.Id">- @item.Name</option>
+                                                <option value="@item.Id">@item.ParentCategory.Name/@item.Name</option>
                                             }
                                         </select>
                                     </div>
@@ -69,7 +59,7 @@
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <textarea name="Description" cols="30" rows="4" class="form-control no-resize" required></textarea>
+                                        <textarea id="summernote" name="Description" class="summernote" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -114,11 +104,16 @@
 @section css {
     <!--THIS PAGE LEVEL CSS-->
     <link href="~/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/plugins/summernote/dist/summernote.css" rel="stylesheet" />
 }
 @section scripts {
     <!--THIS PAGE LEVEL JS-->
     <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
     <script src="~/plugins/jquery-steps/jquery.steps.js"></script>
     <script src="~/plugins/sweetalert/sweetalert.min.js"></script>
-    <script src="~/assets/js/pages/forms/form-validation.js"></script>
+    <script src="~/js/pages/forms/form-validation.js"></script>
+
+    <script src="~/plugins/summernote/dist/summernote.min.js"></script>
+    <script src="~/js/pages/forms/summernote.js"></script>
+
 }
