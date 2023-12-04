@@ -39,9 +39,17 @@
                             <th>Kod</th>
                             <th>Kategori</th>
                             <th>Stok</th>
+                            <th>İndirimsiz Fiyat</th>
+                            <th>İndirim</th>
                             <th>Fiyat</th>
                             <th>Seo Url</th>
                             <th>Açıklama</th>
+                            <th>Öne Çıkan mı?</th>
+                            <th>İndirimli mi?</th>
+                            <th>Çok Satan mı?</th>
+                            <th>Yeni mi?</th>
+                            <th>Özel Teklif mi?</th>
+                            <th>Özel Teklif Son Tarih</th>
                             <th>Durum</th>
                         </tr>
                     </thead>
@@ -53,9 +61,17 @@
                             <th>Kod</th>
                             <th>Kategori</th>
                             <th>Stok</th>
+                            <th>İndirimsiz Fiyat</th>
+                            <th>İndirim</th>
                             <th>Fiyat</th>
                             <th>Seo Url</th>
                             <th>Açıklama</th>
+                            <th>Öne Çıkan mı?</th>
+                            <th>İndirimli mi?</th>
+                            <th>Çok Satan mı?</th>
+                            <th>Yeni mi?</th>
+                            <th>Özel Teklif mi?</th>
+                            <th>Özel Teklif Son Tarih</th>
                             <th>Durum</th>
                         </tr>
                     </tfoot>
@@ -71,11 +87,62 @@
                                 <th><a href="javascript:void(0)">@item.Name</a></th>
                                 <td>@item.Id</td>
                                 <td>@item.Code</td>
-                                <td>@item.Category?.Name</td>
+                                <td>@item.Category?.ParentCategory?.Name/@item.Category?.Name</td>
                                 <td>@item.Stock</td>
+                                <td>@item.PriceWithoutDiscount</td>
+                                <td>%@item.Discount</td>
                                 <td>@item.Price</td>
                                 <td>@item.Slug</td>
-                                <td>@item.Description</td>
+                                <td>@Html.Raw(item.Description)</td>
+                                @if (item.IsFeatured)
+                                {
+                                    <td style="color:green">Evet</td>
+                                }
+                                else
+                                {
+                                    <td style="color:red">Hayır</td>
+                                }
+                                @if (item.IsDiscounted)
+                                {
+                                    <td style="color:green">Evet</td>
+                                }
+                                else
+                                {
+                                    <td style="color:red">Hayır</td>
+                                }
+                                @if (item.IsMostSelled)
+                                {
+                                    <td style="color:green">Evet</td>
+                                }
+                                else
+                                {
+                                    <td style="color:red">Hayır</td>
+                                }
+                                @if (item.IsNew)
+                                {
+                                    <td style="color:green">Evet</td>
+                                }
+                                else
+                                {
+                                    <td style="color:red">Hayır</td>
+                                }
+                                @if (item.IsSpecialOffer)
+                                {
+                                    <td style="color:green">Evet</td>
+                                }
+                                else
+                                {
+                                    <td style="color:red">Hayır</td>
+                                }
+                                @if (item.IsSpecialOffer)
+                                {
+                                    <td style="color:green">@item.SpecialOfferEndDate?</td>
+                                }
+                                else
+                                {
+                                    <td style="color:red">-</td>
+                                }
+
                                 @if (item.IsActive)
                                 {
                                     <td style="color:green">Aktif</td>
@@ -99,6 +166,7 @@
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" />
 }
 @section scripts {
     <!--THIS PAGE LEVEL JS-->
@@ -117,5 +185,6 @@
     <script src="~/plugins/jquery-datatable/extensions/export/dataTables.scroller.min.js"></script>
     <script src="~/plugins/jquery-datatable/extensions/export/dataTables.fixedHeader.min.js"></script>
     <script src="~/js/pages/tables/jquery-datatable.js"></script>
+    <script src="~/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/plugins/magnific-popup/jquery.magnific-popup-custom.js"></script>
 }
-

@@ -53,8 +53,8 @@ namespace Store.Data
                 new ParentCategory
                 {
                     Id = 1,
-                    Name = "Abajurlar",
-                    Slug = "abajurlar",
+                    Name = "Abajur",
+                    Slug = "abajur",
                     PhotoUrl = "1.jpg",
                     Order = 1,
                     IsActive = true,
@@ -63,10 +63,30 @@ namespace Store.Data
                 new ParentCategory
                 {
                     Id = 2,
-                    Name = "Lambaderler",
-                    Slug = "lambaderler",
+                    Name = "Lambader",
+                    Slug = "lambader",
                     PhotoUrl = "2.jpg",
                     Order = 2,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new ParentCategory
+                {
+                    Id = 3,
+                    Name = "Şamdan & Mumluk",
+                    Slug = "dekorasyon",
+                    PhotoUrl = "3.jpg",
+                    Order = 3,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new ParentCategory
+                {
+                    Id = 4,
+                    Name = "Ampül & Led",
+                    Slug = "dekorasyon",
+                    PhotoUrl = "4.jpg",
+                    Order = 4,
                     IsActive = true,
                     IsDeleted = false,
                 }
@@ -89,7 +109,106 @@ namespace Store.Data
                     ParentCategoryId = 1,
                     Name = "Ahşap Serisi",
                     Slug = "ahsap-serisi",
-                    PhotoUrl = "1.jpg",
+                    PhotoUrl = "2.jpg",
+                    Order = 2,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 3,
+                    ParentCategoryId = 1,
+                    Name = "Porselen Serisi",
+                    Slug = "porselen-serisi",
+                    PhotoUrl = "3.jpg",
+                    Order = 3,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 4,
+                    ParentCategoryId = 1,
+                    Name = "Cam Serisi",
+                    Slug = "cam-serisi",
+                    PhotoUrl = "4.jpg",
+                    Order = 4,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 5,
+                    ParentCategoryId = 1,
+                    Name = "Metal Serisi",
+                    Slug = "metal-serisi",
+                    PhotoUrl = "5.jpg",
+                    Order = 5,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 6,
+                    ParentCategoryId = 2,
+                    Name = "Ahsap Serisi",
+                    Slug = "ahsap-serisi",
+                    PhotoUrl = "6.jpg",
+                    Order = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 7,
+                    ParentCategoryId = 2,
+                    Name = "Metal Serisi",
+                    Slug = "metal-serisi",
+                    PhotoUrl = "7.jpg",
+                    Order = 2,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 8,
+                    ParentCategoryId = 3,
+                    Name = "Şamdan",
+                    Slug = "samdan",
+                    PhotoUrl = "8.jpg",
+                    Order = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 9,
+                    ParentCategoryId = 3,
+                    Name = "Mumluk",
+                    Slug = "mumluk",
+                    PhotoUrl = "9.jpg",
+                    Order = 2,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 10,
+                    ParentCategoryId = 4,
+                    Name = "Rustik Ampül",
+                    Slug = "rustik-ampul",
+                    PhotoUrl = "10.jpg",
+                    Order = 1,
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Category
+                {
+                    Id = 11,
+                    ParentCategoryId = 4,
+                    Name = "Led",
+                    Slug = "led",
+                    PhotoUrl = "11.jpg",
                     Order = 2,
                     IsActive = true,
                     IsDeleted = false,

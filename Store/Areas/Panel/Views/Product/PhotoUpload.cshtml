@@ -52,15 +52,18 @@
                         <tr>
                             <th>İşlem</th>
                             <th>Id</th>
+                            <th>Sıra</th>
                             <th>Fotoğraf</th>
+                            <th>Url</th>
                             <th>Durum</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>İşlem</th>
-                            <th>Fotoğraf</th>
                             <th>Id</th>
+                            <th>Sıra</th>
+                            <th>Fotoğraf</th>
                             <th>Url</th>
                             <th>Durum</th>
                         </tr>
@@ -72,12 +75,14 @@
                                 <th width="100px">
                                     <a class="btn btn-xs btn-danger" href="~/Panel/Product/PhotoDelete?id=@item.Id&productId=@item.ProductId">Sil</a>
                                 </th>
-                                <th width="200px">
-                                    <a class="image-popup-vertical-fit" href="/uploads/@item.Url" title="@Model.Data.Name">
-                                        <img src="/uploads/@item.Url" alt="image" class="img-responsive" />
+                                <td>@item.Id</td>
+                                <td>@item.Order</td>
+                                <th width="500px">
+                                    <a class="image-popup-vertical-fit" href="/uploads/products/720x660/@item.Url" title="@Model.Data.Name">
+                                        <img src="/uploads/products/150x140/@item.Url" alt="image" class="img-responsive" />
                                     </a>
                                 </th>
-                                <td>@item.Id</td>
+
                                 <th><a href="javascript:void(0)">@item.Url</a></th>
                                 @if (item.IsActive)
                                 {

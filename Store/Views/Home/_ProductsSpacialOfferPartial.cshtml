@@ -42,13 +42,13 @@
                                         <div class="d-inline-flex justify-content-between align-items-center position-absolute left-3 top-0 z-index-9">
                                             <div class="d-flex align-items-center flex-column justify-content-center bg-primary rounded-pill height-75 width-75 text-lh-1">
                                                 <span class="font-size-12">İndirim</span>
-                                                <div class="font-size-20 font-weight-bold">%25</div>
+                                                <div class="font-size-20 font-weight-bold">%@product.Discount</div>
                                             </div>
                                         </div>
                                         <div class="mb-4 mb-md-0">
                                             <div class="row align-items-center">
                                                 <div class="col">
-                                                    <a href="~/product/show/@product.Id" class="d-block text-center"><img class="img-fluid mx-auto" src="~/uploads/products/380x350/@product.ProductPhotos?.FirstOrDefault()?.Url" alt="Image Description"></a>
+                                                    <a href="~/p/@product.Slug" class="d-block text-center"><img class="img-fluid mx-auto" src="~/uploads/products/380x350/@product.ProductPhotos?.FirstOrDefault()?.Url" alt="Image Description"></a>
                                                 </div>
 
                                                 <div class="col-auto d-none d-xl-block d-wd-none">
@@ -132,10 +132,10 @@
                                     </div>
                                     <div class="col-md-6 col-xl-5 col-wd-6">
                                         <div class="space-top-xl-2 space-top-wd-0 mt-xl-4 mt-wd-0">
-                                            <h5 class="mb-3 mb-xl-2 mb-wd-1 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="~/product/show/@product.Id" class="text-blue font-weight-bold">@product.Name</a></h5>
+                                            <h5 class="mb-3 mb-xl-2 mb-wd-1 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="~/p/@product.Slug" class="text-blue font-weight-bold">@product.Name</a></h5>
                                             <div class="d-flex align-items-center justify-content-center mb-3">
-                                                <del class="font-size-18 mr-2 text-gray-2">@product.Price.ToString("N0")<sup class="">₺</sup></del>
-                                                <ins class="font-size-xl-30 font-size-wd-25 text-red text-decoration-none">@product.Price.ToString("N0")<sup class="">₺</sup></ins>
+                                                <del class="font-size-18 mr-2 text-red ">@product.PriceWithoutDiscount.ToString("N0")<sup class="">₺</sup></del>
+                                                <ins class="font-size-xl-30 font-size-wd-25 text-gray-2 text-decoration-none">@product.Price.ToString("N0")<sup class="">₺</sup></ins>
                                             </div>
                                             <div class="mb-4 mb-xl-5 mb-wd-2 pb-wd-1 mx-2">
                                                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -154,7 +154,7 @@
                                                 <div class="mb-2">
                                                     <h6 class="font-size-15 text-gray-2 text-center mb-xl-3 mb-wd-2">Acele et! İndirim bitiyor.</h6>
                                                     <div class="js-countdown d-flex justify-content-center"
-                                                         data-end-date="2023/11/29 19:00:00"
+                                                         data-end-date="2024/01/01 00:00:00"
                                                          data-hours-format="%H"
                                                          data-minutes-format="%M"
                                                          data-seconds-format="%S">

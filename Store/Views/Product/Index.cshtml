@@ -77,7 +77,7 @@
                     @*                     <a href="#" class="d-inline-block max-width-150 ml-n2 mb-2"><img class="img-fluid" src="../../assets/img/200X60/img1.png" alt="Image Description"></a>
                     *@
                     <div class="mb-2">
-                        @Model.Data.Description
+                        @Html.Raw(Model.Data.Description)
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
                     <p><strong>Ürün Kodu</strong>: @Model.Data.Code</p>

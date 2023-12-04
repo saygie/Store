@@ -11,7 +11,25 @@ public class ProductDTO
     public int Stock { get; set; } = 0;
     public double PriceWithoutDiscount { get; set; } = 0;
     public double Price { get; set; } = 0;
-    public int Discount { get; set; } = 0;
+    private int _discount = 0;
+    public int Discount
+    {
+        get
+        {
+            if (PriceWithoutDiscount == 0)
+            {
+                return _discount;
+            }
+            else
+            {
+                return (int)(100 - (Price * 100 / PriceWithoutDiscount));
+            }
+        }
+        set
+        {
+            _discount = value;
+        }
+    }
     public bool IsFeatured { get; set; } = false; // öne çıkan (özel) ürün
     public bool IsDiscounted { get; set; } = false; // indirimli
     public bool IsMostSelled { get; set; } = false; //çok satan

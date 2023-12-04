@@ -79,7 +79,7 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
     {
         try
         {
-            var data = await List(a => a.IsDeleted == false, null, "Category,ProductPhotos");
+            var data = await List(a => a.IsDeleted == false, null, "Category,Category.ParentCategory,ProductPhotos");
             return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
         }
         catch (Exception ex)

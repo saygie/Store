@@ -20,7 +20,11 @@
                                 </div>
                             }
                             <div class="prodcut-price">
-                                <del class="font-size-14 text-red">@Model.PriceWithoutDiscount.ToString("N0")<sup class="">₺</sup></del>
+                                @if (Model.Discount > 0)
+                                {
+                                    <del class="font-size-14 text-red">@Model.PriceWithoutDiscount.ToString("N0")<sup class="">₺</sup></del>
+
+                                }
                                 <div class="text-gray-100">@Model.Price.ToString("N0")<sup class="">₺</sup></div>
                             </div>
                             <div class="prodcut-add-cart">

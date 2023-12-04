@@ -88,8 +88,116 @@ namespace Store.Migrations
                             Name = "Ahşap Serisi",
                             Order = 2,
                             ParentCategoryId = 1,
-                            PhotoUrl = "1.jpg",
+                            PhotoUrl = "2.jpg",
                             Slug = "ahsap-serisi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            Name = "Porselen Serisi",
+                            Order = 3,
+                            ParentCategoryId = 1,
+                            PhotoUrl = "3.jpg",
+                            Slug = "porselen-serisi"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            Name = "Cam Serisi",
+                            Order = 4,
+                            ParentCategoryId = 1,
+                            PhotoUrl = "4.jpg",
+                            Slug = "cam-serisi"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            Name = "Metal Serisi",
+                            Order = 5,
+                            ParentCategoryId = 1,
+                            PhotoUrl = "5.jpg",
+                            Slug = "metal-serisi"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            Name = "Ahsap Serisi",
+                            Order = 1,
+                            ParentCategoryId = 2,
+                            PhotoUrl = "6.jpg",
+                            Slug = "ahsap-serisi"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            Name = "Metal Serisi",
+                            Order = 2,
+                            ParentCategoryId = 2,
+                            PhotoUrl = "7.jpg",
+                            Slug = "metal-serisi"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            Name = "Şamdan",
+                            Order = 1,
+                            ParentCategoryId = 3,
+                            PhotoUrl = "8.jpg",
+                            Slug = "samdan"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            Name = "Mumluk",
+                            Order = 2,
+                            ParentCategoryId = 3,
+                            PhotoUrl = "9.jpg",
+                            Slug = "mumluk"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            Name = "Rustik Ampül",
+                            Order = 1,
+                            ParentCategoryId = 4,
+                            PhotoUrl = "10.jpg",
+                            Slug = "rustik-ampul"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            IsActive = true,
+                            IsDeleted = false,
+                            IsFeatured = false,
+                            Name = "Led",
+                            Order = 2,
+                            ParentCategoryId = 4,
+                            PhotoUrl = "11.jpg",
+                            Slug = "led"
                         });
                 });
 
@@ -282,20 +390,40 @@ namespace Store.Migrations
                             Id = 1,
                             IsActive = true,
                             IsDeleted = false,
-                            Name = "Abajurlar",
+                            Name = "Abajur",
                             Order = 1,
                             PhotoUrl = "1.jpg",
-                            Slug = "abajurlar"
+                            Slug = "abajur"
                         },
                         new
                         {
                             Id = 2,
                             IsActive = true,
                             IsDeleted = false,
-                            Name = "Lambaderler",
+                            Name = "Lambader",
                             Order = 2,
                             PhotoUrl = "2.jpg",
-                            Slug = "lambaderler"
+                            Slug = "lambader"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Şamdan & Mumluk",
+                            Order = 3,
+                            PhotoUrl = "3.jpg",
+                            Slug = "dekorasyon"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Ampül & Led",
+                            Order = 4,
+                            PhotoUrl = "4.jpg",
+                            Slug = "dekorasyon"
                         });
                 });
 
@@ -391,7 +519,7 @@ namespace Store.Migrations
                             Price = 2700.0,
                             PriceWithoutDiscount = 3000.0,
                             Slug = "product-1",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 1, 11, 5, 15, 662, DateTimeKind.Local).AddTicks(3656),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 3, 15, 9, 34, 775, DateTimeKind.Local).AddTicks(6368),
                             Stock = 3
                         },
                         new
@@ -412,7 +540,7 @@ namespace Store.Migrations
                             Price = 3300.0,
                             PriceWithoutDiscount = 3600.0,
                             Slug = "product-2",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 1, 11, 5, 15, 662, DateTimeKind.Local).AddTicks(3691),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 3, 15, 9, 34, 775, DateTimeKind.Local).AddTicks(6388),
                             Stock = 4
                         },
                         new
@@ -433,7 +561,7 @@ namespace Store.Migrations
                             Price = 1750.0,
                             PriceWithoutDiscount = 2250.0,
                             Slug = "product-3",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 1, 11, 5, 15, 662, DateTimeKind.Local).AddTicks(3694),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 3, 15, 9, 34, 775, DateTimeKind.Local).AddTicks(6391),
                             Stock = 0
                         });
                 });

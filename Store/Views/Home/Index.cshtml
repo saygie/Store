@@ -26,8 +26,8 @@
     @Html.Partial("~/Views/Home/_CategoryBannerAPartial.cshtml", categoriesWithProducts)
     <partial name="~/Views/Shared/_FeaturedProductsShowerPartial.cshtml" model="@homePageProducts?.Data.Where(a=>a.IsFeatured)" />
     <partial name="~/Views/Shared/_NewProductsShowerPartial.cshtml" model="@homePageProducts?.Data.Where(a=>a.IsNew)" />
-    @Html.Partial("~/Views/Home/_ProductsSpacialOfferPartial.cshtml", categoriesWithProducts)
+    <partial name="~/Views/Shared/_SpacialOfferProductsShowerPartial.cshtml" model="@homePageProducts?.Data.Where(a=>a.IsSpecialOffer)" />
     <partial name="~/Views/Shared/_DiscountedProductsShowerPartial.cshtml" model="@homePageProducts?.Data.Where(a=>a.IsDiscounted)" />
     <partial name="~/Views/Shared/_MostSelledProductsShowerPartial.cshtml" model="@homePageProducts?.Data.Where(a=>a.IsMostSelled)" />
-    @Html.Partial("~/Views/Home/_ProductsShowerByParentCategoriesPartial.cshtml", parentCategoriesWithProducts)
+    @* @Html.Partial("~/Views/Home/_ProductsShowerByParentCategoriesPartial.cshtml", parentCategoriesWithProducts) *@
 </div>

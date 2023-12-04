@@ -1,11 +1,12 @@
 ﻿@using Store.Models.DTOs
 @using Store.Models.Results
+@using System.Globalization
 @{
     IDataResult<List<CategoryDTO>> Categories = ViewBag.Categories;
 }
 @model Store.Models.Results.IDataResult<ProductDTO>
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Update";
 
 }
 <!-- Basic Validation -->
@@ -30,16 +31,6 @@
                             </div>
                             <div class="row m-t-10">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
-                                    <label>Ürün Seo Url</label>
-                                </div>
-                                <div class="col-md-11 col-xs-8 col-xs-8">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="SeoUrl" placeholder="Ürün Seo Url giriniz..." required value="@Model.Data.Slug" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row m-t-10">
-                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
                                     <label>Ürün Kodu</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
@@ -55,15 +46,15 @@
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
                                         <select class="form-control" id="skill_1" name="CategoryId" required>
-                                            @foreach (var item in Categories.Data.Where(a => a.ParentCategoryId != 0))
+                                            @foreach (var item in Categories.Data)
                                             {
-                                                if (item.ParentCategoryId == Model.Data.CategoryId)
+                                                if (item.Id == Model.Data.CategoryId)
                                                 {
-                                                    <option value="@item.Id" selected>- @item.Name</option>
+                                                    <option value="@item.Id" selected>@item.ParentCategory?.Name/@item.Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@item.Id">- @item.Name</option>
+                                                    <option value="@item.Id">@item.ParentCategory?.Name/@item.Name</option>
                                                 }
 
                                             }
@@ -77,7 +68,7 @@
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <textarea name="Description" cols="30" rows="4" class="form-control no-resize" required>@Model.Data.Description</textarea>
+                                        <textarea id="summernote" name="Description" class="summernote" required>@Model.Data.Description</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -93,11 +84,125 @@
                             </div>
                             <div class="row m-t-10">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>İndirimsiz Fiyat</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="PriceWithoutDiscount" placeholder="İndirimsiz Fiyat giriniz..." required value="@Model.Data.PriceWithoutDiscount" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
                                     <label>Fiyat</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="Price" placeholder="Fiyat giriniz..." required value="@Model.Data.Price" />
+                                    </div>
+                                </div>
+                            </div> <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        @if (Model.Data.IsFeatured)
+                                        {
+                                            <input type="checkbox" id="IsFeatured" name="IsFeatured" value="true" checked>
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" id="IsFeatured" name="IsFeatured" value="true">
+                                        }
+                                       
+                                        <label for="IsFeatured">Öne Çıkan Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        @if (Model.Data.IsDiscounted)
+                                        {
+                                            <input class="form-control" type="checkbox" id="IsDiscounted" name="IsDiscounted" value="true" checked>
+                                        }
+                                        else
+                                        {
+                                            <input class="form-control" type="checkbox" id="IsDiscounted" value="true" name="IsDiscounted">
+                                        }
+                                        <label for="IsDiscounted">İndirimli Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        @if (Model.Data.IsMostSelled)
+                                        {
+                                            <input class="form-control" type="checkbox" id="IsMostSelled" name="IsMostSelled" value="true" checked>
+                                        }
+                                        else
+                                        {
+                                            <input class="form-control" type="checkbox" id="IsMostSelled" value="true" name="IsMostSelled">
+                                        }
+                                        <label for="IsMostSelled">Çok Satan Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        @if (Model.Data.IsNew)
+                                        {
+                                            <input class="form-control" type="checkbox" id="IsNew" name="IsNew" value="true" checked>
+                                        }
+                                        else
+                                        {
+                                            <input class="form-control" type="checkbox" id="IsNew" value="true" name="IsNew">
+                                        }
+                                        <label for="IsNew">Yeni Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        @if (Model.Data.IsSpecialOffer)
+                                        {
+                                            <input class="form-control" type="checkbox" id="IsSpecialOffer" name="IsSpecialOffer" value="true" checked>
+                                        }
+                                        else
+                                        {
+                                            <input class="form-control" type="checkbox" id="IsSpecialOffer" value="true" name="IsSpecialOffer">
+                                        }
+                                        <label for="IsSpecialOffer">Özel Teklifli Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Özel Teklif Bitiş Tarihi</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        @if (Model.Data.SpecialOfferEndDate.HasValue)
+                                        {
+                                            <input type="datetime-local" id="SpecialOfferEndDate" name="SpecialOfferEndDate" value="@Model.Data.SpecialOfferEndDate.Value.ToString("yyyy-MM-ddTHH:mm:ss")" class="form-control" />
+
+                                        }
+                                        else
+                                        {
+                                            <input type="datetime-local" id="SpecialOfferEndDate" name="SpecialOfferEndDate" class="form-control" />
+
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -108,12 +213,13 @@
                                     <div class="form-group">
                                         @if (Model.Data.IsActive)
                                         {
-                                            <input type="checkbox" id="checkbox_1" name="IsActive" value="true" checked>
+                                            <input type="checkbox" id="IsActive" name="IsActive" value="true" checked>
                                         }
                                         else
                                         {
-                                            <input type="checkbox" id="checkbox_1" value="true" name="IsActive">
+                                            <input type="checkbox" id="IsActive" value="true" name="IsActive">
                                         }
+                                        <label for="IsActive">Aktif mi? (Aktif ürünler yayınlanır.)</label>
                                     </div>
                                 </div>
                             </div>
@@ -130,6 +236,8 @@
 @section css {
     <!--THIS PAGE LEVEL CSS-->
     <link href="~/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/plugins/summernote/dist/summernote.css" rel="stylesheet" />
+    <link href="~/plugins/file-input/css/jasny-bootstrap.css" rel="stylesheet" />
 }
 @section scripts {
     <!--THIS PAGE LEVEL JS-->
@@ -137,4 +245,10 @@
     <script src="~/plugins/jquery-steps/jquery.steps.js"></script>
     <script src="~/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="~/assets/js/pages/forms/form-validation.js"></script>
+    <script src="~/plugins/summernote/dist/summernote.min.js"></script>
+    <script src="~/js/pages/forms/summernote.js"></script>
+
+    <script src="~/plugins/file-input/js/jasny-bootstrap.js"></script>
+    <script src="~/plugins/autosize/autosize.js"></script>
+    <script src="~/js/pages/forms/basic-form-elements.js"></script>
 }

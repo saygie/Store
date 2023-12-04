@@ -75,6 +75,16 @@
                             </div>
                             <div class="row m-t-10">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>İndirimsiz Fiyat</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="PriceWithoutDiscount" placeholder="İndirimsiz Fiyat giriniz..." required value="0" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
                                     <label>Fiyat</label>
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
@@ -83,13 +93,73 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row m-t-10">
                                 <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
                                 </div>
                                 <div class="col-md-11 col-xs-8 col-xs-8">
                                     <div class="form-group">
-                                        <input type="checkbox" id="checkbox_1" name="IsActive" value="true">
-                                        <label for="checkbox_1">Aktif Mi? (Seçili olursa yayınlanır.)</label>
+                                        <input type="checkbox" id="IsFeatured" name="IsFeatured" value="true">
+                                        <label for="IsFeatured">Öne Çıkan Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input class="form-control" type="checkbox" id="IsDiscounted" name="IsDiscounted" value="true">
+                                        <label for="IsDiscounted">İndirimli Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input class="form-control" type="checkbox" id="IsMostSelled" name="IsMostSelled" value="true">
+                                        <label for="IsMostSelled">Çok Satan Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input class="form-control" type="checkbox" id="IsNew" name="IsNew" value="true">
+                                        <label for="IsNew">Yeni Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input class="form-control" type="checkbox" id="IsSpecialOffer" name="IsSpecialOffer" value="true">
+                                        <label for="IsSpecialOffer">Özel Teklifli Ürünlerde Göster?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                    <label>Özel Teklif Bitiş Tarihi</label>
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="datetime" id="SpecialOfferEndDate" name="SpecialOfferEndDate" value="@DateTime.Now.AddDays(1)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-t-10">
+                                <div class="col-md-1 col-xs-4 col-xs-4 form-control-label">
+                                </div>
+                                <div class="col-md-11 col-xs-8 col-xs-8">
+                                    <div class="form-group">
+                                        <input type="checkbox" id="IsActive" name="IsActive" value="true">
+                                        <label for="IsActive">Aktif Mi? (Seçili olursa yayınlanır.)</label>
                                     </div>
                                 </div>
                             </div>

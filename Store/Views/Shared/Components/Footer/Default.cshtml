@@ -125,7 +125,7 @@
                         <h6 class="mb-3 font-weight-bold">Koleksiyonlar</h6>
                         <!-- List Group -->
                         <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent">
-                            @foreach (var parentCategory in Model.Data.Take(3))
+                            @foreach (var parentCategory in Model.Data.Take(2))
                             {
                                 <li><a class="list-group-item list-group-item-action" href="../shop/product-categories-5-column-sidebar.html">@parentCategory.Name</a>
                                     <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent">
@@ -148,9 +148,19 @@
 
                         <!-- List Group -->
                         <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent">
-                            @foreach (var parentCategory in Model.Data.Skip(3).Take(3))
+                            @foreach (var parentCategory in Model.Data.Skip(2).Take(2))
                             {
-                                <li><a class="list-group-item list-group-item-action" href="../shop/product-categories-5-column-sidebar.html">@parentCategory.Name</a></li>
+                                <li>
+                                    <a class="list-group-item list-group-item-action" href="../shop/product-categories-5-column-sidebar.html">@parentCategory.Name</a>
+                                    <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent">
+                                        @foreach (var ctegory in parentCategory.Categories)
+                                        {
+                                            <li><a class="list-group-item list-group-item-action" href="../shop/product-categories-5-column-sidebar.html">@ctegory.Name</a></li>
+                                        }
+
+                                    </ul>
+                                </li>
+
                             }
 
                         </ul>

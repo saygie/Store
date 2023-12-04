@@ -7,6 +7,7 @@ namespace Store.Models.Entities;
 [Table("Product")]
 public class Product : IEntity
 {
+
     [Key]
     public int Id { get; set; }
 
@@ -38,8 +39,27 @@ public class Product : IEntity
     [Required]
     public double Price { get; set; } = 0;
 
+    private int _discount = 0;
+
     [Required]
-    public int Discount { get; set; } = 0;
+    public int Discount
+    {
+        get
+        {
+            if (PriceWithoutDiscount == 0)
+            {
+                return _discount;
+            }
+            else
+            {
+                return (int)(100 - (Price * 100 / PriceWithoutDiscount));
+            }
+        }
+        set
+        {
+            _discount = value;
+        }
+    }
 
     [Required]
     public bool IsFeatured { get; set; } = false; // öne çıkan (özel) ürün

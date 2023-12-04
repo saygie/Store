@@ -41,11 +41,7 @@
                          }]'>
             @foreach (var product in Model)
             {
-                for (int i = 0; i < 3; i++)
-                {
                     <partial name="~/Views/Shared/_ProductShowerCardPartial.cshtml" model="product" />
-
-                }
             }
         </div>
     </div>

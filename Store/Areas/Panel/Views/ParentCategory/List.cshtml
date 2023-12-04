@@ -34,16 +34,22 @@
                     <thead>
                         <tr>
                             <th>İşlem</th>
-                            <th>Kategori</th>
                             <th>Id</th>
+                            <th>Sıra</th>
+                            <th>Fotoğraf</th>
+                            <th>Ad</th>
+                            <th>Url</th>
                             <th>Aktif Mi?</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>İşlem</th>
-                            <th>Kategori</th>
                             <th>Id</th>
+                            <th>Sıra</th>
+                            <th>Fotoğraf</th>
+                            <th>Ad</th>
+                            <th>Url</th>
                             <th>Aktif Mi?</th>
                         </tr>
                     </tfoot>
@@ -55,8 +61,15 @@
                                     <a class="btn btn-xs btn-warning" href="~/Panel/ParentCategory/Update?id=@item.Id">Düzenle</a>
                                     <a class="btn btn-xs btn-danger" href="~/Panel/ParentCategory/Delete?id=@item.Id">Sil</a>
                                 </th>
-                                <th><a href="javascript:void(0)">@item.Name</a></th>
                                 <td>@item.Id</td>
+                                <td>@item.Order</td>
+                                <th width="50px">
+                                    <a class="image-popup-vertical-fit" href="/uploads/category/190x150/@item.PhotoUrl" title="@item.Name">
+                                        <img src="/uploads/category/190x150/@item.PhotoUrl" alt="image" class="img-responsive" />
+                                    </a>
+                                </th>
+                                <td>@item.Name</td>
+                                <td>@item.Slug</td>                              
                                 @if (item.IsActive)
                                 {
                                     <td style="color:green">Aktif</td>
@@ -81,6 +94,7 @@
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" />
 }
 @section scripts {
     <!--THIS PAGE LEVEL JS-->
@@ -99,5 +113,6 @@
     <script src="~/plugins/jquery-datatable/extensions/export/dataTables.scroller.min.js"></script>
     <script src="~/plugins/jquery-datatable/extensions/export/dataTables.fixedHeader.min.js"></script>
     <script src="~/js/pages/tables/jquery-datatable.js"></script>
+    <script src="~/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/plugins/magnific-popup/jquery.magnific-popup-custom.js"></script>
 }
-

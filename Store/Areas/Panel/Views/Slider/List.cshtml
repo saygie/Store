@@ -35,12 +35,12 @@
                         <tr>
                             <th>İşlem</th>
                             <th>Id</th>
+                            <th>Sıra</th>
+                            <th>Fotoğraf</th>
                             <th>Başlık</th>
                             <th>Kısa Açıklama</th>
                             <th>Link</th>
-                            <th>Photo</th>
                             <th>Fiyat (başlayan fiyatlarla)</th>
-                            <th>Sıra</th>
                             <th>Aktif Mi?</th>
                         </tr>
                     </thead>
@@ -48,17 +48,17 @@
                         <tr>
                             <th>İşlem</th>
                             <th>Id</th>
+                            <th>Sıra</th>
+                            <th>Fotoğraf</th>
                             <th>Başlık</th>
                             <th>Kısa Açıklama</th>
                             <th>Link</th>
-                            <th>Photo</th>
                             <th>Fiyat (başlayan fiyatlarla)</th>
-                            <th>Sıra</th>
                             <th>Aktif Mi?</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach (var item in Model.Data.OrderByDescending(a=>a.Id))
+                        @foreach (var item in Model.Data.OrderByDescending(a=>a.Order))
                         {
                             <tr>
                                 <th width="100px">
@@ -66,12 +66,17 @@
                                     <a class="btn btn-xs btn-danger" href="~/Panel/Slider/Delete?id=@item.Id">Sil</a>
                                 </th>
                                 <td>@item.Id</td>
+                                <td>@item.Order</td>
+                                <th width="50px">
+                                    <a class="image-popup-vertical-fit" href="/uploads/slider/416x420/@item.PhotoUrl" title="@item.Title">
+                                        <img src="/uploads/slider/416x420/@item.PhotoUrl" alt="image" class="img-responsive" />
+                                    </a>
+                                </th>
                                 <th><a href="javascript:void(0)">@item.Title</a></th>
                                 <td>@item.Description</td>
                                 <td>@item.Link</td>
-                                <td>@item.PhotoUrl</td>
                                  <td>@item.Price</td>
-                                <td>@item.Order</td>
+                               
                                 @if (item.IsActive)
                                 {
                                     <td style="color:green">Aktif</td>
@@ -96,6 +101,7 @@
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
     <link href="~/plugins/jquery-datatable/skin/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" />
 }
 @section scripts {
     <!--THIS PAGE LEVEL JS-->
@@ -114,5 +120,7 @@
     <script src="~/plugins/jquery-datatable/extensions/export/dataTables.scroller.min.js"></script>
     <script src="~/plugins/jquery-datatable/extensions/export/dataTables.fixedHeader.min.js"></script>
     <script src="~/js/pages/tables/jquery-datatable.js"></script>
+    <script src="~/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/plugins/magnific-popup/jquery.magnific-popup-custom.js"></script>
 }
 

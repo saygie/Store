@@ -13,13 +13,15 @@ namespace Store.Areas.Panel.Controllers
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
         private readonly IProductPhotoService productPhotoService;
+        private readonly IHelperService helperService;
 
-        public ProductController(IProductService productService, ILogger<ProductController> logger, ICategoryService categoryService, IProductPhotoService productPhotoService)
+        public ProductController(IProductService productService, IHelperService helperService, ILogger<ProductController> logger, ICategoryService categoryService, IProductPhotoService productPhotoService)
         {
             this.logger = logger;
             this.productService = productService;
             this.categoryService = categoryService;
             this.productPhotoService = productPhotoService;
+            this.helperService = helperService;
         }
         public async Task<IActionResult> List()
         {
@@ -39,6 +41,7 @@ namespace Store.Areas.Panel.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(ProductDTO product)
         {
+            product.Slug = helperService.ConvertToSeoSentence(product.Name);
             var result = await productService.Add(product);
             if (result.Success)
             {
@@ -59,6 +62,7 @@ namespace Store.Areas.Panel.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(ProductDTO product)
         {
+            product.Slug = helperService.ConvertToSeoSentence(product.Name);
             var result = await productService.Update(product);
             if (result.Success)
             {
