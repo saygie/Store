@@ -12,7 +12,7 @@ using Store.Data;
 namespace Store.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20231202140935_InitialDB")]
+    [Migration("20231204095846_InitialDB")]
     partial class InitialDB
     {
         /// <inheritdoc />
@@ -24,6 +24,62 @@ namespace Store.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Store.Models.Entities.Basket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Basket");
+                });
+
+            modelBuilder.Entity("Store.Models.Entities.BasketItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BasketId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("BasketItem");
+                });
 
             modelBuilder.Entity("Store.Models.Entities.Category", b =>
                 {
@@ -522,7 +578,7 @@ namespace Store.Migrations
                             Price = 2700.0,
                             PriceWithoutDiscount = 3000.0,
                             Slug = "product-1",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 3, 15, 9, 34, 775, DateTimeKind.Local).AddTicks(6368),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 5, 10, 58, 45, 920, DateTimeKind.Local).AddTicks(4138),
                             Stock = 3
                         },
                         new
@@ -543,7 +599,7 @@ namespace Store.Migrations
                             Price = 3300.0,
                             PriceWithoutDiscount = 3600.0,
                             Slug = "product-2",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 3, 15, 9, 34, 775, DateTimeKind.Local).AddTicks(6388),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 5, 10, 58, 45, 920, DateTimeKind.Local).AddTicks(4168),
                             Stock = 4
                         },
                         new
@@ -564,7 +620,7 @@ namespace Store.Migrations
                             Price = 1750.0,
                             PriceWithoutDiscount = 2250.0,
                             Slug = "product-3",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 3, 15, 9, 34, 775, DateTimeKind.Local).AddTicks(6391),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 5, 10, 58, 45, 920, DateTimeKind.Local).AddTicks(4172),
                             Stock = 0
                         });
                 });
@@ -713,6 +769,25 @@ namespace Store.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Store.Models.Entities.BasketItem", b =>
+                {
+                    b.HasOne("Store.Models.Entities.Basket", "Basket")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Store.Models.Entities.Product", "Product")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Store.Models.Entities.Category", b =>
                 {
                     b.HasOne("Store.Models.Entities.ParentCategory", "ParentCategory")
@@ -779,6 +854,11 @@ namespace Store.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Store.Models.Entities.Basket", b =>
+                {
+                    b.Navigation("BasketItems");
+                });
+
             modelBuilder.Entity("Store.Models.Entities.Category", b =>
                 {
                     b.Navigation("Products");
@@ -806,6 +886,8 @@ namespace Store.Migrations
 
             modelBuilder.Entity("Store.Models.Entities.Product", b =>
                 {
+                    b.Navigation("BasketItems");
+
                     b.Navigation("ProductPhotos");
                 });
 #pragma warning restore 612, 618

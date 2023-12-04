@@ -28,6 +28,16 @@ namespace Store.Data
                 .WithMany(b => b.Categories)
                 .HasForeignKey(a => a.ParentCategoryId);
 
+            modelBuilder.Entity<BasketItem>()
+                .HasOne(a => a.Basket)
+                .WithMany(b => b.BasketItems)
+                .HasForeignKey(a => a.BasketId);
+
+            modelBuilder.Entity<BasketItem>()
+                .HasOne(a => a.Product)
+                .WithMany(b => b.BasketItems)
+                .HasForeignKey(a => a.ProductId);
+
 
             Seed(modelBuilder);
 
@@ -45,7 +55,8 @@ namespace Store.Data
         public virtual DbSet<ProductPhoto> ProductPhoto => Set<ProductPhoto>();
         public virtual DbSet<Favorite> Favorite => Set<Favorite>();
         public virtual DbSet<Slider> Slider => Set<Slider>();
-
+        public virtual DbSet<Basket> Basket => Set<Basket>();
+        public virtual DbSet<BasketItem> BasketItem => Set<BasketItem>();
 
         private void Seed(ModelBuilder modelBuilder)
         {

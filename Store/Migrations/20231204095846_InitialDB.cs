@@ -14,6 +14,21 @@ namespace Store.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Basket",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Basket", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "City",
                 columns: table => new
                 {
@@ -222,6 +237,35 @@ namespace Store.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BasketItem",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BasketId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BasketItem", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BasketItem_Basket_BasketId",
+                        column: x => x.BasketId,
+                        principalTable: "Basket",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BasketItem_Product_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProductPhoto",
                 columns: table => new
                 {
@@ -288,9 +332,9 @@ namespace Store.Migrations
                 columns: new[] { "Id", "CategoryId", "Code", "Description", "Discount", "IsActive", "IsDeleted", "IsDiscounted", "IsFeatured", "IsMostSelled", "IsNew", "IsSpecialOffer", "Name", "Price", "PriceWithoutDiscount", "Slug", "SpecialOfferEndDate", "Stock" },
                 values: new object[,]
                 {
-                    { 1, 1, "8622f51e", "modern ve şık", 10, true, false, true, true, true, true, true, "Product-1", 2700.0, 3000.0, "product-1", new DateTime(2023, 12, 3, 15, 9, 34, 775, DateTimeKind.Local).AddTicks(6368), 3 },
-                    { 2, 2, "9dae0207", "modern ve şık", 9, true, false, true, true, true, true, true, "Product-2", 3300.0, 3600.0, "product-2", new DateTime(2023, 12, 3, 15, 9, 34, 775, DateTimeKind.Local).AddTicks(6388), 4 },
-                    { 3, 2, "27ae0101", "modern ve şık", 23, true, false, true, true, true, true, true, "Product-3", 1750.0, 2250.0, "product-3", new DateTime(2023, 12, 3, 15, 9, 34, 775, DateTimeKind.Local).AddTicks(6391), 0 }
+                    { 1, 1, "8622f51e", "modern ve şık", 10, true, false, true, true, true, true, true, "Product-1", 2700.0, 3000.0, "product-1", new DateTime(2023, 12, 5, 10, 58, 45, 920, DateTimeKind.Local).AddTicks(4138), 3 },
+                    { 2, 2, "9dae0207", "modern ve şık", 9, true, false, true, true, true, true, true, "Product-2", 3300.0, 3600.0, "product-2", new DateTime(2023, 12, 5, 10, 58, 45, 920, DateTimeKind.Local).AddTicks(4168), 4 },
+                    { 3, 2, "27ae0101", "modern ve şık", 23, true, false, true, true, true, true, true, "Product-3", 1750.0, 2250.0, "product-3", new DateTime(2023, 12, 5, 10, 58, 45, 920, DateTimeKind.Local).AddTicks(4172), 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -302,6 +346,16 @@ namespace Store.Migrations
                     { 2, true, false, 1, 2, "cdf13471-2761-4fab-aa98-ba1bf26933a4.jpg" },
                     { 3, true, false, 1, 3, "a985a819-7a2c-49d3-8fb0-07deea42c239.jpg" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BasketItem_BasketId",
+                table: "BasketItem",
+                column: "BasketId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BasketItem_ProductId",
+                table: "BasketItem",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Category_ParentCategoryId",
@@ -338,6 +392,9 @@ namespace Store.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "BasketItem");
+
+            migrationBuilder.DropTable(
                 name: "Favorite");
 
             migrationBuilder.DropTable(
@@ -351,6 +408,9 @@ namespace Store.Migrations
 
             migrationBuilder.DropTable(
                 name: "Slider");
+
+            migrationBuilder.DropTable(
+                name: "Basket");
 
             migrationBuilder.DropTable(
                 name: "County");

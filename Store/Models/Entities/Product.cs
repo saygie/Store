@@ -81,5 +81,6 @@ public class Product : IEntity
     public bool IsDeleted { get; set; } = false;
 
     public ICollection<ProductPhoto>? ProductPhotos { get; set; }
+    public ICollection<BasketItem>? BasketItems { get; set; }
     public Category? Category { get; set; }
 }

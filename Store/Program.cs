@@ -17,12 +17,17 @@ options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
+
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IParentCategoryService, ParentCategoryService>();
 builder.Services.AddScoped<IProductPhotoService, ProductPhotoService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<IBasketService, BasketService>();
+builder.Services.AddScoped<IBasketItemService, BasketItemService>();
 builder.Services.AddScoped<IHelperService, HelperService>();
 
 builder.Services.AddAutoMapper(typeof(AutoMappingProfile));
@@ -43,6 +48,8 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 

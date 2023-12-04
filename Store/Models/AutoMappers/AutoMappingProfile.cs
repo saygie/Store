@@ -14,5 +14,7 @@ public class AutoMappingProfile : Profile
         CreateMap<ParentCategory, ParentCategoryDTO>().ReverseMap();
         CreateMap<ProductPhoto, ProductPhotoDTO>().ReverseMap();
         CreateMap<Slider, SliderDTO>().ReverseMap();
+        CreateMap<Basket, BasketDTO>().ReverseMap();
+        CreateMap<BasketItem, BasketItemDTO>().ReverseMap();
     }
 }
