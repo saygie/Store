@@ -8,6 +8,7 @@ public class BasketItemDTO
     public int BasketId { get; set; }
     public int ProductId { get; set; }
     public int Quantity { get; set; }
+    public string? Photo { get; set; }
     public double Total { get; set; }
     public bool IsActive { get; set; }
     public bool IsDeleted { get; set; }

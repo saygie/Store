@@ -457,6 +457,27 @@
             $.HSCore.components.HSSelectPicker.init('.js-select');
         });
     </script>
+    <script>
+
+        $(document).ready(function () {
+            $('.btn-add-cart').on('click', function (e) {
+                e.preventDefault();
+
+                var productId = $(this).data('product-id');
+                alert(productId)
+                $.ajax({
+                    url: '/Basket/Add?productId=' + productId,
+                    method: 'GET',
+                    success: function (data) {
+                        $('#cartSection').html(data);
+                    },
+                    error: function () {
+                        alert('Bir hata oluştu');
+                    }
+                });
+            });
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

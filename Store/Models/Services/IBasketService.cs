@@ -8,7 +8,8 @@ namespace Store.Models.Services;
 
 public interface IBasketService : IService<Basket>
 {
-    Task<IDataResult<BasketDTO?>> CreateOrGet();
+    Task<BasketDTO?> CreateOrGetSession();
+    Task<IResult> AddToSession(int productId, int quantity);
     Task<IDataResult<List<BasketDTO>>> List();
     Task<IDataResult<BasketDTO?>> GetById(int Id);
     Task<IDataResult<BasketDTO?>> GetByUserId(string userId);

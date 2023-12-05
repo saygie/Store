@@ -1,0 +1,47 @@
+﻿@using Store.Models.DTOs
+@model BasketDTO
+
+<div id="basicDropdownHoverInvoker" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart"
+     aria-controls="basicDropdownHover"
+     aria-haspopup="true"
+     aria-expanded="false"
+     data-unfold-event="click"
+     data-unfold-target="#basicDropdownHover"
+     data-unfold-type="css-animation"
+     data-unfold-duration="300"
+     data-unfold-delay="300"
+     data-unfold-hide-on-scroll="true"
+     data-unfold-animation-in="slideInUp"
+     data-unfold-animation-out="fadeOut">
+    <i class="font-size-22 ec ec-shopping-bag"></i>
+    <span class="bg-lg-down-black width-22 height-22 bg-primary position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12">2</span>
+    <span class="d-none d-xl-block font-weight-bold font-size-16 text-gray-90 ml-3">$1785.00</span>
+</div>
+<div id="basicDropdownHover" class="cart-dropdown dropdown-menu dropdown-unfold border-top border-top-primary mt-3 border-width-2 border-left-0 border-right-0 border-bottom-0 left-auto right-0" aria-labelledby="basicDropdownHoverInvoker">
+    <ul class="list-unstyled px-3 pt-3">
+        @foreach (var item in Model.BasketItems)
+        {
+            <li class="border-bottom pb-3 mb-3">
+                <div class="">
+                    <ul class="list-unstyled row mx-n2">
+                        <li class="px-2 col-auto">
+                            <img class="img-fluid" src="~/assets/img/75X75/img1.jpg" alt="Image Description">
+                        </li>
+                        <li class="px-2 col">
+                            <h5 class="text-blue font-size-14 font-weight-bold">@item.Product?.Name</h5>
+                            <span class="font-size-14">1 × $1,100.00</span>
+                        </li>
+                        <li class="px-2 col-auto">
+                            <a href="#" class="text-gray-90"><i class="ec ec-close-remove"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        }
+    </ul>
+    <div class="flex-center-between px-4 pt-2">
+        <a href="~/basket" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5">Sepetim</a>
+        <a href="~/checkout" class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5">Ödeme</a>
+    </div>
+</div>
+                            
