@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis;
+using NuGet.ContentModel;
 using Store.Data;
 using Store.Models.DTOs;
 using Store.Models.Entities;
@@ -53,6 +54,26 @@ public class BasketService : Service<Basket, DataDbContext>, IBasketService
         }
 
     }
+    public async Task<IResult> RemoveItemInSession(int productId)
+    {
+        try
+        {
+            var basketSession = await CreateOrGetSession();
+            var product = basketSession.BasketItems.Where(a => a.ProductId == productId).FirstOrDefault();
+            if (product is not null)
+            {
+                basketSession.BasketItems.Remove(product);
+                basketSession.Total = basketSession.BasketItems.Sum(b => b.Total);
+                Session.SetString(BasketSessionKey, JsonSerializer.Serialize(basketSession));
+            }
+            return new Result(true);
+        }
+        catch (Exception ex)
+        {
+            return new Result(false);
+        }
+
+    }
     public async Task<IResult> Add(BasketDTO dto)
     {
         try
@@ -101,9 +122,8 @@ public class BasketService : Service<Basket, DataDbContext>, IBasketService
                     Discount = product.Data.Discount,
                 };
                 basket?.BasketItems?.Add(basketItem);
-
-
             }
+            basket.Total = basket.BasketItems.Sum(b => b.Total);
             Session.SetString(BasketSessionKey, JsonSerializer.Serialize(basket));
 
             return new Result(true);

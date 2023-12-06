@@ -271,18 +271,18 @@
                                 <!-- End Input -->
                             </li>
                             <!-- End Search -->
-                            <li class="col pr-xl-0 px-2 px-sm-3 d-xl-none">
-                                <a href="~/basket" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
+
+                            <li class="col pr-xl-0 px-2 px-sm-3 d-xl-block">
+                                <a href="~/basket" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Sepetim">
                                     <i class="font-size-22 ec ec-shopping-bag"></i>
-                                    <span class="bg-lg-down-black width-22 height-22 bg-primary position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12">2</span>
-                                    <span class="d-none d-xl-block font-weight-bold font-size-16 text-gray-90 ml-3">$1785.00</span>
+                                    <div id="basketSection">
+                                        @await Component.InvokeAsync("HeaderBasket")
+                                    </div>
+                                    
                                 </a>
                             </li>
-                            <li class="col pr-xl-0 px-2 px-sm-3 d-none d-xl-block">
-@*                                 @await Component.InvokeAsync("Cart", new { cart = _cart })
- *@                            </li>
-                            <li class="col d-xl-none px-2 px-sm-3"><a href="~/Identity/Account/Login" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="My Account"><i class="font-size-22 ec ec-user"></i></a></li>
-                            <partial name="_HeaderBasketPartial" />
+                            <li class="col d-xl-none px-2 px-sm-3"><a href="~/Identity/Account/Login" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Hesabım"><i class="font-size-22 ec ec-user"></i></a></li>
+                        
                         </ul>
                     </div>
                 </div>

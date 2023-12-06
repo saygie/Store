@@ -53,22 +53,22 @@
                         {
                             <tr class="">
                                 <td class="text-center">
-                                    <a href="#" class="text-gray-32 font-size-26">×</a>
+                                    <a href="~/basket/removeitem?productId=@item.ProductId" class="text-gray-32 font-size-26">×</a>
                                 </td>
                                 <td class="d-none d-md-table-cell">
-                                    <a href="#"><img class="img-fluid max-width-100 p-1 border border-color-1" src="~/uploads/products/320X300/@item.Photo" alt="Image Description"></a>
+                                    <a href="~/p/@item.Product.Slug"><img class="img-fluid max-width-100 p-1 border border-color-1" src="~/uploads/products/320X300/@item.Photo" alt="Image Description"></a>
                                 </td>
 
-                                <td data-title="Product">
-                                    <a href="#" class="text-gray-90">@item.Product?.Name</a>
+                                <td data-title="Ürün">
+                                    <a href="~/p/@item.Product.Slug" class="text-gray-90">@item.Product?.Name</a>
                                 </td>
 
-                                <td data-title="Price">
+                                <td data-title="Fiyat">
                                     <span class="">@item.Product?.Price.ToString("N0")<sup class="">₺</sup></span>
                                 </td>
 
-                                <td data-title="Quantity">
-                                    <span class="sr-only">Quantity</span>
+                                <td data-title="Adet">
+                                    <span class="sr-only">Adet</span>
                                     <!-- Quantity -->
                                     <div class="border rounded-pill py-1 width-122 w-xl-80 px-3 border-color-1">
                                         <div class="js-quantity row align-items-center">
@@ -76,10 +76,19 @@
                                                 <input class="js-result form-control h-auto border-0 rounded p-0 shadow-none" type="text" value="@item.Quantity">
                                             </div>
                                             <div class="col-auto pr-1">
-                                                <a class="js-minus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0" href="javascript:;">
-                                                    <small class="fas fa-minus btn-icon__inner"></small>
-                                                </a>
-                                                <a class="js-plus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0" href="javascript:;">
+                                                @if (item.Quantity > 1)
+                                                {
+                                                    <a class="js-minus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0" href="~/basket/DecreaseItemQuantity?productId=@item.ProductId">
+                                                        <small class="fas fa-minus btn-icon__inner"></small>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="js-minus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0" href="~/basket/removeitem?productId=@item.ProductId">
+                                                        <small class="fas fa-trash btn-icon__inner"></small>
+                                                    </a>
+                                                }
+                                                <a class="js-plus btn btn-icon btn-xs btn-outline-secondary rounded-circle border-0" href="~/basket/IncreaseItemQuantity?productId=@item.ProductId">
                                                     <small class="fas fa-plus btn-icon__inner"></small>
                                                 </a>
                                             </div>
@@ -88,45 +97,23 @@
                                     <!-- End Quantity -->
                                 </td>
 
-                                <td data-title="Total">
+                                <td data-title="Tutar">
                                     <span class="">@item.Total.ToString("N0")<sup class="">₺</sup></span>
                                 </td>
                             </tr>
                         }
-
-
-                        <tr>
-                            <td colspan="6" class="border-top space-top-2 justify-content-center">
-                                <div class="pt-md-3">
-                                    <div class="d-block d-md-flex flex-center-between">
-                                        <div class="mb-3 mb-md-0 w-xl-40">
-                                            <!-- Apply coupon Form -->
-                                            <form class="js-focus-state">
-                                                <label class="sr-only" for="subscribeSrEmailExample1">Coupon code</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="text" id="subscribeSrEmailExample1" placeholder="Coupon code" aria-label="Coupon code" aria-describedby="subscribeButtonExample2" required>
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-block btn-dark px-4" type="button" id="subscribeButtonExample2"><i class="fas fa-tags d-md-none"></i><span class="d-none d-md-inline">Apply coupon</span></button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <!-- End Apply coupon Form -->
-                                        </div>
-                                        <div class="d-md-flex">
-                                            <a href="~/" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5 w-100 w-md-auto">Alışverişe Devam Et</a>
-                                            <a href="~/checkout" class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5 w-100 w-md-auto d-none d-md-inline-block">Ödeme Yap</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </form>
         </div>
         <div class="mb-8 cart-total">
             <div class="row">
-                <div class="col-xl-5 col-lg-6 offset-lg-6 offset-xl-7 col-md-8 offset-md-4">
+                <div class="col-xl-6 col-lg-6 col-md-4 text-center">
+                    <a href="~/" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5 w-100 w-md-auto">Alışverişe Devam Et</a>
+                    <a href="~/checkout" class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5 w-100 w-md-auto d-none d-md-inline-block">Ödeme Yap</a>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-8">
+                  
                     <div class="border-bottom border-color-1 mb-3">
                         <h3 class="d-inline-block section-title mb-0 pb-2 font-size-26">Sepet Toplam</h3>
                     </div>
@@ -134,22 +121,23 @@
                         <tbody>
                             <tr class="cart-subtotal">
                                 <th>Ara Toplam</th>
-                                <td data-title="Subtotal"><span class="amount">$1,785.00</span></td>
+                                <td data-title="Subtotal"><span class="amount">@Model.Total.ToString("N0")<sup class="">₺</sup></span></td>
                             </tr>
                             <tr class="shipping">
                                 <th>Kargo</th>
                                 <td data-title="Shipping">
-                                    Ücretsiz Kargo: <span class="amount">0</span>
+                                    <strong><span class="text-bold">Ücretsiz</span></strong>
                                 </td>
                             </tr>
                             <tr class="order-total">
                                 <th>Toplam</th>
-                                <td data-title="Total"><strong><span class="amount">$2,085.00</span></strong></td>
+                                <td data-title="Total"><strong><span class="amount">@Model.Total.ToString("N0")<sup class="">₺</sup></span></strong></td>
                             </tr>
                         </tbody>
                     </table>
                     <button type="button" class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5 w-100 w-md-auto d-md-none">Ödeme Yap</button>
                 </div>
+                
             </div>
         </div>
     }

@@ -461,20 +461,37 @@
 
         $(document).ready(function () {
             $('.btn-add-cart').on('click', function (e) {
+                $(this).prop('disabled', true);
                 e.preventDefault();
+                var productId = $(this).data('product-id')
+                var button = $(this);
+                var addToCartIcon = button.find('.ec-add-to-cart');
+                var loadingIcon = button.find('.fa-spinner');
+                var successIcon = button.find('.fa-check');
+                loadingIcon.show();
+                addToCartIcon.hide();
+             
 
-                var productId = $(this).data('product-id');
-                alert(productId)
                 $.ajax({
                     url: '/Basket/Add?productId=' + productId,
                     method: 'GET',
                     success: function (data) {
-                        $('#cartSection').html(data);
+                        loadingIcon.hide();
+                        successIcon.show();
+                        $('#basketSection').html(data);                   
+                    },
+                    complete: function () {
+                        setTimeout(function () {
+                            successIcon.hide();
+                            addToCartIcon.show();
+                            button.prop('disabled', false);
+                        }, 2000);
                     },
                     error: function () {
-                        alert('Bir hata oluştu');
+                        button.prop('disabled', false);
                     }
                 });
+                
             });
         });
     </script>
