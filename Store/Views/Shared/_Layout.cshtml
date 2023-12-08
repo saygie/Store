@@ -30,6 +30,8 @@
 
     <!-- CSS Electro Template -->
     <link rel="stylesheet" href="~/assets/css/theme.css">
+    @await RenderSectionAsync("css", required: false)
+
 </head>
 
 <body>
@@ -495,7 +497,7 @@
             });
         });
     </script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>
 
