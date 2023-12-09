@@ -12,7 +12,7 @@ public class Basket:IEntity
     public int Id { get; set; }
 
     [Required]
-    [StringLength(32)]
+    [StringLength(64)]
     public string UserId { get; set; } = string.Empty;
 
     [Required]

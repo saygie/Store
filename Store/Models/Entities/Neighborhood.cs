@@ -23,4 +23,5 @@ public class Neighborhood : IEntity
     public bool IsDeleted { get; set; } = false;
 
     public County? County { get; set; }
+    public List<Address>? Addresses { get; set; }
 }

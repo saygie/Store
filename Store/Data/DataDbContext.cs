@@ -38,6 +38,21 @@ namespace Store.Data
                 .WithMany(b => b.BasketItems)
                 .HasForeignKey(a => a.ProductId);
 
+            modelBuilder.Entity<Address>()
+                .HasOne(a => a.Neighborhood)
+                .WithMany(b => b.Addresses)
+                .HasForeignKey(a => a.NeighborhoodId);
+
+            modelBuilder.Entity<Neighborhood>()
+                .HasOne(a => a.County)
+                .WithMany(b => b.Neighborhoods)
+                .HasForeignKey(a => a.CountyId);
+
+            modelBuilder.Entity<County>()
+                .HasOne(a => a.City)
+                .WithMany(b => b.Counties)
+                .HasForeignKey(a => a.CityId);
+
 
             Seed(modelBuilder);
 
@@ -46,6 +61,7 @@ namespace Store.Data
 
         public virtual DbSet<Category> Category => Set<Category>();
         public virtual DbSet<ParentCategory> ParentCategory => Set<ParentCategory>();
+        public virtual DbSet<Address> Address => Set<Address>();
         public virtual DbSet<City> City => Set<City>();
         public virtual DbSet<County> County => Set<County>();
         public virtual DbSet<Neighborhood> Neighborhood => Set<Neighborhood>();
@@ -57,6 +73,7 @@ namespace Store.Data
         public virtual DbSet<Slider> Slider => Set<Slider>();
         public virtual DbSet<Basket> Basket => Set<Basket>();
         public virtual DbSet<BasketItem> BasketItem => Set<BasketItem>();
+
 
         private void Seed(ModelBuilder modelBuilder)
         {
@@ -359,7 +376,89 @@ namespace Store.Data
                     Order = 3,
                 }
             );
+            modelBuilder.Entity<City>().HasData(
+                new City
+                {
+                    Id = 1,
+                    Name ="Ankara",
+                    IsActive = true,
+                    IsDeleted = false,
+                }
+             );
+            modelBuilder.Entity<County>().HasData(
+                new County
+                {
+                    Id = 1,
+                    CityId = 1,
+                    Name = "Yenimahalle",
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                 new County
+                 {
+                     Id = 2,
+                     CityId = 1,
+                     Name = "Gölbaşı",
+                     IsActive = true,
+                     IsDeleted = false,
+                 }
+             );
+            modelBuilder.Entity<Neighborhood>().HasData(
+                new Neighborhood
+                {
+                    Id = 1,
+                    CountyId = 1,
+                    Name = "Çamlıca Mahallesi",
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Neighborhood
+                {
+                    Id = 2,
+                    CountyId = 2,
+                    Name = "İncek Mahallesi",
+                    IsActive = true,
+                    IsDeleted = false,
+                }
+             );
+            modelBuilder.Entity<Address>().HasData(
+                new Address
+                {
+                    Id = 1,
+                    NeighborhoodId = 1,
+                    Title = "Ev",
+                    FirstName="Ersel",
+                    LastName ="Saygı",
+                    Phone ="5539288584",
+                    UserId = "66016ad3-baa8-4be9-bdf0-38a53ca57ec9",
+                    IsCorporate = false,
+                    CorporateName = null,
+                    TaxAdministration = null,
+                    TaxIdentificationNumber = null,
+                    AddressDetail = "162 Cad. 14/B Kat:1 No:6",
+                    IsActive = true,
+                    IsDeleted = false,
+                },
+                new Address
+                {
+                    Id = 2,
+                    NeighborhoodId = 2,
+                    Title = "İş",
+                    FirstName = "Ersel",
+                    LastName = "Saygı",
+                    Phone = "5539288584",
+                    UserId = "66016ad3-baa8-4be9-bdf0-38a53ca57ec9",
+                    IsCorporate = false,
+                    CorporateName = null,
+                    TaxAdministration = null,
+                    TaxIdentificationNumber = null,
+                    AddressDetail = "30648 Cadde T2-0 Blok Belediye No:0/0",
+                    IsActive = true,
+                    IsDeleted = false,
+                }
 
+
+             );
         }
 
     }

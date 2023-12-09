@@ -22,6 +22,105 @@ namespace Store.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Store.Models.Entities.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AddressDetail")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("CorporateName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCorporate")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<int>("NeighborhoodId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
+
+                    b.Property<string>("TaxAdministration")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("TaxIdentificationNumber")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NeighborhoodId");
+
+                    b.ToTable("Address");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AddressDetail = "162 Cad. 14/B Kat:1 No:6",
+                            FirstName = "Ersel",
+                            IsActive = true,
+                            IsCorporate = false,
+                            IsDeleted = false,
+                            LastName = "Saygı",
+                            NeighborhoodId = 1,
+                            Phone = "5539288584",
+                            Title = "Ev",
+                            UserId = "66016ad3-baa8-4be9-bdf0-38a53ca57ec9"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AddressDetail = "30648 Cadde T2-0 Blok Belediye No:0/0",
+                            FirstName = "Ersel",
+                            IsActive = true,
+                            IsCorporate = false,
+                            IsDeleted = false,
+                            LastName = "Saygı",
+                            NeighborhoodId = 2,
+                            Phone = "5539288584",
+                            Title = "İş",
+                            UserId = "66016ad3-baa8-4be9-bdf0-38a53ca57ec9"
+                        });
+                });
+
             modelBuilder.Entity("Store.Models.Entities.Basket", b =>
                 {
                     b.Property<int>("Id")
@@ -38,8 +137,8 @@ namespace Store.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasMaxLength(32)
-                        .HasColumnType("nvarchar(32)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.HasKey("Id");
 
@@ -279,6 +378,15 @@ namespace Store.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("City");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Ankara"
+                        });
                 });
 
             modelBuilder.Entity("Store.Models.Entities.County", b =>
@@ -308,6 +416,24 @@ namespace Store.Migrations
                     b.HasIndex("CityId");
 
                     b.ToTable("County");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CityId = 1,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Yenimahalle"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CityId = 1,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Gölbaşı"
+                        });
                 });
 
             modelBuilder.Entity("Store.Models.Entities.Favorite", b =>
@@ -359,6 +485,24 @@ namespace Store.Migrations
                     b.HasIndex("CountyId");
 
                     b.ToTable("Neighborhood");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CountyId = 1,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Çamlıca Mahallesi"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CountyId = 2,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "İncek Mahallesi"
+                        });
                 });
 
             modelBuilder.Entity("Store.Models.Entities.Order", b =>
@@ -575,7 +719,7 @@ namespace Store.Migrations
                             Price = 2700.0,
                             PriceWithoutDiscount = 3000.0,
                             Slug = "product-1",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 5, 10, 58, 45, 920, DateTimeKind.Local).AddTicks(4138),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 10, 11, 1, 47, 898, DateTimeKind.Local).AddTicks(4056),
                             Stock = 3
                         },
                         new
@@ -596,7 +740,7 @@ namespace Store.Migrations
                             Price = 3300.0,
                             PriceWithoutDiscount = 3600.0,
                             Slug = "product-2",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 5, 10, 58, 45, 920, DateTimeKind.Local).AddTicks(4168),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 10, 11, 1, 47, 898, DateTimeKind.Local).AddTicks(4092),
                             Stock = 4
                         },
                         new
@@ -617,7 +761,7 @@ namespace Store.Migrations
                             Price = 1750.0,
                             PriceWithoutDiscount = 2250.0,
                             Slug = "product-3",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 5, 10, 58, 45, 920, DateTimeKind.Local).AddTicks(4172),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 10, 11, 1, 47, 898, DateTimeKind.Local).AddTicks(4095),
                             Stock = 0
                         });
                 });
@@ -766,6 +910,17 @@ namespace Store.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Store.Models.Entities.Address", b =>
+                {
+                    b.HasOne("Store.Models.Entities.Neighborhood", "Neighborhood")
+                        .WithMany("Addresses")
+                        .HasForeignKey("NeighborhoodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Neighborhood");
+                });
+
             modelBuilder.Entity("Store.Models.Entities.BasketItem", b =>
                 {
                     b.HasOne("Store.Models.Entities.Basket", "Basket")
@@ -869,6 +1024,11 @@ namespace Store.Migrations
             modelBuilder.Entity("Store.Models.Entities.County", b =>
                 {
                     b.Navigation("Neighborhoods");
+                });
+
+            modelBuilder.Entity("Store.Models.Entities.Neighborhood", b =>
+                {
+                    b.Navigation("Addresses");
                 });
 
             modelBuilder.Entity("Store.Models.Entities.Order", b =>

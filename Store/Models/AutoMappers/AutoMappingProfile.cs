@@ -16,5 +16,9 @@ public class AutoMappingProfile : Profile
         CreateMap<Slider, SliderDTO>().ReverseMap();
         CreateMap<Basket, BasketDTO>().ReverseMap();
         CreateMap<BasketItem, BasketItemDTO>().ReverseMap();
+        CreateMap<Address, AddressDTO>().ReverseMap();
+        CreateMap<City, CityDTO>().ReverseMap();
+        CreateMap<County, CountyDTO>().ReverseMap();
+        CreateMap<Neighborhood, NeighborhoodDTO>().ReverseMap();
     }
 }

@@ -28,6 +28,7 @@ builder.Services.AddScoped<IProductPhotoService, ProductPhotoService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.AddScoped<IBasketItemService, BasketItemService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<IHelperService, HelperService>();
 
 builder.Services.AddAutoMapper(typeof(AutoMappingProfile));
