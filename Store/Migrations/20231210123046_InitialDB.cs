@@ -386,9 +386,9 @@ namespace Store.Migrations
                 columns: new[] { "Id", "CategoryId", "Code", "Description", "Discount", "IsActive", "IsDeleted", "IsDiscounted", "IsFeatured", "IsMostSelled", "IsNew", "IsSpecialOffer", "Name", "Price", "PriceWithoutDiscount", "Slug", "SpecialOfferEndDate", "Stock" },
                 values: new object[,]
                 {
-                    { 1, 1, "8622f51e", "modern ve şık", 10, true, false, true, true, true, true, true, "Product-1", 2700.0, 3000.0, "product-1", new DateTime(2023, 12, 10, 11, 1, 47, 898, DateTimeKind.Local).AddTicks(4056), 3 },
-                    { 2, 2, "9dae0207", "modern ve şık", 9, true, false, true, true, true, true, true, "Product-2", 3300.0, 3600.0, "product-2", new DateTime(2023, 12, 10, 11, 1, 47, 898, DateTimeKind.Local).AddTicks(4092), 4 },
-                    { 3, 2, "27ae0101", "modern ve şık", 23, true, false, true, true, true, true, true, "Product-3", 1750.0, 2250.0, "product-3", new DateTime(2023, 12, 10, 11, 1, 47, 898, DateTimeKind.Local).AddTicks(4095), 0 }
+                    { 1, 1, "8622f51e", "modern ve şık", 10, true, false, true, true, true, true, true, "Product-1", 2700.0, 3000.0, "product-1", new DateTime(2023, 12, 11, 13, 30, 45, 774, DateTimeKind.Local).AddTicks(732), 3 },
+                    { 2, 2, "9dae0207", "modern ve şık", 9, true, false, true, true, true, true, true, "Product-2", 3300.0, 3600.0, "product-2", new DateTime(2023, 12, 11, 13, 30, 45, 774, DateTimeKind.Local).AddTicks(756), 4 },
+                    { 3, 2, "27ae0101", "modern ve şık", 23, true, false, true, true, true, true, true, "Product-3", 1750.0, 2250.0, "product-3", new DateTime(2023, 12, 11, 13, 30, 45, 774, DateTimeKind.Local).AddTicks(759), 0 }
                 });
 
             migrationBuilder.InsertData(

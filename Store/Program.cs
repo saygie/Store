@@ -6,7 +6,6 @@ using Store.Models.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -28,6 +27,9 @@ builder.Services.AddScoped<IProductPhotoService, ProductPhotoService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.AddScoped<IBasketItemService, BasketItemService>();
+builder.Services.AddScoped<ICityService, CityService>();
+builder.Services.AddScoped<ICountyService, CountyService>();
+builder.Services.AddScoped<INeighborhoodService, NeighborhoodService>();
 builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<IHelperService, HelperService>();
 

@@ -719,7 +719,7 @@ namespace Store.Migrations
                             Price = 2700.0,
                             PriceWithoutDiscount = 3000.0,
                             Slug = "product-1",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 10, 11, 1, 47, 898, DateTimeKind.Local).AddTicks(4056),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 11, 13, 30, 45, 774, DateTimeKind.Local).AddTicks(732),
                             Stock = 3
                         },
                         new
@@ -740,7 +740,7 @@ namespace Store.Migrations
                             Price = 3300.0,
                             PriceWithoutDiscount = 3600.0,
                             Slug = "product-2",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 10, 11, 1, 47, 898, DateTimeKind.Local).AddTicks(4092),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 11, 13, 30, 45, 774, DateTimeKind.Local).AddTicks(756),
                             Stock = 4
                         },
                         new
@@ -761,7 +761,7 @@ namespace Store.Migrations
                             Price = 1750.0,
                             PriceWithoutDiscount = 2250.0,
                             Slug = "product-3",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 10, 11, 1, 47, 898, DateTimeKind.Local).AddTicks(4095),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 11, 13, 30, 45, 774, DateTimeKind.Local).AddTicks(759),
                             Stock = 0
                         });
                 });

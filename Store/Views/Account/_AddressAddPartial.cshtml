@@ -1,4 +1,8 @@
-﻿                <!-- Basics Accordion -->
+﻿@using Store.Models.DTOs
+@using Store.Models.Results
+@{
+    IDataResult<List<CityDTO>> cities = ViewBag.Cities as IDataResult<List<CityDTO>>;
+}
 <div id="basicsAccordion1" class="about-accordion">
     <!-- Card -->
     <div class="card mb-4 border-color-4 rounded-0">
@@ -21,124 +25,125 @@
              aria-labelledby="basicsHeadingTwo"
              data-parent="#basicsAccordion1">
             <div class="card-body">
-                <form method="post">
-                    <div class="mr-xl-6">
-                        <p class="max-width-830-xl text-gray-90">Adres bilgileriniz doğruluğunu kontrol ettikten sonra lürfen kaydediniz.</p>
-                        <form class="js-validate" novalidate="novalidate">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <!-- Input -->
-                                    <div class="js-form-message mb-4">
-                                        <label class="form-label">
-                                            Ad
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" class="form-control" name="firstName" placeholder="" aria-label="" required="" data-msg="Please enter your frist name." data-error-class="u-has-error" data-success-class="u-has-success" autocomplete="off">
-                                    </div>
-                                    <!-- End Input -->
+                <div class="mr-xl-6">
+                    <p class="max-width-830-xl text-gray-90">Adres bilgileriniz doğruluğunu kontrol ettikten sonra lürfen kaydediniz.</p>
+                    <form action="~/Account/AddressAdd" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Input -->
+                                <div class="js-form-message mb-4">
+                                    <label class="form-label">
+                                        Ad
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" name="FirstName" placeholder="" aria-label="" required="" data-msg="Please enter your frist name." data-error-class="u-has-error" data-success-class="u-has-success" autocomplete="off">
                                 </div>
-                                <div class="col-md-6">
-                                    <!-- Input -->
-                                    <div class="js-form-message mb-4">
-                                        <label class="form-label">
-                                            Soyad
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" class="form-control" name="lastName" placeholder="" aria-label="" required="" data-msg="Please enter your last name." data-error-class="u-has-error" data-success-class="u-has-success">
-                                    </div>
-                                    <!-- End Input -->
+                                <!-- End Input -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Input -->
+                                <div class="js-form-message mb-4">
+                                    <label class="form-label">
+                                        Soyad
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" name="LastName" placeholder="" aria-label="" required="" data-msg="Please enter your last name." data-error-class="u-has-error" data-success-class="u-has-success">
                                 </div>
-                                <div class="col-md-6">
-                                    <!-- Input -->
-                                    <div class="js-form-message mb-4">
-                                        <label class="form-label">
-                                            Telefon
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="signinEmailLabel">
-                                                   +90
-                                                </span>
-                                            </div>
-                                            <input type="text" class="form-control mobile-phone-number" name="Phone" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
+                                <!-- End Input -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Input -->
+                                <div class="js-form-message mb-4">
+                                    <label class="form-label">
+                                        Telefon
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="signinEmailLabel">
+                                                +90
+                                            </span>
                                         </div>
-                                        
+                                        <input type="text" class="form-control mobile-phone-number" name="Phone" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
                                     </div>
-                                    <!-- End Input -->
-                                </div>
-                                <div class="col-md-6">
-                                    <!-- Input -->
-                                    <div class="js-form-message mb-4">
-                                        <label class="form-label">
-                                            İl
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <select class="form-control" name="City" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
-                                            <option>Test</option>
-                                        </select>
-                                    </div>
-                                    <!-- End Input -->
-                                </div>
-                                <div class="col-md-6">
-                                    <!-- Input -->
-                                    <div class="js-form-message mb-4">
-                                        <label class="form-label">
-                                            İlçe
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <select class="form-control" name="County" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
-                                            <option>Test</option>
-                                        </select>
-                                    </div>
-                                    <!-- End Input -->
-                                </div>
-                                <div class="col-md-6">
-                                    <!-- Input -->
-                                    <div class="js-form-message mb-4">
-                                        <label class="form-label">
-                                            Mahalle
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <select class="form-control" name="Neighborhood" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
-                                            <option>Test</option>
-                                        </select>
-                                    </div>
-                                    <!-- End Input -->
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="js-form-message mb-4">
-                                        <label class="form-label">
-                                            Adres
-                                        </label>
 
-                                        <div class="input-group">
-                                            <textarea class="form-control p-5" rows="4" name="text" placeholder=""></textarea>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <!-- Input -->
-                                    <div class="js-form-message mb-4">
-                                        <label class="form-label">
-                                            Adres Başlığı
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <input type="text" class="form-control" name="AddressDetail" placeholder="Ev Adresim, İş Adresim vb." aria-label="" required="" data-msg="Please enter your frist name." data-error-class="u-has-error" data-success-class="u-has-success" autocomplete="off">
+                                <!-- End Input -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Input -->
+                                <div class="js-form-message mb-4">
+                                    <label class="form-label">
+                                        İl
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <select class="form-control" name="City" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
+                                        <option></option>
+                                        @foreach (var item in cities.Data)
+                                        {
+                                            <option id="@item.Id">@item.Name</option>
+                                        }
+
+                                    </select>
+                                </div>
+                                <!-- End Input -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Input -->
+                                <div class="js-form-message mb-4">
+                                    <label class="form-label">
+                                        İlçe
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <select class="form-control" name="County" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
+                                        <option>Test</option>
+                                    </select>
+                                </div>
+                                <!-- End Input -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Input -->
+                                <div class="js-form-message mb-4">
+                                    <label class="form-label">
+                                        Mahalle
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <select class="form-control" name="NeighborhoodId" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
+                                        <option>Test</option>
+                                    </select>
+                                </div>
+                                <!-- End Input -->
+                            </div>
+                            <div class="col-md-12">
+                                <div class="js-form-message mb-4">
+                                    <label class="form-label">
+                                        Adres
+                                    </label>
+
+                                    <div class="input-group">
+                                        <textarea class="form-control p-5" rows="4" name="AddressDetail" placeholder=""></textarea>
                                     </div>
-                                    <!-- End Input -->
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary-dark-w px-5">Kaydet</button>
+                            <div class="col-md-12">
+                                <!-- Input -->
+                                <div class="js-form-message mb-4">
+                                    <label class="form-label">
+                                        Adres Başlığı
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" name="Title" placeholder="Ev Adresim, İş Adresim vb." aria-label="" required="" data-msg="Please enter your frist name." data-error-class="u-has-error" data-success-class="u-has-success" autocomplete="off">
+                                </div>
+                                <!-- End Input -->
                             </div>
-                        </form>
-                    </div>
-
-                </form>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary-dark-w px-5">Kaydet</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
     <!-- End Card -->
 </div>
-<!-- End Basics Accordion -->
