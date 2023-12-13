@@ -86,7 +86,18 @@ public class NeighborhoodService : Service<Neighborhood, DataDbContext>, INeighb
             return new DataResult<List<NeighborhoodDTO>>(new List<NeighborhoodDTO>(), false, ex.Message);
         }
     }
-
+    public async Task<IDataResult<List<NeighborhoodDTO>>> ListByCountyId(int countyId)
+    {
+        try
+        {
+            var data = await List(a => a.IsDeleted == false && a.CountyId == countyId);
+            return new DataResult<List<NeighborhoodDTO>>(mapper.Map<List<NeighborhoodDTO>>(data), true);
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<List<NeighborhoodDTO>>(new List<NeighborhoodDTO>(), false, ex.Message);
+        }
+    }
     public async Task<IDataResult<int>> Count()
     {
         try

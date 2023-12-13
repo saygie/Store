@@ -77,7 +77,7 @@
                                         İl
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <select class="form-control" name="City" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
+                                    <select class="form-control" name="cityId" id="cityDropdown" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
                                         <option></option>
                                         @foreach (var item in cities.Data)
                                         {
@@ -95,8 +95,7 @@
                                         İlçe
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <select class="form-control" name="County" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
-                                        <option>Test</option>
+                                    <select class="form-control" name="countyId" id="countyDropdown" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success" disabled>
                                     </select>
                                 </div>
                                 <!-- End Input -->
@@ -108,8 +107,7 @@
                                         Mahalle
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <select class="form-control" name="NeighborhoodId" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
-                                        <option>Test</option>
+                                    <select class="form-control" name="NeighborhoodId" id="neighborhoodDropdown" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success" disabled>
                                     </select>
                                 </div>
                                 <!-- End Input -->

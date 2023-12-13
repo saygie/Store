@@ -10,6 +10,9 @@ public class Address : IEntity
 {
     [Key]
     public int Id { get; set; }
+    [Required]
+    [StringLength(64)]
+    public string GId { get; set; } = string.Empty;
 
     [Required]
     [StringLength(64)]

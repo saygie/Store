@@ -5,6 +5,7 @@ namespace Store.Models.DTOs;
 public class AddressDTO
 {
     public int Id { get; set; }
+    public string GId { get; set; } = string.Empty;
 
     public string UserId { get; set; } = string.Empty;
 

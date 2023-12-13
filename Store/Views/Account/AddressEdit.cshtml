@@ -1,0 +1,273 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Store.Models.DTOs
+@model Store.Models.Results.IDataResult<AddressDTO>
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@using Store.Models.Results
+@{
+    IDataResult<List<CityDTO>> cities = ViewBag.Cities as IDataResult<List<CityDTO>>;
+    IDataResult<List<CountyDTO>> counties = ViewBag.Counties as IDataResult<List<CountyDTO>>;
+    IDataResult<List<NeighborhoodDTO>> neighborhoods = ViewBag.Neighborhoods as IDataResult<List<NeighborhoodDTO>>;
+}
+<!-- breadcrumb -->
+<div class="bg-gray-13 bg-md-transparent">
+    <div class="container">
+        <!-- breadcrumb -->
+        <div class="my-md-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-3 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
+                    <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="~/">Anasayfa</a></li>
+                    <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page">Hesabım</li>
+                </ol>
+            </nav>
+        </div>
+        <!-- End breadcrumb -->
+    </div>
+</div>
+<!-- End breadcrumb -->
+<div class="container">
+    <div class="row mb-8">
+        <partial name="~/Views/Account/_SideBarNavPartial.cshtml" />
+        <div class="col-xl-9 col-wd-9gdot5 row">
+            <div class="col-xl-12">
+                <div class="card mb-4 border-color-4 rounded-0">
+                    <div class="card-header border-color-4 p-1">
+                        <h5 class="mb-0">
+                            Adres Düzenle
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mr-xl-6">
+                            <form action="~/Account/AddressEdit" method="post">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- Input -->
+                                        <div class="js-form-message mb-4">
+                                            <label class="form-label">
+                                                Ad
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control" name="FirstName" value="@Model.Data.FirstName" placeholder="" aria-label="" required="" data-msg="Please enter your frist name." data-error-class="u-has-error" data-success-class="u-has-success" autocomplete="off">
+                                        </div>
+                                        <!-- End Input -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- Input -->
+                                        <div class="js-form-message mb-4">
+                                            <label class="form-label">
+                                                Soyad
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control" name="LastName" value="@Model.Data.LastName" placeholder="" aria-label="" required="" data-msg="Please enter your last name." data-error-class="u-has-error" data-success-class="u-has-success">
+                                        </div>
+                                        <!-- End Input -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- Input -->
+                                        <div class="js-form-message mb-4">
+                                            <label class="form-label">
+                                                Telefon
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="signinEmailLabel">
+                                                        +90
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control mobile-phone-number" name="Phone" value="@Model.Data.Phone" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
+                                            </div>
+                                        </div>
+                                        <!-- End Input -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- Input -->
+                                        <div class="js-form-message mb-4">
+                                            <label class="form-label">
+                                                İl
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <select class="form-control" name="cityId" id="cityDropdown" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
+                                                <option></option>
+                                                @foreach (var item in cities.Data)
+                                                {
+                                                    if (item.Id == Model.Data.Neighborhood.County.City.Id)
+                                                    {
+                                                        <option id="@item.Id" selected>@item.Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option id="@item.Id">@item.Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <!-- End Input -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- Input -->
+                                        <div class="js-form-message mb-4">
+                                            <label class="form-label">
+                                                İlçe
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <select class="form-control" name="countyId" id="countyDropdown" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
+                                                <option></option>
+                                                @foreach (var item in counties.Data.Where(a => a.CityId == Model.Data.Neighborhood.County.CityId))
+                                                {
+                                                    if (item.Id == Model.Data.Neighborhood.County.Id)
+                                                    {
+                                                        <option value="@item.Id" selected>@item.Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <!-- End Input -->
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- Input -->
+                                        <div class="js-form-message mb-4">
+                                            <label class="form-label">
+                                                Mahalle
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <select class="form-control" name="NeighborhoodId" id="neighborhoodDropdown" placeholder="" aria-label="" required="" data-msg="Please enter phone number." data-error-class="u-has-error" data-success-class="u-has-success">
+                                                <option></option>
+                                                @foreach (var item in neighborhoods.Data.Where(a => a.CountyId == Model.Data.Neighborhood.CountyId))
+                                                {
+                                                    if (item.Id == Model.Data.Neighborhood.Id)
+                                                    {
+                                                        <option value="@item.Id" selected>@item.Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <!-- End Input -->
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="js-form-message mb-4">
+                                            <label class="form-label">
+                                                Adres
+                                                <span class="text-danger">*</span>
+                                            </label>
+
+                                            <div class="input-group">
+                                                <textarea class="form-control p-5" rows="4" name="AddressDetail" placeholder="" aria-label="" required="" data-msg="Please enter" data-error-class="u-has-error" data-success-class="u-has-success" autocomplete="off">@Model.Data.AddressDetail</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!-- Input -->
+                                        <div class="js-form-message mb-4">
+                                            <label class="form-label">
+                                                Adres Başlığı
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" class="form-control" name="Title" value="@Model.Data.Title" placeholder="Ev Adresim, İş Adresim vb." aria-label="" required="" data-msg="Please enter your frist name." data-error-class="u-has-error" data-success-class="u-has-success" autocomplete="off">
+                                        </div>
+                                        <!-- End Input -->
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="hidden" name="GId" value="@Model.Data.GId" />
+                                    <button type="submit" class="btn btn-primary-dark-w px-5">Düzenle</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section css {
+
+}
+@section scripts {
+
+    <script src="~/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+    <script src="~/js/pages/forms/masked-input.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".mobile-phone-number").inputmask({ "mask": "(999) 999-9999" });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var countyDropdown = document.getElementById('countyDropdown');
+            countyDropdown.disabled = false;
+            document.getElementById('cityDropdown').addEventListener('change', function () {
+                var selectedOption = this.options[this.selectedIndex];
+                var cityId = selectedOption.id;
+                $.ajax({
+                    url: '/Account/GetCounties',
+                    type: 'GET',
+                    data: { cityId: cityId },
+                    success: function (counties) {
+                        if (counties.length > 0) {
+                            $('#countyDropdown').empty();
+                            $('#neighborhoodDropdown').empty();
+                            neighborhoodDropdown.disabled = true;
+                            $('#countyDropdown').append('<option value="">İlçe Seçiniz</option>');
+                            $.each(counties, function (i, county) {
+                                $('#countyDropdown').append('<option value="' + county.id + '">' + county.name + '</option>');
+                            });
+                            countyDropdown.disabled = false;
+                        }
+                        else {
+                            $('#neighborhoodDropdown').empty();
+                            neighborhoodDropdown.disabled = true;
+                            $('#countyDropdown').empty();
+                            countyDropdown.disabled = true;
+                        }
+                    },
+                    error: function () {
+                        console.error('Error.');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var neighborhoodDropdown = document.getElementById('neighborhoodDropdown');
+            neighborhoodDropdown.disabled = false;
+            document.getElementById('countyDropdown').addEventListener('change', function () {
+                var countyId = $(this).val();
+                $.ajax({
+                    url: '/Account/GetNeighborhoods',
+                    type: 'GET',
+                    data: { countyId: countyId },
+                    success: function (counties) {
+                        if (counties.length > 0) {
+                            console.log(counties);
+                            $('#neighborhoodDropdown').empty();
+                            $('#neighborhoodDropdown').append('<option value="">Mahalle Seçiniz</option>');
+                            $.each(counties, function (i, neighborhood) {
+                                $('#neighborhoodDropdown').append('<option value="' + neighborhood.id + '">' + neighborhood.name + '</option>');
+                            });
+                            neighborhoodDropdown.disabled = false;
+                        }
+                        else {
+                            $('#neighborhoodDropdown').empty();
+                            neighborhoodDropdown.disabled = true;
+                        }
+                    },
+                    error: function () {
+                        console.error('Error.');
+                    }
+                });
+            });
+        });
+
+    </script>
+}

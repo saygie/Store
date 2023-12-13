@@ -44,6 +44,11 @@ namespace Store.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
+                    b.Property<string>("GId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -96,6 +101,7 @@ namespace Store.Migrations
                             Id = 1,
                             AddressDetail = "162 Cad. 14/B Kat:1 No:6",
                             FirstName = "Ersel",
+                            GId = "c09c96a5-4437-43f8-b6ee-7c61c0cee6ee",
                             IsActive = true,
                             IsCorporate = false,
                             IsDeleted = false,
@@ -110,6 +116,7 @@ namespace Store.Migrations
                             Id = 2,
                             AddressDetail = "30648 Cadde T2-0 Blok Belediye No:0/0",
                             FirstName = "Ersel",
+                            GId = "80739115-9401-4d35-a286-805e611860b4",
                             IsActive = true,
                             IsCorporate = false,
                             IsDeleted = false,
@@ -386,6 +393,13 @@ namespace Store.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Ankara"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Adana"
                         });
                 });
 
@@ -433,6 +447,14 @@ namespace Store.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Gölbaşı"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CityId = 2,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Yüreğir"
                         });
                 });
 
@@ -719,7 +741,7 @@ namespace Store.Migrations
                             Price = 2700.0,
                             PriceWithoutDiscount = 3000.0,
                             Slug = "product-1",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 11, 13, 30, 45, 774, DateTimeKind.Local).AddTicks(732),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 12, 12, 18, 27, 669, DateTimeKind.Local).AddTicks(9263),
                             Stock = 3
                         },
                         new
@@ -740,7 +762,7 @@ namespace Store.Migrations
                             Price = 3300.0,
                             PriceWithoutDiscount = 3600.0,
                             Slug = "product-2",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 11, 13, 30, 45, 774, DateTimeKind.Local).AddTicks(756),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 12, 12, 18, 27, 669, DateTimeKind.Local).AddTicks(9342),
                             Stock = 4
                         },
                         new
@@ -761,7 +783,7 @@ namespace Store.Migrations
                             Price = 1750.0,
                             PriceWithoutDiscount = 2250.0,
                             Slug = "product-3",
-                            SpecialOfferEndDate = new DateTime(2023, 12, 11, 13, 30, 45, 774, DateTimeKind.Local).AddTicks(759),
+                            SpecialOfferEndDate = new DateTime(2023, 12, 12, 12, 18, 27, 669, DateTimeKind.Local).AddTicks(9346),
                             Stock = 0
                         });
                 });

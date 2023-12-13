@@ -35,6 +35,7 @@ public class AddressService : Service<Address, DataDbContext>, IAddressService
     {
         try
         {
+            dto.GId = Guid.NewGuid().ToString();
             var data = mapper.Map<Address>(dto);
             await Add(data);
             return new Result(true);
@@ -62,7 +63,7 @@ public class AddressService : Service<Address, DataDbContext>, IAddressService
     {
         try
         {
-            var data = await Get(a => a.Id == dto.Id && a.UserId == dto.UserId);
+            var data = await Get(a => a.GId == dto.GId && a.UserId == dto.UserId);
             if (data is null)
                 return new Result(false);
 
@@ -81,6 +82,45 @@ public class AddressService : Service<Address, DataDbContext>, IAddressService
         try
         {
             var data = await Get(a => a.Id == Id && a.IsDeleted == false,
+                "Neighborhood,Neighborhood.County,Neighborhood.County.City");
+            return new DataResult<AddressDTO?>(mapper.Map<AddressDTO>(data), true);
+        }
+        catch (Exception)
+        {
+            return new DataResult<AddressDTO?>(null, false);
+        }
+    }
+    public async Task<IDataResult<AddressDTO?>> GetById(int Id, string userId)
+    {
+        try
+        {
+            var data = await Get(a => a.Id == Id && a.UserId == userId && a.IsDeleted == false,
+                "Neighborhood,Neighborhood.County,Neighborhood.County.City");
+            return new DataResult<AddressDTO?>(mapper.Map<AddressDTO>(data), true);
+        }
+        catch (Exception)
+        {
+            return new DataResult<AddressDTO?>(null, false);
+        }
+    }
+    public async Task<IDataResult<AddressDTO?>> GetByGId(string GId)
+    {
+        try
+        {
+            var data = await Get(a => a.GId == GId && a.IsDeleted == false,
+                "Neighborhood,Neighborhood.County,Neighborhood.County.City");
+            return new DataResult<AddressDTO?>(mapper.Map<AddressDTO>(data), true);
+        }
+        catch (Exception)
+        {
+            return new DataResult<AddressDTO?>(null, false);
+        }
+    }
+    public async Task<IDataResult<AddressDTO?>> GetByGId(string GId, string userId)
+    {
+        try
+        {
+            var data = await Get(a => a.GId == GId && a.UserId == userId && a.IsDeleted == false,
                 "Neighborhood,Neighborhood.County,Neighborhood.County.City");
             return new DataResult<AddressDTO?>(mapper.Map<AddressDTO>(data), true);
         }

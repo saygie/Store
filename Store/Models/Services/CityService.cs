@@ -99,6 +99,19 @@ public class CityService : Service<City, DataDbContext>, ICityService
             return new DataResult<int>(0, false, ex.Message);
         }
     }
+
+    public async Task<IDataResult<List<CityDTO>>> ListWithCountiesAndNeighborhoods()
+    {
+        try
+        {
+            var data = await List(a => a.IsDeleted == false,null, "Counties,Counties.Neighborhoods");
+            return new DataResult<List<CityDTO>>(mapper.Map<List<CityDTO>>(data), true);
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<List<CityDTO>>(new List<CityDTO>(), false, ex.Message);
+        }
+    }
 }
 
 

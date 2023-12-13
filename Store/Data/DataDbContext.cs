@@ -385,6 +385,15 @@ namespace Store.Data
                     IsDeleted = false,
                 }
              );
+            modelBuilder.Entity<City>().HasData(
+                new City
+                {
+                    Id = 2,
+                    Name = "Adana",
+                    IsActive = true,
+                    IsDeleted = false,
+                }
+             );
             modelBuilder.Entity<County>().HasData(
                 new County
                 {
@@ -399,6 +408,14 @@ namespace Store.Data
                      Id = 2,
                      CityId = 1,
                      Name = "Gölbaşı",
+                     IsActive = true,
+                     IsDeleted = false,
+                 },
+                 new County
+                 {
+                     Id = 3,
+                     CityId = 2,
+                     Name = "Yüreğir",
                      IsActive = true,
                      IsDeleted = false,
                  }
@@ -425,6 +442,7 @@ namespace Store.Data
                 new Address
                 {
                     Id = 1,
+                    GId = "66016ad3-baa8-4be9-bdf0-38a53ca57ec8",
                     NeighborhoodId = 1,
                     Title = "Ev",
                     FirstName="Ersel",
@@ -442,6 +460,7 @@ namespace Store.Data
                 new Address
                 {
                     Id = 2,
+                    GId = "66016ad3-baa8-4be9-bdf0-38a53ca57ec9",
                     NeighborhoodId = 2,
                     Title = "İş",
                     FirstName = "Ersel",

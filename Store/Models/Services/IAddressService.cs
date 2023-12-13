@@ -10,6 +10,9 @@ public interface IAddressService : IService<Address>
 {
     Task<IDataResult<List<AddressDTO>>> List();
     Task<IDataResult<AddressDTO?>> GetById(int Id);
+    Task<IDataResult<AddressDTO?>> GetById(int Id, string userId);
+    Task<IDataResult<AddressDTO?>> GetByGId(string GId);
+    Task<IDataResult<AddressDTO?>> GetByGId(string GId, string userId);
     Task<IDataResult<List<AddressDTO>>> GetByUserId(string userId);
     Task<IResult> Add(AddressDTO dto);
     Task<IResult> Update(AddressDTO dto);

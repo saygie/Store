@@ -9,6 +9,7 @@ namespace Store.Models.Services;
 public interface ICountyService : IService<County>
 {
     Task<IDataResult<List<CountyDTO>>> List();
+    Task<IDataResult<List<CountyDTO>>> ListByCityId(int cityId);
     Task<IDataResult<CountyDTO?>> GetById(int Id);
     Task<IResult> Add(CountyDTO dto);
     Task<IResult> Update(CountyDTO dto);

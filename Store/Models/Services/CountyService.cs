@@ -99,6 +99,19 @@ public class CountyService : Service<County, DataDbContext>, ICountyService
             return new DataResult<int>(0, false, ex.Message);
         }
     }
+
+    public async Task<IDataResult<List<CountyDTO>>> ListByCityId(int cityId)
+    {
+        try
+        {
+            var data = await List(a => a.IsDeleted == false && a.CityId == cityId);
+            return new DataResult<List<CountyDTO>>(mapper.Map<List<CountyDTO>>(data), true);
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<List<CountyDTO>>(new List<CountyDTO>(), false, ex.Message);
+        }
+    }
 }
 
 
