@@ -62,20 +62,8 @@
                 <div class="mb-2">
                     <a href="~/c/@Model.Data.Category.ParentCategory.Slug/@Model.Data.Category.Slug" class="font-size-12 text-gray-5 mb-2 d-inline-block">@Model.Data.Category.Name</a>
                     <h2 class="font-size-25 text-lh-1dot2">@Model.Data.Name</h2>
-                    <div class="mb-2">
-                        <a class="d-inline-flex align-items-center small font-size-15 text-lh-1" href="#">
-                            <div class="text-warning mr-2">
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="fas fa-star"></small>
-                                <small class="far fa-star text-muted"></small>
-                            </div>
-                            <span class="text-secondary font-size-13">(3 customer reviews)</span>
-                        </a>
-                    </div>
-                    @*                     <a href="#" class="d-inline-block max-width-150 ml-n2 mb-2"><img class="img-fluid" src="../../assets/img/200X60/img1.png" alt="Image Description"></a>
-                    *@
+
+
                     <div class="mb-2">
                         @Html.Raw(Model.Data.Description)
                     </div>
@@ -103,7 +91,14 @@
 
                         </div>
                         <div class="mb-3">
-                            <div class="font-size-36">@Model.Data.Price.ToString("N0")<sup class="">₺</sup></div>
+                            <div class="d-flex align-items-baseline">
+                                <ins class="font-size-32 text-decoration-none">@Model.Data.Price.ToString("N0")<sup class="">₺</sup></ins>
+                                @if (Model.Data.Discount > 0)
+                                {
+                                    <del class="font-size-16 ml-2 text-red">@Model.Data.PriceWithoutDiscount.ToString("N0")<sup class="">₺</sup></del>
+
+                                }
+                            </div>
                         </div>
                         <div class="mb-3">
                             <h6 class="font-size-14">Adet</h6>
@@ -140,26 +135,30 @@
                         @if (Model.Data.Stock != 0)
                         {
                             <div class="mb-2 pb-0dot5">
-                                <a href="#" class="btn btn-block btn-primary"><i class="ec ec-add-to-cart mr-2 font-size-20"></i> Sepete Ekle</a>
+                                <button href="#" data-product-id="@Model.Data.Id" class="btn-add-cart2 btn btn-block btn-primary">
+                                    <i class="fa fa-spinner fa-spin" style="display:none; color:black;"></i>
+                                    <i class="fa fa-check" style="display:none; color:black;"></i>
+                                    <span class="ec-add-to-cart2"><i class="ec ec-add-to-cart mr-2 font-size-20"></i>Sepete Ekle</span>
+                                </button>
                             </div>
                             <div class="mb-3">
-                                <a href="#" class="btn btn-block btn-dark">Satın Al</a>
+                                <a href="~/checkout" class="btn btn-block btn-dark">Ödeme Yap</a>
                             </div>
                         }
                         else
                         {
                             <div class="mb-2 pb-0dot5">
-                                <a href="~/" class="btn btn-block btn-primary">Benzer Ürünleri İncele</a>
+                                <a href="~/c/@Model.Data.Category.ParentCategory.Slug/@Model.Data.Category.Slug" class="btn btn-block btn-primary">Benzer Ürünleri İncele</a>
                             </div>
                             <div class="mb-3">
                                 <a href="~/" class="btn btn-block btn-dark">Alışverişe Devam Et</a>
                             </div>
                         }
 
-                        <div class="flex-content-center flex-wrap">
-                            <a href="#" class="text-gray-6 font-size-13 mr-2"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                            <a href="#" class="text-gray-6 font-size-13 ml-2"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                        </div>
+                        @*                         <div class="flex-content-center flex-wrap">
+                        <a href="#" class="text-gray-6 font-size-13 mr-2"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                        <a href="#" class="text-gray-6 font-size-13 ml-2"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                        </div> *@
                     </div>
                 </div>
             </div>

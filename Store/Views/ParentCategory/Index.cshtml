@@ -3,6 +3,8 @@
 @model IDataResult<ParentCategoryDTO>
 @{
     IDataResult<List<ProductDTO>> products = ViewBag.Products as IDataResult<List<ProductDTO>>;
+    IDataResult<List<ProductDTO>>? mostSelledProducts = ViewBag.MostSelledProducts as IDataResult<List<ProductDTO>>;
+
     CategoryDTO? categoryDTO = @ViewData["categoryName"] as CategoryDTO;
 }
 <!-- breadcrumb -->
@@ -59,125 +61,8 @@
                 </ul>
                 <!-- End List -->
             </div>
-            <div class="mb-8">
-                <div class="border-bottom border-color-1 mb-5">
-                    <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Latest Products</h3>
-                </div>
-                <ul class="list-unstyled">
-                    <li class="mb-4">
-                        <div class="row">
-                            <div class="col-auto">
-                                <a href="../shop/single-product-fullwidth.html" class="d-block width-75">
-                                    <img class="img-fluid" src="../../assets/img/300X300/img1.jpg" alt="Image Description">
-                                </a>
-                            </div>
-                            <div class="col">
-                                <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="../shop/single-product-fullwidth.html">Notebook Black Spire V Nitro VN7-591G</a></h3>
-                                <div class="text-warning text-ls-n2 font-size-16 mb-1" style="width: 80px;">
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="far fa-star text-muted"></small>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <del class="font-size-11 text-gray-9 d-block">$2299.00</del>
-                                    <ins class="font-size-15 text-red text-decoration-none d-block">$1999.00</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mb-4">
-                        <div class="row">
-                            <div class="col-auto">
-                                <a href="../shop/single-product-fullwidth.html" class="d-block width-75">
-                                    <img class="img-fluid" src="../../assets/img/300X300/img3.jpg" alt="Image Description">
-                                </a>
-                            </div>
-                            <div class="col">
-                                <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="../shop/single-product-fullwidth.html">Notebook Black Spire V Nitro VN7-591G</a></h3>
-                                <div class="text-warning text-ls-n2 font-size-16 mb-1" style="width: 80px;">
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="far fa-star text-muted"></small>
-                                </div>
-                                <div class="font-weight-bold font-size-15">
-                                    $499.00
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mb-4">
-                        <div class="row">
-                            <div class="col-auto">
-                                <a href="../shop/single-product-fullwidth.html" class="d-block width-75">
-                                    <img class="img-fluid" src="../../assets/img/300X300/img5.jpg" alt="Image Description">
-                                </a>
-                            </div>
-                            <div class="col">
-                                <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="../shop/single-product-fullwidth.html">Tablet Thin EliteBook Revolve 810 G6</a></h3>
-                                <div class="text-warning text-ls-n2 font-size-16 mb-1" style="width: 80px;">
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="far fa-star text-muted"></small>
-                                </div>
-                                <div class="font-weight-bold font-size-15">
-                                    $100.00
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mb-4">
-                        <div class="row">
-                            <div class="col-auto">
-                                <a href="../shop/single-product-fullwidth.html" class="d-block width-75">
-                                    <img class="img-fluid" src="../../assets/img/300X300/img6.jpg" alt="Image Description">
-                                </a>
-                            </div>
-                            <div class="col">
-                                <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="../shop/single-product-fullwidth.html">Notebook Purple G952VX-T7008T</a></h3>
-                                <div class="text-warning text-ls-n2 font-size-16 mb-1" style="width: 80px;">
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="far fa-star text-muted"></small>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <del class="font-size-11 text-gray-9 d-block">$2299.00</del>
-                                    <ins class="font-size-15 text-red text-decoration-none d-block">$1999.00</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="mb-4">
-                        <div class="row">
-                            <div class="col-auto">
-                                <a href="../shop/single-product-fullwidth.html" class="d-block width-75">
-                                    <img class="img-fluid" src="../../assets/img/300X300/img10.png" alt="Image Description">
-                                </a>
-                            </div>
-                            <div class="col">
-                                <h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="../shop/single-product-fullwidth.html">Laptop Yoga 21 80JH0035GE W8.1</a></h3>
-                                <div class="text-warning text-ls-n2 font-size-16 mb-1" style="width: 80px;">
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="fas fa-star"></small>
-                                    <small class="far fa-star text-muted"></small>
-                                </div>
-                                <div class="font-weight-bold font-size-15">
-                                    $1200.00
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <partial name="~/Views/Shared/_MostSelledProductsVerticalPartial.cshtml" model="@mostSelledProducts?.Data" />
+
         </div>
         <div class="col-xl-9 col-wd-9gdot5">
             @*             <!-- Shop-control-bar Title -->
@@ -281,28 +166,44 @@
                                             <div class="mb-2">
                                                 <a href="~/p/@product.Slug" class="d-block text-center"><img class="img-fluid" src="~/uploads/products/212X200/@product.ProductPhotos.FirstOrDefault().Url" alt="Image Description"></a>
                                             </div>
-                                            <div class="flex-center-between mb-1">
+                                            <div class="flex-center-between mb-1 position-relative">
+                                                @if (product.Discount > 0)
+                                                {
+                                                    <div class="position-absolute font-size-12 font-weight-bold left-0 top-0 bg-red rounded text-white text-lh-21 px-2 mt-n4">
+                                                        -@product.Discount%
+                                                    </div>
+                                                }
                                                 <div class="prodcut-price">
-                                                    <div class="text-gray-100">@product.Price.ToString("N0")<sup class="">₺</sup></div>
+                                                    @if (product.Discount > 0)
+                                                    {
+                                                        <del class="font-size-14 text-red">@product.PriceWithoutDiscount.ToString("N0")<sup class="">₺</sup></del>
+                                                        <div class="text-gray-100">@product.Price.ToString("N0")<sup class="">₺</sup></div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="text-gray-100">@product.Price.ToString("N0")<sup class="">₺</sup></div>
+                                                        <del class="font-size-14 text-decoration-none">&nbsp;</del>
+
+                                                    }
                                                 </div>
-                                                <div class="d-none d-xl-block prodcut-add-cart">
-                                                    <a href="#" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                <div class="prodcut-add-cart">
+                                                    <button data-product-id="@product.Id" class="btn-add-cart btn-primary transition-3d-hover">
+                                                        <i class="ec ec-add-to-cart" style="color:white;"></i>
+                                                        <i class="fa fa-spinner fa-spin" style="display:none; color:white;"></i>
+                                                        <i class="fa fa-check" style="display:none; color:white;"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="product-item__footer">
-                                            <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                <a href="../shop/compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                            <div class="border-top pt-2 flex-center flex-wrap text-center">
+                                                <a href="~/p/@product.Slug" class="text-gray-6 font-size-13"><i class="fas fa-eye mr-1 font-size-15 "></i> Detaylı İncele</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-
                         }
-
-
                     </ul>
                 </div>
                 <div class="tab-pane fade pt-2" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab" data-target-group="groups">

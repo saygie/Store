@@ -497,6 +497,44 @@
             });
         });
     </script>
+    <script>
+
+        $(document).ready(function () {
+            $('.btn-add-cart2').on('click', function (e) {
+                $(this).prop('disabled', true);
+                e.preventDefault();
+                var productId = $(this).data('product-id')
+                var button = $(this);
+                var addToCartIcon = button.find('.ec-add-to-cart2');
+                var loadingIcon = button.find('.fa-spinner');
+                var successIcon = button.find('.fa-check');
+                loadingIcon.show();
+                addToCartIcon.hide();
+
+
+                $.ajax({
+                    url: '/Basket/Add?productId=' + productId,
+                    method: 'GET',
+                    success: function (data) {
+                        loadingIcon.hide();
+                        successIcon.show();
+                        $('#basketSection').html(data);
+                    },
+                    complete: function () {
+                        setTimeout(function () {
+                            successIcon.hide();
+                            addToCartIcon.show();
+                            button.prop('disabled', false);
+                        }, 2000);
+                    },
+                    error: function () {
+                        button.prop('disabled', false);
+                    }
+                });
+
+            });
+        });
+    </script>
     @await RenderSectionAsync("scripts", required: false)
 </body>
 </html>

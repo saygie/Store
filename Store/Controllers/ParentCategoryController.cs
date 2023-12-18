@@ -17,9 +17,10 @@ public class ParentCategoryController : Controller
 
     public async Task<IActionResult> Index(string parentCategorySlug, string? categorySlug)
     {
+        ViewBag.Products = await productService.Filter(parentCategorySlug, categorySlug);
+        ViewBag.MostSelledProducts = await productService.ListMostSelled();
         var result = await parentCategoryService.GetBySlugWithCategoriesAndProducts(parentCategorySlug, categorySlug);
 
-        ViewBag.Products = await productService.Filter(parentCategorySlug, categorySlug);
 
         if (result.Success)
         {

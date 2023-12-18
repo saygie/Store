@@ -131,6 +131,65 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
             return new DataResult<List<ProductDTO>>(new List<ProductDTO>(), false, ex.Message);
         }
     }
+    public async Task<IDataResult<List<ProductDTO>>> Search(string? query, int parentCategoryId)
+    {
+        try
+        {
+            if (parentCategoryId is 0)
+            {
+                if (string.IsNullOrEmpty(query))
+                {
+                    var data = await List(a => !a.IsDeleted
+                                               && a.IsActive
+                                               , null,
+                                               "Category.ParentCategory,Category,ProductPhotos");
+                    return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+                }
+                else
+                {
+                    var data = await List(a => !a.IsDeleted
+                                               && a.IsActive
+                                               && (a.Name.Contains(query) 
+                                                    || a.Category.Name.Contains(query)
+                                                    || a.Category.ParentCategory.Name.Contains(query))
+                                               , null,
+                                               "Category.ParentCategory,Category,ProductPhotos");
+                    return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+                }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(query))
+                {
+                    var data = await List(a => !a.IsDeleted
+                                               && a.IsActive
+                                               && a.Category.ParentCategoryId == parentCategoryId
+                                               , null,
+                                               "Category.ParentCategory,Category,ProductPhotos");
+                    return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+                }
+                else
+                {
+                    var data = await List(a => !a.IsDeleted
+                                               && a.IsActive
+                                               && a.Category.ParentCategoryId == parentCategoryId
+                                               && (a.Name.Contains(query)
+                                                    || a.Category.Name.Contains(query)
+                                                    || a.Category.ParentCategory.Name.Contains(query))
+                                               , null,
+                                               "Category.ParentCategory,Category,ProductPhotos");
+                    return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+                }
+            }
+
+
+
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<List<ProductDTO>>(new List<ProductDTO>(), false, ex.Message);
+        }
+    }
 
     public async Task<IDataResult<ProductDTO?>> GetBySlug(string slug)
     {
@@ -157,6 +216,38 @@ public class ProductService : Service<Product, DataDbContext>, IProductService
             !a.IsDeleted
             && a.IsActive
             && (a.IsSpecialOffer || a.IsDiscounted || a.IsFeatured || a.IsMostSelled || a.IsNew)
+            , null, "Category,Category.ParentCategory,ProductPhotos");
+            return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<List<ProductDTO>>(new List<ProductDTO>(), false, ex.Message);
+        }
+    }
+    public async Task<IDataResult<List<ProductDTO>>> ListMostSelled()
+    {
+        try
+        {
+            var data = await List(a =>
+            !a.IsDeleted
+            && a.IsActive
+            && a.IsMostSelled 
+            , null, "Category,Category.ParentCategory,ProductPhotos");
+            return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
+        }
+        catch (Exception ex)
+        {
+            return new DataResult<List<ProductDTO>>(new List<ProductDTO>(), false, ex.Message);
+        }
+    }
+    public async Task<IDataResult<List<ProductDTO>>> ListNew()
+    {
+        try
+        {
+            var data = await List(a =>
+            !a.IsDeleted
+            && a.IsActive
+            && a.IsNew
             , null, "Category,Category.ParentCategory,ProductPhotos");
             return new DataResult<List<ProductDTO>>(mapper.Map<List<ProductDTO>>(data), true);
         }

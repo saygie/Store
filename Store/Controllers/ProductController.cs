@@ -22,4 +22,15 @@ public class ProductController : Controller
         }
         return View("Error");
     }
+    public async Task<IActionResult> Search(string? query, int parentCategoryId = 0)
+    {
+        ViewBag.MostSelledProducts = await productService.ListMostSelled();
+        ViewBag.NewProducts = await productService.ListNew();
+        var result = await productService.Search(query, parentCategoryId);
+        if (result.Success)
+        {
+            return View(result);
+        }
+        return View("Error");
+    }
 }

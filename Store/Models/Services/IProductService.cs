@@ -16,6 +16,9 @@ public interface IProductService : IService<Product>
     Task<IResult> Delete(ProductDTO dto);
     Task<IDataResult<int>> Count();
     Task<IDataResult<List<ProductDTO>>> Filter(string parentCategorySlug, string? categorySlug);
+    Task<IDataResult<List<ProductDTO>>> Search(string? query, int parentCategoryId);
     Task<IDataResult<List<ProductDTO>>> ListForHomePage();
+    Task<IDataResult<List<ProductDTO>>> ListMostSelled();
+    Task<IDataResult<List<ProductDTO>>> ListNew();
 
 }
