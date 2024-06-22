@@ -8,7 +8,7 @@ namespace Store.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //TODO: hide password for security
-            optionsBuilder.UseSqlServer("Server=localhost;User Id=sa;Password=QWEasd123;Database=StoreDB;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=localhost,1433;User Id=sa;Password=123QWEasd;Database=StoreDB;TrustServerCertificate=True;MultipleActiveResultSets=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
